@@ -1,0 +1,18 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+//ホーム
+@Controller
+public class HomeController {
+			
+	// ホーム画面
+	@GetMapping(value = "/home")
+	public String Home(Model model) {
+			return "home/home";
+	}
+}
