@@ -1,0 +1,11 @@
+/* login.html */
+body{
+	font-family: 'Noto Sans JP', sans-serif;
+	background-color: #F3F6FD;
+}
+	div#wrap a{
+		width: 500px;
+		height: 90px;
+		text-align: center;
+		background-color: #fff;
+	}
