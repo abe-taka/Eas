@@ -16,12 +16,12 @@ public class LoginController {
 	//ログイン
 	@GetMapping("/")
 	public String getLoginPage(Model model) {
-	    return "/login/login";
+	    return "/login/top";
 	}
 
 	// 新規登録画面
 	@GetMapping(value = "/signup")
 	public String Signup(Model model) {
-		return "redirect:home/home";
+		return "/login/signup";
 	}
 }
