@@ -1,11 +1,24 @@
 /* login.html */
 body{
-	font-family: 'Noto Sans JP', sans-serif;
 	background-color: #F3F6FD;
 }
-	div#wrap a{
-		width: 500px;
-		height: 90px;
-		text-align: center;
-		background-color: #fff;
+	div#wrap{
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
 	}
+		div#wrap button{
+			display: block;
+			width: 250px;
+			height: 50px;
+			margin: 0;
+			font-family: 'Noto Sans JP', sans-serif;
+			letter-spacing: 0.1rem;
+			background-color: #fff;
+		}
+			div#wrap button i{
+				margin-right: 20px;
+				font-size: 1.1rem;
+			}
