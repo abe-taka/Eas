@@ -1,0 +1,16 @@
+div#wrap{
+	display: flex;
+	justify-content: space-around;
+}
+header{
+	width: 300px;
+	height: 80vh;
+	margin-top: 10vh;
+	background-color: #fff;
+}
+main{
+	width: 800px;
+	height: 80vh;
+	margin-top: 10vh;
+	background-color: #fff;
+}
