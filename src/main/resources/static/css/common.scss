@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* 共通のスタイル */
+
+body {
+    background-image: url('/images/gura.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 40px;
+}
+
+header {
+    height: 100%;
+    background-color: #fff;
+}

@@ -1,10 +1,20 @@
-@charset "utf-8";
-
+@charset "UTF-8";
 /* 共通のスタイル */
-body{
-	background-color: #FEF5F6;
+body {
+  background-image: url("/images/gura.jpg");
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100vh;
+  padding: 40px;
 }
-	div#wrap{
-		width: 100%;
-		height: 100vh;
-	}
+
+header {
+  height: 100%;
+  background-color: #fff;
+}
+/*# sourceMappingURL=common.css.map */
