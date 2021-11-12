@@ -1,11 +1,8 @@
-@charset "utf-8";
-
+@charset "UTF-8";
 /* 共通のスタイル */
-<<<<<<< HEAD
 body {
   background-image: url("/images/gura.jpg");
   background-size: cover;
-  display: -webkit-box;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 30vh 1fr;
@@ -64,16 +61,5 @@ header {
 .navigation nav ul .active {
   background-color: #FFF0F6;
   color: #FAA2C1;
-=======
-body{
-	background-color: #FEF5F6;
-	font-family: 'Noto Sans JP', sans-serif;
 }
-div#wrap{
-	width: 100%;
-	height: 100vh;
->>>>>>> d5858604ad308a3f46a90532b1aef8470935e1d0
-}
-input{
-	font-family: 'Noto Sans JP', sans-serif;
-}
+/*# sourceMappingURL=common.css.map */
