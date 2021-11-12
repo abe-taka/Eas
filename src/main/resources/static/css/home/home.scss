@@ -1,0 +1,18 @@
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 80px;
+    ul {
+        width: 100%;
+        display: flex;
+        padding: 24px 40px;
+        background-color: #fff;
+        li {
+            list-style: none;
+            width: 25%;
+            text-align: center;
+        }
+    }
+}

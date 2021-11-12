@@ -12,6 +12,36 @@
     <link rel="stylesheet" href="css/home/home.css">
 
     <!-- Google Fonts -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
@@ -26,33 +56,66 @@
 <body>
 
     <header>
+        <h2>田中先生</h2>　<a href="#">logout</a>
+    </header>
+
+    <div class="navigation">
         <div><img src="/images/eas_logo.png" alt="Eas"></div>
         <nav>
             <ul>
-                <li class="active">ホーム</li>
-                <li>問題作成</li>
-                <li>提出状況確認</li>
-                <li>授業選択</li>
-                <li>生徒入退出確認</li>
+                <li class="active"><a href="#">ホーム</li></a>
+                    <li>問題作成</li>
+                    <li>提出状況確認</li>
+                    <li>授業選択</li>
+                    <li>生徒入退出確認</li>
             </ul>
         </nav>
-    </header>
+    </div>
 
     <main>
-        <section id="schedule">
-            <dl>
-                <dt>Day</dt>
-                <dt>Time</dt>
-                <dt>Class</dt>
-            </dl>
-            <dl>
-                <dd>10/01</dd>
-                <dd>1時間目</dd>
-                <dd>1年1組</dd>
-            </dl>
-        </section>
+        <ul class="title">
+            <li>Day</li>
+            <li>Time</li>
+            <li>Class</li>
+            <li>Class</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>国語</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>国語</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>国語</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>1年1組</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>国語</li>
+        </ul>
+        <ul>
+            <li>10/01</li>
+            <li>1時間目</li>
+            <li>1年1組</li>
+            <li>国語</li>
+        </ul>
     </main>
-
 </body>
 
 </html>
