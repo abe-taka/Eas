@@ -49,17 +49,26 @@ header {
   margin-bottom: 48px;
 }
 
+.navigation nav ul li {
+  border-radius: 100vh;
+}
+
 .navigation nav ul li a {
+  display: block;
   text-decoration: none;
+  color: #000;
   font-weight: 700;
   font-size: 16px;
   padding: 20px 24px;
-  border-radius: 100vh;
   margin-bottom: 32px;
 }
 
 .navigation nav ul .active {
   background-color: #FFF0F6;
+  border-radius: 100vh;
+}
+
+.navigation nav ul .active a {
   color: #FAA2C1;
 }
 /*# sourceMappingURL=common.css.map */
