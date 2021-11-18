@@ -1,0 +1,62 @@
+body {
+    height: 100vh;
+    padding: 40px;
+    font-family: source-han-sans-japanese, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    //Grid
+    display: grid;
+    grid-template-columns: 30vw 1fr 30vw;
+}
+
+//字幕エリアー大枠
+.subtitle {
+    background-color: #FBFAFF;
+    overflow-y: scroll;
+    //字幕が表示されるエリア
+    .subtitle-container {
+        // height: 200vh; //スクロールバーの確認（あとで消す）
+        padding: 24px;
+        white-space: normal; //改行
+        p {
+            line-height: 1.5em;
+            margin-bottom: 20px;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #FCC2D7;
+        border-radius: 100vh;
+    }
+    &::-webkit-scrollbar-track {
+        width: 3px;
+        background-color: #fce8ef;
+        border-radius: 100vh;
+    }
+}
+
+.test {}
+
+.list {
+    background-color: #FBFAFF;
+    overflow-y: scroll;
+    //字幕が表示されるエリア
+    .list-container {
+        // height: 200vh; //スクロールバーの確認（あとで消す）
+        padding: 24px;
+    }
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #FCC2D7;
+        border-radius: 100vh;
+    }
+    &::-webkit-scrollbar-track {
+        width: 3px;
+        background-color: #fce8ef;
+        border-radius: 100vh;
+    }
+}

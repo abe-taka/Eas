@@ -1,0 +1,66 @@
+body {
+  height: 100vh;
+  padding: 40px;
+  font-family: source-han-sans-japanese, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30vw 1fr 30vw;
+      grid-template-columns: 30vw 1fr 30vw;
+}
+
+.subtitle {
+  background-color: #FBFAFF;
+  overflow-y: scroll;
+}
+
+.subtitle .subtitle-container {
+  padding: 24px;
+  white-space: normal;
+}
+
+.subtitle .subtitle-container p {
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
+.subtitle::-webkit-scrollbar {
+  width: 16px;
+}
+
+.subtitle::-webkit-scrollbar-thumb {
+  background-color: #FCC2D7;
+  border-radius: 100vh;
+}
+
+.subtitle::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: #fce8ef;
+  border-radius: 100vh;
+}
+
+.list {
+  background-color: #FBFAFF;
+  overflow-y: scroll;
+}
+
+.list .list-container {
+  padding: 24px;
+}
+
+.list::-webkit-scrollbar {
+  width: 16px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #FCC2D7;
+  border-radius: 100vh;
+}
+
+.list::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: #fce8ef;
+  border-radius: 100vh;
+}
+/*# sourceMappingURL=class.css.map */
