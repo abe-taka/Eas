@@ -1,0 +1,16 @@
+main {
+    grid-area: main;
+    div {
+        display: flex;
+        justify-content: space-between;
+        .radiobutton {
+            display: none;
+            cursor: pointer;
+        }
+        label {
+            padding: 40px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    }
+}

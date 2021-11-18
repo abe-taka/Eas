@@ -71,4 +71,10 @@ header {
 .navigation nav ul .active a {
   color: #FAA2C1;
 }
+
+main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: main;
+}
 /*# sourceMappingURL=common.css.map */
