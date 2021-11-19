@@ -11,6 +11,21 @@ body {
     gap: 24px;
 }
 
+@mixin scrollbar {
+    width: 16px;
+}
+
+@mixin scrollbar-thumb {
+    background-color: #FCC2D7;
+    border-radius: 100vh;
+}
+
+@mixin scrollbar-track {
+    width: 3px;
+    background-color: #fce8ef;
+    border-radius: 100vh;
+}
+
 //字幕エリアー大枠
 .subtitle {
     grid-column: 1/2;
@@ -29,16 +44,13 @@ body {
         }
     }
     &::-webkit-scrollbar {
-        width: 16px;
+        @include scrollbar;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #FCC2D7;
-        border-radius: 100vh;
+        @include scrollbar-thumb;
     }
     &::-webkit-scrollbar-track {
-        width: 3px;
-        background-color: #fce8ef;
-        border-radius: 100vh;
+        @include scrollbar-track;
     }
 }
 
@@ -109,16 +121,13 @@ body {
         }
     }
     &::-webkit-scrollbar {
-        width: 16px;
+        @include scrollbar;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: #FCC2D7;
-        border-radius: 100vh;
+        @include scrollbar-thumb;
     }
     &::-webkit-scrollbar-track {
-        width: 3px;
-        background-color: #fce8ef;
-        border-radius: 100vh;
+        @include scrollbar-track;
     }
 }
 
@@ -136,5 +145,83 @@ body {
         cursor: pointer;
         background-color: #FF6B6B;
         border-radius: 100vh;
+    }
+}
+
+//問題作成のモーダル
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    .modal-content {
+        background-color: white;
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 16px;
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            //問題文///////////////////////
+            .test-sentence {
+                width: 100%;
+                border: none;
+                background-color: #F8F9FA;
+                padding: 16px;
+                height: 20em;
+                overflow-y: scroll;
+                resize: none;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                line-height: 1.5em;
+                &:focus {
+                    outline: none;
+                }
+                &::-webkit-scrollbar {
+                    @include scrollbar;
+                }
+                &::-webkit-scrollbar-thumb {
+                    @include scrollbar-thumb;
+                }
+                &::-webkit-scrollbar-track {
+                    @include scrollbar-track;
+                }
+            }
+            //問題の解答///////////////
+            .test-answer {
+                width: 100%;
+                border: none;
+                background-color: #F8F9FA;
+                padding: 16px;
+                overflow-y: scroll;
+                resize: none;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                line-height: 1.5em;
+                &:focus {
+                    outline: none;
+                }
+                &::-webkit-scrollbar {
+                    @include scrollbar;
+                }
+                &::-webkit-scrollbar-thumb {
+                    @include scrollbar-thumb;
+                }
+                &::-webkit-scrollbar-track {
+                    @include scrollbar-track;
+                }
+            }
+            .test-submit {}
+        }
     }
 }

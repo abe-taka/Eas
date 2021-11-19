@@ -187,4 +187,104 @@ body {
   background-color: #FF6B6B;
   border-radius: 100vh;
 }
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content {
+  background-color: white;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 16px;
+}
+
+.modal .modal-content .modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+}
+
+.modal .modal-content .modal-body .test-sentence {
+  width: 100%;
+  border: none;
+  background-color: #F8F9FA;
+  padding: 16px;
+  height: 20em;
+  overflow-y: scroll;
+  resize: none;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+}
+
+.modal .modal-content .modal-body .test-sentence:focus {
+  outline: none;
+}
+
+.modal .modal-content .modal-body .test-sentence::-webkit-scrollbar {
+  width: 16px;
+}
+
+.modal .modal-content .modal-body .test-sentence::-webkit-scrollbar-thumb {
+  background-color: #FCC2D7;
+  border-radius: 100vh;
+}
+
+.modal .modal-content .modal-body .test-sentence::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: #fce8ef;
+  border-radius: 100vh;
+}
+
+.modal .modal-content .modal-body .test-answer {
+  width: 100%;
+  border: none;
+  background-color: #F8F9FA;
+  padding: 16px;
+  overflow-y: scroll;
+  resize: none;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+}
+
+.modal .modal-content .modal-body .test-answer:focus {
+  outline: none;
+}
+
+.modal .modal-content .modal-body .test-answer::-webkit-scrollbar {
+  width: 16px;
+}
+
+.modal .modal-content .modal-body .test-answer::-webkit-scrollbar-thumb {
+  background-color: #FCC2D7;
+  border-radius: 100vh;
+}
+
+.modal .modal-content .modal-body .test-answer::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: #fce8ef;
+  border-radius: 100vh;
+}
 /*# sourceMappingURL=class.css.map */
