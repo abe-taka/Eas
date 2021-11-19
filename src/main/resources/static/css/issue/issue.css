@@ -1,0 +1,77 @@
+/* 問題作成 */
+section#issue_upload ul{
+	width: 500px;
+	margin: 30px 0;
+	display: flex;
+	justify-content: space-around;
+}
+	section#issue_upload ul li,
+	section#issue_manager ul li{
+		text-align: center;
+		list-style: none;
+	}
+
+input{
+	background: none;
+	outline: none;
+	border: none;
+}
+
+main section#issue_upload{
+	width: 500px;
+	margin: 0 auto;
+}
+	section#issue_upload ul li p{
+		font-size: 0.8rem;
+	}
+	label{
+		display: block;
+		width:250px;
+		height: 60px;
+		line-height: 60px;
+		font-size: 0.8rem;
+		border-radius: 30px;
+		background-color: #fff;
+		cursor: pointer;
+	}
+		input[type="file"]{
+			display: none;
+		}
+		input[type="text"]{
+			width: 150px;
+			padding: 5px;
+			margin-top: 10px;
+			letter-spacing: 3px;
+			text-align: center;
+			border-bottom: 0.5px solid #000;
+		}
+		input[type="button"]{
+			width: 400px;
+			height: 60px;
+			color: #fff;
+			font-size: 0.8rem;
+			border-radius: 30px;
+			background-color: #FCC2D7;
+			cursor: pointer;
+		}
+main div{
+	margin-top: 100px;
+	text-align: center;
+}
+	main div a{
+		display: inline-block;
+		width: 250px;
+		height: 50px;
+		line-height: 50px;
+		font-size: 0.8rem;
+		text-decoration: none;
+		color: #9775FA;
+		border-radius: 25px;
+		background-color: #fff;
+	}
+	
+/* 問題管理 */
+
+
+
+
