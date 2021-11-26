@@ -1,0 +1,160 @@
+html {
+  font-family: source-han-sans-japanese, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+body {
+  background-image: url("/images/gura.jpg");
+  background-size: cover;
+  padding: 24px;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header {
+  padding: 16px;
+  text-align: end;
+}
+
+.homeworkContainer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.homeworkContainer .tabWrapper {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.homeworkContainer .tabWrapper .tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 24px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.homeworkContainer .tabWrapper .tab li {
+  list-style: none;
+  width: 8em;
+  padding: 24px 48px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  text-align: center;
+  border-radius: 16px;
+}
+
+.homeworkContainer .tabWrapper .tab .active {
+  background-color: #FFDEEB;
+}
+
+.homeworkContainer .tabContainer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.homeworkContainer .tabContainer .tabContent {
+  display: none;
+}
+
+.homeworkContainer .tabContainer .active {
+  display: block;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 24px;
+  font-size: 16px;
+  border-radius: 24px;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul li {
+  list-style: none;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul .playSubject {
+  width: 4em;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul .playTitle {
+  width: 8em;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul .playButton button {
+  cursor: pointer;
+  position: relative;
+  border: none;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #FFDEEB;
+  border: 10px solid #FFF0F6;
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul .playButton button img {
+  width: 24px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.homeworkContainer .tabContainer .homeworkPlay ul .playButton button::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  display: block;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background-color: #ffafcf;
+  -webkit-filter: blur(40px);
+          filter: blur(40px);
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  z-index: -1;
+}
+/*# sourceMappingURL=homeworkSubmission.css.map */
