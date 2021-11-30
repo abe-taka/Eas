@@ -11,11 +11,23 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    letter-spacing: 0.1em;
 }
 
 header {
     padding: 16px;
     text-align: end;
+    button {
+        cursor: pointer;
+        padding: 10px 24px;
+        border-radius: 100vh;
+        border: none;
+        background-color: #FFDEEB;
+        color: rgb(61, 61, 61);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        box-shadow: #ffdeeb 0 0 14px;
+    }
 }
 
 .homeworkContainer {
@@ -40,23 +52,23 @@ header {
                 box-sizing: content-box;
                 text-align: center;
                 border-radius: 16px;
+                letter-spacing: 0.1em;
             }
             .active {
                 background-color: #FFDEEB;
+                box-shadow: #ffdeeb 0 0 24px;
             }
         }
     }
     //タブの中身
     .tabContainer {
         flex: 1;
-        .tabContent {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
+        //課題やるタブの中身////////////////////////////
+        //////////////////////////////////////////
         .homeworkPlay {
             display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
             //一つの課題↓
             ul {
                 flex-basis: auto;
@@ -88,6 +100,7 @@ header {
                         border-radius: 50%;
                         background-color: #FFDEEB;
                         border: 10px solid #FFF0F6;
+                        box-shadow: #FFDEEB 0 4px 30px;
                         // box-sizing: content-box;
                         img {
                             width: 24px;
@@ -98,23 +111,43 @@ header {
                             transform: translate(-50%, -50%);
                         }
                     }
-                    button::before {
-                        content: "";
-                        position: absolute;
-                        top: 0%;
-                        left: 0%;
-                        display: block;
-                        width: calc(100% + 4px);
-                        height: calc(100% + 4px);
-                        background-color: #ffafcf;
-                        filter: blur(40px);
-                        transform: translateY(10px);
-                        box-shadow: none;
-                        z-index: -1;
+                }
+            }
+        }
+        //提出履歴//////////////////////////
+        ///////////////////////////////////
+        .homeworkHistory {
+            display: flex;
+            div {
+                display: flex;
+                gap: 24px;
+                flex-wrap: wrap;
+                width: 100%;
+                ul {
+                    width: calc(100% / 3);
+                    display: flex;
+                    flex-basis: auto;
+                    align-items: center;
+                    border-radius: 16px;
+                    list-style: none;
+                    gap: 24px;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    padding: 24px;
+                    li {
+                        text-align: left;
+                        width: 8em;
                     }
                 }
             }
         }
-        .homeworkHistory {}
+        //activeではないタブ
+        .tabContent {
+            display: none;
+        }
+        //activeなタブ
+        .active {
+            display: flex;
+            padding: 24px 40px;
+        }
     }
 }
