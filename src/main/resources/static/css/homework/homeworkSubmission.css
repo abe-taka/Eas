@@ -94,12 +94,12 @@ header button {
 }
 
 .homeworkContainer .tabContainer .homeworkPlay {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
+      grid-template-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
+  justify-items: center;
+  row-gap: 24px;
 }
 
 .homeworkContainer .tabContainer .homeworkPlay ul {
@@ -161,17 +161,16 @@ header button {
 }
 
 .homeworkContainer .tabContainer .homeworkHistory div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 24px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+      grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+  justify-items: center;
   width: 100%;
+  row-gap: 24px;
 }
 
 .homeworkContainer .tabContainer .homeworkHistory div ul {
-  width: calc(100% / 3);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,9 +196,8 @@ header button {
 }
 
 .homeworkContainer .tabContainer .active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
   padding: 24px 40px;
 }
 /*# sourceMappingURL=homeworkSubmission.css.map */

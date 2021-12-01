@@ -63,12 +63,14 @@ header {
     //タブの中身
     .tabContainer {
         flex: 1;
+        //activeなタブ
         //課題やるタブの中身////////////////////////////
         //////////////////////////////////////////
         .homeworkPlay {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
+            display: grid;
+            grid-template-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
+            justify-items: center;
+            row-gap: 24px;
             //一つの課題↓
             ul {
                 flex-basis: auto;
@@ -119,12 +121,12 @@ header {
         .homeworkHistory {
             display: flex;
             div {
-                display: flex;
-                gap: 24px;
-                flex-wrap: wrap;
+                display: grid;
+                grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+                justify-items: center;
                 width: 100%;
+                row-gap: 24px;
                 ul {
-                    width: calc(100% / 3);
                     display: flex;
                     flex-basis: auto;
                     align-items: center;
@@ -144,9 +146,8 @@ header {
         .tabContent {
             display: none;
         }
-        //activeなタブ
         .active {
-            display: flex;
+            display: grid;
             padding: 24px 40px;
         }
     }
