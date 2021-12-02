@@ -10,7 +10,7 @@ body {
     grid-template-rows: 8vh 1fr;
     grid-template-areas: "navi header""navi main";
     height: 100vh;
-    padding: 40px;
+    padding: 24px;
     font-family: source-han-sans-japanese, sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -21,13 +21,26 @@ input,
 select,
 textarea {
     font-family: inherit;
-    font-size: 100%;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 header {
     grid-area: header;
     display: flex;
     justify-content: end;
+    align-items: center;
+    gap: 24px;
+    letter-spacing: 0.1em;
+    button {
+        letter-spacing: 0.1em;
+        padding: 8px 24px;
+        background-color: #FFF;
+        border: none;
+        border-radius: 100vh;
+        color: #FAA2C1;
+        box-shadow: #faa2c13a 0 4px 40px;
+    }
 }
 
 $shadow: #e7e2f75d 0 24px 40px;
@@ -37,11 +50,12 @@ $shadow: #e7e2f75d 0 24px 40px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding: 24px 24px 48px 24px;
     border-radius: 40px;
     box-shadow: $shadow;
     //ロゴ画像
     div {
+        align-self: center;
         text-align: center;
         margin-bottom: 48px;
     }
@@ -66,6 +80,7 @@ $shadow: #e7e2f75d 0 24px 40px;
             .active {
                 background-color: #FFF0F6;
                 border-radius: 100vh;
+                box-shadow: #faa2c165 0 16px 40px;
                 a {
                     color: #FAA2C1;
                 }
