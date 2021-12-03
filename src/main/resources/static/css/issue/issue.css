@@ -9,7 +9,6 @@ section#issue_upload ul{
 		text-align: center;
 		list-style: none;
 	}
-
 input{
 	background: none;
 	outline: none;
@@ -68,6 +67,8 @@ main div{
 		border-radius: 25px;
 		background-color: #fff;
 	}
+
+
 	
 /* 問題管理 */
 section#issue_manager{
@@ -108,7 +109,7 @@ section#issue_manager{
 				top: 20px;
 				left: 20px;
 			}
-			section#issue_manager ul li button{
+			section#issue_manager ul li input[type="button"].deleteBtn{
 				width: 30px;
 				height: 30px;
 				color: #fff;
@@ -177,5 +178,141 @@ section#issue_manager{
 					display: none;
 				}
 
-
+/* madal */
+div#filter{
+	display: none;
+	width: 100%;
+	height: 120%;
+	background-color: rgba(0,0,0,0.4);
+	
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+div#modal_upload,
+div#modal_update,
+div#modal_delete{
+	display: none;
+	width: 700px;
+	height: 450px;
+	padding: 70px;
+	background-color: #fff;
+	border-radius: 30px;
+	
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	z-index: 2;
+}
+	div#modal_upload input.close,
+	div#modal_update input.close,
+	div#modal_delete input.close{
+		display: block;
+		width: 30px;
+		height: 30px;
+		color: #999;
+		cursor: pointer;
+		background-color: #ddd;
+		border-radius: 15px;
+		
+		position: absolute;
+		top: 30px;
+		right: 30px;
+	}
+		div#modal_upload p#h1{
+			margin-bottom: 50px;
+			line-height: 1.5rem;
+		}
+			div#modal_upload p span{
+				display: inline-block;
+				color: #999;
+			}
+		div#modal_upload div{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 300px;
+			height: 80px;
+			margin: 0 auto 100px auto;
+			
+		}
+			div#modal_upload div input[type="text"]{
+				width: 80px;
+				height: 80px;
+				text-align: center;
+				font-size: 1.5rem;
+				font-weight: normal;
+				background-color: #F6F6F6;
+				border-radius: 6px;
+			}
+			div#modal_upload div p{
+				width: 80px;
+				margin: 0 30px 0 20px;
+				font-size: 1.5rem;
+				line-height: 80px;
+			}
+		div#modal_upload input#upload{
+			display: block;
+			width: 200px;
+			height: 50px;
+			margin: 0 auto;
+			background-color: #FFDEEB;
+			border-radius: 25px; 
+		}
+		section#issue_upload ul li p{
+		font-size: 0.8rem;
+	}
+	div#modal_update ul{
+		margin: 30px 0;
+		display: flex;
+		justify-content: space-around;
+	}
+		div#modal_update ul li{
+			text-align: center;
+			list-style: none;
+		}
+			div#modal_update ul li label{
+				display: block;
+				width:250px;
+				height: 60px;
+				line-height: 60px;
+				font-size: 0.8rem;
+				border-radius: 30px;
+				cursor: pointer;
+			}
+				div#modal_update ul li label input[type="file"]{
+					display: none;
+				}
+				div#modal_update ul li input[type="text"]{
+					width: 150px;
+					padding: 5px;
+					margin-top: 10px;
+					letter-spacing: 3px;
+					text-align: center;
+					border-bottom: 0.5px solid #000;
+				}
+				div#modal_update ul li input[type="button"]{
+					width: 400px;
+					height: 60px;
+					color: #fff;
+					font-size: 0.8rem;
+					border-radius: 30px;
+					background-color: #FFDEEB;
+					cursor: pointer;
+				}
+		div#modal_delete p{
+			font-size: 1.2rem;
+			margin: 120px 0;
+		}
+		div#modal_delete input#delete{
+			display: block;
+			width: 200px;
+			height: 50px;
+			margin: 0 auto;
+			background-color: #FFDEEB;
+			border-radius: 25px; 
+		}
 
