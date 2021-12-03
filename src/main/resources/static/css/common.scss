@@ -33,6 +33,7 @@ header {
     gap: 24px;
     letter-spacing: 0.1em;
     button {
+        cursor: pointer;
         letter-spacing: 0.1em;
         padding: 8px 24px;
         background-color: #FFF;
@@ -40,6 +41,12 @@ header {
         border-radius: 100vh;
         color: #FAA2C1;
         box-shadow: #faa2c13a 0 4px 40px;
+        transition: 0.3s;
+        &:hover {
+            background-color: #FAA2C1;
+            color: #FFF;
+            transition: 0.3s;
+        }
     }
 }
 
@@ -75,6 +82,11 @@ $shadow: #e7e2f75d 0 24px 40px;
                     font-size: 14px;
                     padding: 20px 24px;
                     letter-spacing: 0.05em;
+                    transition: 0.3s;
+                    &:hover {
+                        color: #FAA2C1;
+                        transition: 0.3s;
+                    }
                 }
             }
             .active {
