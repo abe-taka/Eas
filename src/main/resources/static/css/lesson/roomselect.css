@@ -39,6 +39,17 @@ main div label {
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 8px;
   font-size: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: #fcc2d700 4px solid;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+main div label:hover {
+  border: #FCC2D7 4px solid;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 main div .radiobutton:checked + label {
@@ -59,11 +70,21 @@ main .class-button button {
   padding: 16px 80px;
   border: none;
   background-color: #fff;
+  color: #FAA2C1;
   border-radius: 100vh;
   cursor: pointer;
   letter-spacing: 0.2em;
   margin-right: -0.2em;
   -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
           box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main .class-button button:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #faa2c1;
+  color: #fff;
 }
 /*# sourceMappingURL=roomselect.css.map */

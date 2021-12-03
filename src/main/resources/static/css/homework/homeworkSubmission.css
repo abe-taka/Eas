@@ -21,10 +21,43 @@ body {
 
 header {
   padding: 16px;
-  text-align: end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-header button {
+header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+
+header div h2 {
+  font-size: 16px;
+}
+
+header div button {
+  background-color: #fff;
+  color: #FCC2D7;
+  cursor: pointer;
+  padding: 10px 24px;
+  border-radius: 100vh;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+header .homeback {
   cursor: pointer;
   padding: 10px 24px;
   border-radius: 100vh;
@@ -96,8 +129,8 @@ header button {
 .homeworkContainer .tabContainer .homeworkPlay {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
-      grid-template-columns: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
+  -ms-grid-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+      grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
   justify-items: center;
   row-gap: 24px;
 }
@@ -126,7 +159,7 @@ header button {
 }
 
 .homeworkContainer .tabContainer .homeworkPlay ul .playTitle {
-  width: 8em;
+  width: 16em;
 }
 
 .homeworkContainer .tabContainer .homeworkPlay ul .playButton button {

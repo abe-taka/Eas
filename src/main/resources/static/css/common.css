@@ -44,6 +44,7 @@ header {
 }
 
 header button {
+  cursor: pointer;
   letter-spacing: 0.1em;
   padding: 8px 24px;
   background-color: #FFF;
@@ -52,6 +53,15 @@ header button {
   color: #FAA2C1;
   -webkit-box-shadow: #faa2c13a 0 4px 40px;
           box-shadow: #faa2c13a 0 4px 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+header button:hover {
+  background-color: #FAA2C1;
+  color: #FFF;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .navigation {
@@ -112,6 +122,14 @@ header button {
   font-size: 14px;
   padding: 20px 24px;
   letter-spacing: 0.05em;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navigation nav ul li a:hover {
+  color: #FAA2C1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .navigation nav ul .active {

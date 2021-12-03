@@ -23,6 +23,13 @@ main {
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 8px;
             font-size: 16px;
+            box-sizing: border-box;
+            border: #fcc2d700 4px solid;
+            transition: 0.5s;
+            &:hover {
+                border: #FCC2D7 4px solid;
+                transition: 0.5s;
+            }
         }
         .radiobutton:checked+label {
             background-color: #FCC2D7;
@@ -38,11 +45,18 @@ main {
             padding: 16px 80px;
             border: none;
             background-color: #fff;
+            color: #FAA2C1;
             border-radius: 100vh;
             cursor: pointer;
             letter-spacing: 0.2em;
             margin-right: -0.2em;
             box-shadow: $shadow;
+            transition: 0.3s;
+            &:hover {
+                transition: 0.3s;
+                background-color: #faa2c1;
+                color: #fff;
+            }
         }
     }
 }

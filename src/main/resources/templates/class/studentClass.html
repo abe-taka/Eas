@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>生徒授業 | Eas</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/lesson/studentClass.css">
+
+    <!-- フォント -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <h2>田中 さん</h2>
+    </header>
+
+    <div class="studentContainer">
+        <!-- 字幕 -->
+        <div class="classSubtitle">
+            <button>字幕を表示する</button>
+            <div name="subtitle">
+                <p>111</p>
+                <p>2222222</p>
+            </div>
+        </div>
+        <!-- 退出ボタン -->
+        <div class="classLogout">
+            <button>退出</button>
+        </div>
+    </div>
+
+    <!-- 問題モーダル -->
+    <div class="classTestModal">
+
+        <!-- テスト -->
+        <div class="test">
+            <!-- 問題文 -->
+            <div class="testSentence">
+                <p>例　1+1は</p>
+            </div>
+            <!-- 解答 -->
+            <textarea placeholder="解答を入力"></textarea>
+            <div class="testSubmit">
+                <input type="submit" value="送信する" class="testSubmitButton">
+            </div>
+        </div>
+
+        <!-- 解答 -->
+        <div class="answer">
+            <div class="answerResult">
+                <div class="yes">
+                    <h2>正解</h2>
+                </div>
+                <div class="no">
+                    <h2>不正解</h2>
+                </div>
+
+            </div>
+            <div class="answerTeacher">
+                <h2>正解の解答</h2>
+                <div></div>
+            </div>
+            <div class="answerStudent">
+                <h2>あなたの解答</h2>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

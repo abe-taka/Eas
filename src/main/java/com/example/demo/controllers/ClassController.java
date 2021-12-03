@@ -9,15 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ClassController {
 
-	// 授業選択
-	@GetMapping(value = "/roomselect")
-	public String RoomSelect(Model model) {
-			return "class/roomselect";
-	}
+    // 授業選択
+    @GetMapping(value = "/roomselect")
+    public String RoomSelect(Model model) {
+        return "class/roomselect";
+    }
 
-	// 授業ページ
-	@GetMapping(value = "/class")
-	public String Class() {
-		return "class/class";
-	}
+    // 授業ページ
+    @GetMapping(value = "/class")
+    public String Class() {
+        return "class/class";
+    }
+
+    @GetMapping(value = "/studentClass")
+    public String StudentClass(Model model) {
+        return "class/studentClass";
+    }
 }

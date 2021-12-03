@@ -1,0 +1,214 @@
+html {
+    font-family: source-han-sans-japanese, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+body {
+    background-color: #fff;
+    background-size: cover;
+    padding: 24px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.1em;
+}
+
+@mixin scrollbar {
+    width: 16px;
+}
+
+@mixin scrollbar-thumb {
+    background-color: #FCC2D7;
+    border-radius: 100vh;
+}
+
+@mixin scrollbar-track {
+    width: 3px;
+    background-color: #fce8ef;
+    border-radius: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    h2 {}
+}
+
+.studentContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 48px;
+    .classSubtitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        //字幕表示ボタン
+        button {
+            border: none;
+            color: #fff;
+            background-color: #FCC2D7;
+            padding: 10px 32px;
+            border-radius: 100vh;
+            font-weight: 700;
+        }
+        //字幕
+        div {
+            padding: 24px;
+            border-radius: 16px;
+            background-color: #FBFAFF;
+            overflow-y: scroll;
+            width: 60em;
+            height: 30em;
+            &::-webkit-scrollbar {
+                @include scrollbar;
+            }
+            &::-webkit-scrollbar-thumb {
+                @include scrollbar-thumb;
+            }
+            &::-webkit-scrollbar-track {
+                @include scrollbar-track;
+            }
+            p {
+                line-height: 1.5em;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .classLogout {
+        align-self: flex-end;
+        button {
+            border: none;
+            background-color: #FF6B6B;
+            color: #fff;
+            padding: 10px 48px;
+            font-weight: 700;
+            border-radius: 100vh;
+        }
+    }
+}
+
+.classTestModal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    .test {
+        display: none;
+        background-color: white;
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 24px;
+        border-radius: 16px;
+        .testSentence {
+            background-color: #FBFAFF;
+            width: 100%;
+            height: 10em;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 32px;
+            p {
+                line-height: 1.5em;
+            }
+        }
+        textarea {
+            border: none;
+            width: 100%;
+            resize: none;
+            height: 5em;
+            background-color: #FBFAFF;
+            font-weight: 700;
+            padding: 16px;
+            line-height: 1.5em;
+        }
+        .testSubmit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 0 0 0;
+            .testSubmitButton {
+                border: none;
+                background-color: #FCC2D7;
+                color: #FBFAFF;
+                padding: 10px 32px;
+                font-weight: 700;
+                border-radius: 100vh;
+            }
+        }
+    }
+    .answer {
+        background-color: white;
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 24px;
+        border-radius: 16px;
+        .answerResult {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+            //正解
+            .yes {
+                display: none;
+                background-color: #D3F9D8;
+                padding: 16px 48px;
+                border-radius: 8px;
+                h2 {
+                    font-size: 18px;
+                    color: #2B8A3E;
+                }
+            }
+            //不正解
+            .no {
+                background-color: #FFC9C9;
+                padding: 16px 48px;
+                border-radius: 8px;
+                h2 {
+                    font-size: 18px;
+                    color: #E03131;
+                }
+            }
+        }
+        .answerTeacher {
+            margin-bottom: 32px;
+            h2 {
+                margin-bottom: 8px;
+            }
+            div {
+                width: 100%;
+                height: 5em;
+                background-color: #FBFAFF;
+                padding: 16px;
+                border-radius: 8px;
+            }
+        }
+        .answerStudent {
+            h2 {
+                margin-bottom: 8px;
+            }
+            div {
+                width: 100%;
+                height: 5em;
+                background-color: #FBFAFF;
+                padding: 16px;
+                border-radius: 8px;
+            }
+        }
+    }
+}
