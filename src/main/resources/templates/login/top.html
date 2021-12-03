@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>トップ | Eas</title>
-	
-	<!-- CSS -->
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="/css/common.css">
-	<link rel="stylesheet" href="/css/login/top.css">
-	
-	<script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>トップ | Eas</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/login/top.css">
+
+    <script>
         (function(d) {
             var config = {
                     kitId: 'fcl7ixt',
@@ -40,31 +41,27 @@
             s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-	
-	<!-- Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-		
-	<!-- Font Awesome -->
-	<script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
 
-	<!-- jQuery CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	
-	<script src="/js/main.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script src="/js/main.js"></script>
 </head>
+
 <body>
-	<div id="wrap">
-		<section id="login">
-			<div>
-				<i class="fab fa-google"></i>
-				<p>ログイン</p>
-			</div>
-			<p><input type="text" placeholder="メールアドレス" /></p>
-			<p><input type="password" placeholder="パスワード" /></p>
-			<p><input type="button" value="ログイン" onClick="location.href='/home'" /></p>
-		</section>
-	</div>
+    <div class="wrap">
+        <section id="login" class="login">
+            <button><img src="/images/google.png" alt=""></button>
+        </section>
+    </div>
 </body>
+
 </html>
