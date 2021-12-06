@@ -21,43 +21,10 @@ body {
 
 header {
   padding: 16px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  text-align: end;
 }
 
-header div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 24px;
-}
-
-header div h2 {
-  font-size: 16px;
-}
-
-header div button {
-  background-color: #fff;
-  color: #FCC2D7;
-  cursor: pointer;
-  padding: 10px 24px;
-  border-radius: 100vh;
-  border: none;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-
-header .homeback {
+header button {
   cursor: pointer;
   padding: 10px 24px;
   border-radius: 100vh;
@@ -165,7 +132,7 @@ header .homeback {
   width: 4em;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content {
   width: 100%;
   resize: none;
   border: none;
@@ -177,16 +144,16 @@ header .homeback {
   overflow-y: scroll;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar {
   width: 16px;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar-thumb {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar-thumb {
   background-color: #FCC2D7;
   border-radius: 100vh;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar-track {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar-track {
   width: 3px;
   background-color: #fce8ef;
   border-radius: 100vh;

@@ -57,9 +57,13 @@
 </head>
 
 <body>
+	<!-- エラーメッセージ -->
+	<div th:text="${loginerror}"></div>
+	
+	<!-- ログインボタン -->
     <div class="wrap">
-        <section id="login" class="login">
-            <button><img src="/images/google.png" alt=""></button>
+        <section id="login" class="login" th:each="url : ${urls}">
+		    <a th:href="${url.value}"><img src="/images/google.png" alt=""></a>
         </section>
     </div>
 </body>

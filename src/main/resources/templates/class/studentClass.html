@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>生徒授業 | Eas</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/lesson/studentClass.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/lesson/studentClass.css">
 
     <!-- フォント -->
     <script>
@@ -38,27 +39,48 @@
             s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
+    
+    <!-- back_js -->
+    <!-- websocket -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!-- 学生授業画面js -->
+    <script src="/js/class_student.js"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 <body>
+	
+	<!-- 生徒名、出席番号、入室登録id、生徒セッションid、先生セッションid、クラスid -->
+	<input type="hidden" id="student_name" th:value="${session_name}">
+	<input type="hidden" id="student_classno" th:value="${student_classno}">
+	<input type="hidden" id="enterid" th:value="${enterid}">
+	<input type="hidden" id="student_sessionid" th:value="${session_id}">
+	<input type="hidden" id="teacher_sessionid">
+	<input type="hidden" id="classid" th:value="${classid}">
 
+	<!-- ユーザー名 -->
     <header>
-        <h2>田中 さん</h2>
+        <h2 th:text="${session_name} + さん"></h2>
     </header>
 
+	<!-- 字幕、退出ボタン -->
     <div class="studentContainer">
         <!-- 字幕 -->
         <div class="classSubtitle">
-            <button>字幕を表示する</button>
+            <button th:onclick="GetVoiceRecog();" class="btn btn-outline-dark" type="button">字幕を表示する</button>
             <div name="subtitle">
-                <p>111</p>
-                <p>2222222</p>
             </div>
+            <button id="recog_disconnect" class="btn btn-outline-dark" type="button">字幕停止</button>
         </div>
         <!-- 退出ボタン -->
-        <div class="classLogout">
-            <button>退出</button>
-        </div>
+	    <form th:action="@{/home/studenthome}" method="get">
+			<div class="classLogout">
+	            <button>退出</button>
+	        </div>
+		</form>        
     </div>
 
     <!-- 問題モーダル -->
@@ -68,12 +90,14 @@
         <div class="test">
             <!-- 問題文 -->
             <div class="testSentence">
-                <p>例　1+1は</p>
+                <label for="recipient-name" class="col-form-label">問題</label>
+				<div id="show"></div>
             </div>
             <!-- 解答 -->
-            <textarea placeholder="解答を入力"></textarea>
+            <textarea placeholder="解答を入力" id="answer"></textarea>
             <div class="testSubmit">
-                <input type="submit" value="送信する" class="testSubmitButton">
+            	<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <input type="submit" value="送信する" id="send_answer" class="testSubmitButton" th:onclick="SendAnswer();">
             </div>
         </div>
 
@@ -88,16 +112,17 @@
                 </div>
 
             </div>
+            <!-- 問題の解答 -->
             <div class="answerTeacher">
-                <h2>正解の解答</h2>
-                <div></div>
+                <h2 id="result_value"></h2>
             </div>
+            <!-- 学生の解答 -->
             <div class="answerStudent">
-                <h2>あなたの解答</h2>
-                <div></div>
+                <h2 id="answer_result"></h2>
             </div>
         </div>
-
+		
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
     </div>
 
 </body>

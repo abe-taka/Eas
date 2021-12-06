@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>授業 | Eas</title>
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/lesson/class.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/lesson/class.css">
 
     <script>
         (function(d) {
@@ -38,35 +39,50 @@
             s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
+    
+    <!-- Back_js -->
+    <!-- websocket -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	
+	<!-- 先生授業画面js -->
+	<script src="/js/class_teacher.js"></script>
+	
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	
+	<!-- ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 <body>
 
+	<!-- クラスid、セッションid、timeid -->
+	<div>
+		<input type="hidden" th:value="${classid}" id="classid">
+		<form name="socket_form">
+			<input type="hidden" name="sendername" id="name" th:value="${session_id}">
+		</form>
+		<input type="hidden" id="timeid">
+	</div>
+	
     <!-- 字幕 -->
     <div class="subtitle">
-        <div class="subtitle-container">
-            <p>授業をはじめます</p>
-            <p>授業をはじめます</p>
-            <p>授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます授業をはじめます</p>
-            <p>授業をはじめます</p>
-        </div>
+        <div class="subtitle-container" id="subtitles_result"></div>
     </div>
 
     <!-- 問題確認・作成 -->
     <div class="test">
         <div class="testList">
-            <div class="test-container">
-                <h3>問題1</h3>
-            </div>
+            <div class="test-container" id="situation_buttonlist"></div>
         </div>
-        <button>
-            問題を作成する
-        </button>
+        <button id="onModal" th:onclick="ShowModal();">問題を作成する</button>
     </div>
 
     <!-- 生徒のリスト -->
     <div class="list">
-        <ul class="list-container">
+        <ul class="list-container" id="student_list">
             <li>
                 <div class="list-number">1</div>
                 <div class="list-name">山下達郎</div>
@@ -94,19 +110,38 @@
         </ul>
     </div>
 
+	<!-- 退出、一括退出 -->
     <div class="outButton">
-        <button onClick="location.href='/home'">退出する</button>
+        <form th:action="@{/class/roomselect}" method="get">
+			<button type="submit" class="btn btn-dark">退出</button>
+		</form>
+		<button type="submit" class="btn btn-outline-dark" th:data-parameter1="*{classid}" th:onclick="Bulkexit(this.getAttribute('data-parameter1'));">一括退出</button>
     </div>
 
     <!-- 問題作成 -->
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-body">
-                <textarea placeholder="問題文を入力" class="test-sentence"></textarea>
-                <textarea placeholder="解答を入力" class="test-answer"></textarea>
-                <input type="submit" value="送信" class="test-submit">
-            </div>
-        </div>
+    	<!-- 1ページ目 -->
+    	<div id="modal-page1">
+	        <div class="modal-content">
+	            <div class="modal-body">
+	                <textarea placeholder="問題文を入力" class="test-sentence" id="issue"></textarea>
+	                <textarea placeholder="解答を入力" class="test-answer" id="answer"></textarea>
+	                <input type="submit" value="送信" id="send" class="test-submit btn btn-default btnNext" th:onclick="SendIssue();">
+	            </div>
+	        </div>
+	    </div>
+	    <!-- 2ページ目 -->
+	    <!-- ページ2 -->
+		<div id="modal-page2">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div>送信しました</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+				</div>
+			</div>
+		</div>	
     </div>
 
     <!-- 生徒の解答表示 -->
@@ -286,7 +321,15 @@
             </div>
         </div>
     </div>
-
+    
+    <script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
