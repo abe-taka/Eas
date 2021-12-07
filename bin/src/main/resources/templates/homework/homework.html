@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>宿題 | Eas</title>
+    <meta charset="UTF-8">
+    <title>宿題 | Eas</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/homework/homework.css">
+
+    <!-- フォント -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
 </head>
+
 <body>
-	<p>宿題</p>
+
+    <header>
+        <div>
+            <h2>田中 先生</h2>
+            <button>ログアウト</button>
+        </div>
+        <button class="homeback">もどる</button>
+    </header>
+
+    <div class="homework">
+
+        <!-- PDF表示エリア -->
+        <div class="homeworkPdf">
+            <h1>PDFをここに表示</h1>
+            <!-- レイアウト分かりやすくするためなので、このh1は消してください -->
+        </div>
+
+        <!-- 解答エリア -->
+        <div class="homeworkAnswer">
+            <div class="homeworkAnswerContainer">
+                <div class="homeworkAnswerArea">
+                    <label for="answer1">問1</label>
+                    <textarea name="answer1" id="answer1" rows="4"></textarea>
+                </div>
+                <div class="homeworkAnswerArea">
+                    <label for="answer2">問2</label>
+                    <textarea name="answer2" id="answer2" rows="4"></textarea>
+                </div>
+                <div class="homeworkAnswerArea">
+                    <label for="answer1">問1</label>
+                    <textarea name="answer1" id="answer1" rows="4"></textarea>
+                </div>
+            </div>
+            <!-- 送信ボタン -->
+            <div class="homeworkSubmit">
+                <input type="submit" value="提出">
+            </div>
+        </div>
+
+    </div>
+
 </body>
+
 </html>

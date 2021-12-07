@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
+    <title>生徒授業 | Eas</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/lesson/studentClass.css">
+
+    <!-- フォント -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+    
+    <!-- back_js -->
+    <!-- websocket -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <!-- 学生授業画面js -->
+    <script src="/js/class_student.js"></script>
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+	
+	<!-- 生徒名、出席番号、入室登録id、生徒セッションid、先生セッションid、クラスid -->
+	<input type="hidden" id="student_name" th:value="${session_name}">
+	<input type="hidden" id="student_classno" th:value="${student_classno}">
+	<input type="hidden" id="enterid" th:value="${enterid}">
+	<input type="hidden" id="student_sessionid" th:value="${session_id}">
+	<input type="hidden" id="teacher_sessionid">
+	<input type="hidden" id="classid" th:value="${classid}">
+
+	<!-- ユーザー名 -->
+    <header>
+        <h2 th:text="${session_name} + さん"></h2>
+    </header>
+
+	<!-- 字幕、退出ボタン -->
+    <div class="studentContainer">
+        <!-- 字幕 -->
+        <div class="classSubtitle">
+            <button th:onclick="GetVoiceRecog();" class="btn btn-outline-dark" type="button">字幕を表示する</button>
+            <div name="subtitle">
+            </div>
+            <button id="recog_disconnect" class="btn btn-outline-dark" type="button">字幕停止</button>
+        </div>
+        <!-- 退出ボタン -->
+	    <form th:action="@{/home/studenthome}" method="get">
+			<div class="classLogout">
+	            <button>退出</button>
+	        </div>
+		</form>        
+    </div>
+
+    <!-- 問題モーダル -->
+    <div class="classTestModal">
+
+        <!-- テスト -->
+        <div class="test">
+            <!-- 問題文 -->
+            <div class="testSentence">
+                <label for="recipient-name" class="col-form-label">問題</label>
+				<div id="show"></div>
+            </div>
+            <!-- 解答 -->
+            <textarea placeholder="解答を入力" id="answer"></textarea>
+            <div class="testSubmit">
+            	<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <input type="submit" value="送信する" id="send_answer" class="testSubmitButton" th:onclick="SendAnswer();">
+            </div>
+        </div>
+
+        <!-- 解答 -->
+        <div class="answer">
+            <div class="answerResult">
+                <div class="yes">
+                    <h2>正解</h2>
+                </div>
+                <div class="no">
+                    <h2>不正解</h2>
+                </div>
+
+            </div>
+            <!-- 問題の解答 -->
+            <div class="answerTeacher">
+                <h2 id="result_value"></h2>
+            </div>
+            <!-- 学生の解答 -->
+            <div class="answerStudent">
+                <h2 id="answer_result"></h2>
+            </div>
+        </div>
+		
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+    </div>
+
+</body>
+
+</html>

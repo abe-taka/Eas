@@ -1,10 +1,145 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>宿題提出 | Eas</title>
+    <meta charset="UTF-8">
+    <title>宿題提出 | Eas</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/homework/homeworkSubmission.css">
+
+    <!-- フォント -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- タブ動作 -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $(".tab li").click(function() {
+                var num = $(".tab li").index(this);
+                $(".tabContent").removeClass('active');
+                $(".tabContent").eq(num).addClass('active');
+                $(".tab li").removeClass('active');
+                $(this).addClass('active')
+            });
+        });
+    </script>
 </head>
+
 <body>
-	<p>宿題提出</p>
+
+    <header>
+        <div>
+            <h2>田中 先生</h2>
+            <button>ログアウト</button>
+        </div>
+        <button class="homeback">もどる</button>
+    </header>
+
+    <div class="homeworkContainer">
+        <!-- tabメニュー -->
+        <div class="tabWrapper">
+            <ul class="tab">
+                <li class="active">宿題を提出する</li>
+                <li>提出履歴</li>
+            </ul>
+        </div>
+
+        <!-- tabコンテンツ -->
+        <div class="tabContainer">
+
+            <!-- 課題提出 -->
+            <div class="homeworkPlay tabContent active">
+                <ul>
+                    <li class="playSubject">算数</li>
+                    <li class="playTitle">課題1</li>
+                    <li class="playButton">
+                        <button onClick="location.href='/homework'">
+                            <img src="/images/playButton.svg" alt="play">
+                        </button>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="playSubject">算数</li>
+                    <li class="playTitle">課題1</li>
+                    <li class="playButton">
+                        <button onClick="location.href='/homework'">
+                            <img src="/images/playButton.svg" alt="play">
+                        </button>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="playSubject">算数</li>
+                    <li class="playTitle">課題1</li>
+                    <li class="playButton">
+                        <button onClick="location.href='/homework'">
+                            <img src="/images/playButton.svg" alt="play">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 提出履歴 -->
+            <div class="homeworkHistory tabContent">
+                <div>
+                    <ul>
+                        <li class="status">12/01</li>
+                        <li class="hisSubject">算数</li>
+                        <li class="hisTitle">課題1</li>
+                    </ul>
+                    <ul>
+                        <li class="status">12/01</li>
+                        <li class="hisSubject">算数</li>
+                        <li class="hisTitle">課題1</li>
+                    </ul>
+                    <ul>
+                        <li class="status">12/01</li>
+                        <li class="hisSubject">算数</li>
+                        <li class="hisTitle">課題1</li>
+                    </ul>
+                    <ul>
+                        <li class="status">12/01</li>
+                        <li class="hisSubject">算数</li>
+                        <li class="hisTitle">課題1</li>
+                    </ul>
+                    <ul>
+                        <li class="status">12/01</li>
+                        <li class="hisSubject">算数</li>
+                        <li class="hisTitle">課題1</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
