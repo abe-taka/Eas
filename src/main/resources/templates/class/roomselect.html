@@ -81,46 +81,47 @@
             </ul>
         </nav>
     </div>
-
-    <!-- 学年選択 -->
-	<form>
-		<table>
-			<thead>
-				<tr>
-					<th colspan="3" th:text="学年"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
-					<th>
-						<button type="button" class="btn btn-outline-dark btn-sm" th:text="${list_schoolyear} + 年" th:value="${list_schoolyear}"  th:data-parameter1="${list_schoolyear}" th:onclick="clickGrade(this.getAttribute('data-parameter1'))"></button>
-					</th>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-
-	<!-- 組選択 -->
-	<table>
-		<thead>
-			<tr>
-				<th colspan="3" th:text="組"></th>
-			</tr>
-		</thead>
-	</table>
-	<div id="list_id">
-		<div th:each="list_classEntity : ${list_classEntity}" th:object="${list_classEntity}">
-			<div>
-				<button type="submit" th:text="*{schoolclass} + 組" class="list_class btn btn-outline-dark btn-sm" th:data-parameter1="*{classid}" th:onclick="GetAction_Class(this.getAttribute('data-parameter1'))"></button>
+    
+    <main>
+        <!-- 学年 -->
+        <h2>学年を選択</h2>
+        <div class="grade">
+			<div th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
+				<div>
+					<button type="button" class="gradel_btn" th:text="${list_schoolyear} + 年" th:value="${list_schoolyear}"  th:data-parameter1="${list_schoolyear}" th:onclick="clickGrade(this.getAttribute('data-parameter1'))"></button>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	
-	<!-- 組選択(非同期) -->
-	<div id="disp">
-		<form id="disp_data"></form>
-	</div>
+
+        <div id="big_list_selectclass">
+			<div id="small_list_selectclass">
+				<div th:each="list_classEntity : ${list_classEntity}" th:object="${list_classEntity}" class="bigsmall_list_selectclass">
+					<button type="submit" th:text="*{schoolclass} + 組" class="list_class gradel_btn" th:data-parameter1="*{classid}" th:onclick="GetAction_Class(this.getAttribute('data-parameter1'))"></button>
+				</div>
+			</div>
+		</div>
+        
+    </main>
+    
+    <!-- radioボタンverデザイン -->
+    <!-- <main>  
+        <h2>学年を選択</h2>
+        <div class="grade" th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
+            <input id="grade1" type="radio" name="grade" class="radiobutton">
+            <label for="grade1">1</label>
+        </div>
+
+        <h2>クラスを選択</h2>
+        <div class="class">
+            <input id="class1" type="radio" name="class" class="radiobutton">
+            <label for="class1">1</label>
+        </div>
+        <div class="class-button">
+            <button onClick="location.href='/class'">授業へいく</button>
+        </div>
+    </main>-->
+
+   
 </body>
 
 </html>

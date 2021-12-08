@@ -14,37 +14,48 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- 学生ホーム画面js -->
 	<script src="/js/home_student.js"></script>
+	
+	<!-- CSS -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/home/home.css">
 </head>
 <body>
 
 	<!-- 学生セッションid -->
 	<input type="hidden" th:value="${student_sessionid}" id="student_sessionid">
 	
-	<!-- セッション名、ログアウト -->
-	<div th:text="${session_name} + さん"></div>
-	<form th:action="@{/logout}" method="post">
-		<button type="submit">ログアウト</button>
-	</form>
+	<header>
+        <h2 th:text="${session_name} + さん"></h2>
+		<form th:action="@{/logout}" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+    </header>
 	
-	<!-- 授業遷移ボタン、提出状況ボタン -->
-	<div>
-		<form>
-			<button type="button" th:data-parameter1="${classid}" th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</button>
-		</form>
-	</div>
-	<div>
-		<form th:action="@{/homeworksubmi}" method="get">
-			<button type="submit">提出状況</button>
-		</form>
-	</div>
+	<div class="navigation">
+        <div><img src="/images/eas_logo.svg" alt="Eas"></div>
+        <nav>
+            <ul>
+                <li class="active"><a th:href="@{/home/teacherhome}">ホーム</a></li>
+                <li><a th:data-parameter1="${classid}" th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</a></li>
+                <li><a th:href="@{/homeworksubmi}">提出状況</a></li>
+            </ul>
+        </nav>
+    </div>
 	
 	<!-- スケジュール -->
-	<h3>スケジュール</h3>
-	<div th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-		<div th:text=" 【 +${date}+】"></div>
-		<div th:text="*{timetabletime.timeperiod} + 限目"></div>
-		<nobr th:text="*{subjectname}"></nobr>
-	</div>
+	<main>
+        <ul class="title">
+            <li>Day</li>
+            <li>Time</li>
+            <li>Subject</li>
+        </ul>
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}"></li>
+            <li th:text="*{timetabletime.timeperiod} + 限目"></li>
+            <li th:text="*{subjectname}"></li>
+        </ul>
+    </main>
 	
 	<!-- modal(授業参加) -->
 	<div id="myModal" class="modal fade bd-example-modal-xl" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

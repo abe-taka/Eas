@@ -8,6 +8,8 @@ function clickGrade(school_year) {
 	// CSRFトークンの取得
 	const token = $("meta[name='_csrf']").attr("content");
 
+	console.log("学年",school_year);
+	
 	// 非同期通信
 	$.ajax({
 		type : "POST",
@@ -23,24 +25,15 @@ function clickGrade(school_year) {
 	.then(function(response_data) {
 		// 成功時
 		console.log("response_data", response_data);
-		
-		if (flag == "0") {
-			flag = "1";
-			// Get時の組を消す
-			console.log("GETデータを削除",flag);
-			var delete_element = document.getElementById('list_id');
-			delete_element.remove('list_class');
-		} else if (flag == "1") {
-			// Rest取得の組を消す
-			console.log("Restデータを削除",flag);
-			var delete_element2 = document.querySelectorAll('disp_data');
-			$("#disp_data").empty();
-		}
+
+		//既に表示されている「組」の要素を全て消す
+		$(".bigsmall_list_selectclass").remove();
 
 		/*-- 表示処理 --*/
 		for (var i = 0; i < response_data.length; i++){
-			
-			
+			//表示させるエレメントを取得
+			var addPlace = document.getElementById("small_list_selectclass");
+			//ボタンを生成
 			var btn = document.createElement('button');
 			btn.textContent = response_data[i]["schoolclass"] + '組';
 			btn.setAttribute("type", "button");
@@ -48,16 +41,15 @@ function clickGrade(school_year) {
 			btn.setAttribute("value", response_data[i]["schoolclass"]);
 			btn.setAttribute("data-parameter1", response_data[i]["classid"]);
 			btn.setAttribute('onclick', "GetAction_Class(this.getAttribute('data-parameter1'))");
-			var addPlace = document.getElementById("disp_data");
+			btn.classList.add("gradel_btn");
+			btn.classList.add("bigsmall_list_selectclass");
+			//要素の追加
 			addPlace.appendChild(btn);
 		}
 	}, function() {
 		// 失敗時
-		var delete_element = document.getElementById('list_id');
-		delete_element.remove('list_class');
-		var delete_element2 = document.querySelectorAll('disp_data');
-		$("#disp_data").empty();
-		
+		//既に表示されている「組」の要素を全て消す
+		$("#small_list_selectclass").empty();
 		console.log('[$.ajax]"/rest/room_select" Fail');
 	});
 }

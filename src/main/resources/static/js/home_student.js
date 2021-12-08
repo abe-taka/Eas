@@ -197,7 +197,7 @@ function ConfirmEnterTime(classid){
 		function() {
 			// 失敗時(時間割時間idの取得、処理エラー)
 			$("#header").empty();
-			$("#header").append("入室は授業開始10分前から入室してください");
+			$("#header").append("【入室は授業開始10分前から入室してください】");
 			//id「subject」に追加
 			$("#subject").empty();
 			$("#subject").append("入室する時間が早い、または本日は授業がありません");

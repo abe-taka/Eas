@@ -96,17 +96,26 @@ function SendToNotice(teacher_sessionid){
 }
 
 // 音声認識取得処理
-function GetVoiceRecog(){
-	var socket = new SockJS('/socket_endpoint');
-	stompClient = Stomp.over(socket);
-	// エンドポイントに対して接続
-	stompClient.connect({}, function (frame) {
-	    // 受信
-	    stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
-	    	// 表示
-	    	ShowVoiceRecognition(JSON.parse(response_data.body).voicetext);
-	    });
-	});
+function GetVoiceRecog(flag){
+	
+	//接続処理
+	if(flag == 1){
+		var socket = new SockJS('/socket_endpoint');
+		stompClient = Stomp.over(socket);
+		
+		// エンドポイントに対して接続
+		stompClient.connect({}, function (frame) {
+			// 受信
+			stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
+				// 表示
+				ShowVoiceRecognition(JSON.parse(response_data.body).voicetext);
+			});
+		});
+	}
+	//切断処理
+	else if(flag == 0){
+		stompClient.disconnect();
+	}
 }
 
 // 問題の解答送信処理
@@ -176,10 +185,10 @@ function SendAnswer() {
 
 // 字幕表示
 function ShowVoiceRecognition(message) {
-	$("#subtitle").append(message);
+	$("#subtitle").append("<p>" + message + "</p>");
 }
 
-// modal表示
+//modal表示
 function ShowModal(issue,answer) {
 	//問題と解答を空にする
 	$("#show").empty();
@@ -187,7 +196,7 @@ function ShowModal(issue,answer) {
 	input.value = '';
 	
 	//問題をセット
-	$("#show").append("<tr><td>" + issue + "</td></tr>");
+	$("#show").append(issue);
 	issue_answer = answer
 	// Modalオープンボタン
 	// 表示中のページと最終ページ番号
@@ -223,3 +232,51 @@ function ShowModal(issue,answer) {
 		}
 	});
 }
+
+//// modal表示
+//function ShowModal(issue,answer) {
+//	console.log("問題" + issue);
+//	console.log("解答" + answer);
+//	//問題と解答を空にする
+//	$("#issue").empty();
+//	var input = document.getElementById("answer");
+//	input.value = '';
+//	
+//	//問題をセット
+//	$("#issue").append(issue);
+//	issue_answer = answer
+//	
+//	// Modalオープンボタン
+//	// 表示中のページと最終ページ番号
+//	var page, max = 2;
+//	
+//	$(function() {
+//		// Modalオープンボタン
+//		page = 1;
+//		drawModal();
+//		$("#test_modal").modal("show");
+//
+//		// 次へボタン
+//		$(".btnNext").click(function() {
+//			page++;
+//			drawModal();
+//		});
+//
+//		// 前へボタン
+//		$(".btnPrev").click(function() {
+//			page--;
+//			drawModal();
+//		});
+//
+//		// Modal内表示
+//		function drawModal() {
+//			for (var i = 1; i <= max; i++) {
+//				if (i == page){
+//					$("#modal-page" + i).show()
+//				}else{
+//					$("#modal-page" + i).hide()
+//				}
+//			}
+//		}
+//	});
+//}

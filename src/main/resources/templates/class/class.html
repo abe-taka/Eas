@@ -85,28 +85,8 @@
     <div class="list">
         <ul class="list-container" id="student_list">
             <li>
-                <div class="list-number">1</div>
-                <div class="list-name">山下達郎</div>
-            </li>
-            <li>
-                <div class="list-number">2</div>
-                <div class="list-name">山下達郎</div>
-            </li>
-            <li>
-                <div class="list-number">2</div>
-                <div class="list-name">山下達郎</div>
-            </li>
-            <li>
-                <div class="list-number">3</div>
-                <div class="list-name">山下達郎</div>
-            </li>
-            <li>
-                <div class="list-number">4</div>
-                <div class="list-name">山下達郎</div>
-            </li>
-            <li>
-                <div class="list-number">5</div>
-                <div class="list-name">山下達郎</div>
+                <div class="list-number" id="list-number"></div>
+                <div class="list-name" id="list-name"></div>
             </li>
         </ul>
     </div>
@@ -116,10 +96,10 @@
         <form th:action="@{/class/roomselect}" method="get">
 			<button type="submit" class="btn btn-dark">退出</button>
 		</form>
-		<button type="submit" class="btn btn-outline-dark" th:data-parameter1="*{classid}" th:onclick="Bulkexit(this.getAttribute('data-parameter1'));">一括退出</button>
+		<button type="submit" th:data-parameter1="*{classid}" th:onclick="Bulkexit(this.getAttribute('data-parameter1'));">一括退出</button>
     </div>
 
-    <!-- 問題作成 -->
+    <!-- modal(問題作成) -->
     <div id="modal" class="modal">
     	<!-- 1ページ目 -->
     	<div id="modal-page1">
@@ -127,7 +107,7 @@
 	            <div class="modal-body">
 	                <textarea placeholder="問題文を入力" class="test-sentence" id="issue"></textarea>
 	                <textarea placeholder="解答を入力" class="test-answer" id="answer"></textarea>
-	                <input type="submit" value="送信" id="send" class="test-submit btn btn-default btnNext" th:onclick="SendIssue();">
+	                <input type="submit" value="送信" id="send" class="test-submit btnNext" th:onclick="SendIssue();">
 	            </div>
 	        </div>
 	    </div>
@@ -144,182 +124,32 @@
 			</div>
 		</div>	
     </div>
+    
+    <!-- modal(一括退出) -->
+    <div id="exit_modal" class="modal">
+    	<div class="modal-content">
+			<div class="modal-header">一括退出完了</div>
 
-    <!-- 生徒の解答表示 -->
-    <div id="answer-modal" class="answer-modal">
+			<div class="modal-body">
+				<div>生徒を退出させました</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+			</div>
+		</div>
+	</div>
+    
+    <!-- modal(生徒の解答表示) -->
+    <div id="answer-modal" class="modal answer-modal">
         <div class="answer-modal-content">
             <div class="answer-list">
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-                <ul>
-                    <li class="number">1</li>
-                    <li class="name">山下達郎</li>
-                    <li class="answer"></li>
-                </ul>
-            </div>
+	        	<ul>
+	            	<li class="number" id="answer_number"></li>
+	                <li class="name" id="answer_student"></li>
+	                <li class="answer" id="answer_value"></li>
+	            </ul>
+	        </div>    
         </div>
     </div>
     

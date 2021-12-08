@@ -42,6 +42,11 @@ public class TeacherEntity {
 	@OneToMany(mappedBy="teacher")
 	private List<HomeWorkManageEntity> homeworkmanage;
 
+	//先生授業内問題テーブル
+	@OneToMany(mappedBy="teacher")
+	@JsonBackReference("json_teacher_teacherIssue")
+	private List<TeacherIssueEntity> teacherIssue;
+
 	
 	// ゲッター、セッター
 	public String getTeacheraddress() {
@@ -82,6 +87,14 @@ public class TeacherEntity {
 
 	public void setHomeworkmanage(List<HomeWorkManageEntity> homeworkmanage) {
 		this.homeworkmanage = homeworkmanage;
+	}
+
+	public List<TeacherIssueEntity> getTeacherIssue() {
+		return teacherIssue;
+	}
+
+	public void setTeacherIssue(List<TeacherIssueEntity> teacherIssue) {
+		this.teacherIssue = teacherIssue;
 	}
 	
 }
