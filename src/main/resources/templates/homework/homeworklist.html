@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>問題管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/issue/issue.css">
+    
+    <!-- Google Fonts -->
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'fcl7ixt',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+</head>
+
+
+<body>
+    <header>
+        <h2 th:text="${session_name} + さん"></h2>
+		<form th:action="@{/logout}" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+    </header>
+	
+	<div class="navigation">
+        <div><img src="/images/eas_logo.svg" alt="Eas"></div>
+        <nav>
+            <ul>
+                <li><a th:href="@{/home/teacherhome}">ホーム</a></li>
+                <li><a th:href="@{/homework}">問題作成</a></li>
+                <li class="active"><a th:href="@{/homeworklist}">問題管理</a></li>
+                <li><a th:href="@{/homework_submistatus}">提出状況確認</a></li>
+                <li><a th:href="@{/class/roomselect}">授業選択</a></li>
+                <li><a th:href="@{/logmanagement}">生徒入室管理</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section id="issue_manager">
+            <p id="title">問題管理</p>
+            <ul>
+                <li th:each="book:${bookAll}">
+                <form th:action="@{/homeworkmovesubmission}" th:object="${HomeworkSubmiForm}" method="POST">
+                	<a th:text="${book.homework_filename}" th:href="@{'pdf/' + ${book.homework_filename}}" 
+                	   th:id="${book.homework_filename}" name="homework_id"
+                	   th:value="${book.homework_filename}"
+                	   target="_blank" rel="noopener noreferrer"></a>
+                	<input type="hidden" name="homework_id" th:value="${book.homework_id}">
+                    <input type="button" class="deleteBtn" value="×" th:onclick="openBtn('delete'),test1(this.id,this.homeworkid)" th:id="${book.homework_filename}" th:homeworkid="${book.homework_id}"/>
+                    <label class="upload">アップロード<span>⬆</span>
+                    	<input class="uploadBtn" type="button" th:onclick="test1(this.id,this.value),openBtn('upload')" th:id="${book.homework_filename}" th:value="${book.homework_id}"  />
+                    </label>
+                    <label class="edit">編集<i class="fas fa-pen"></i><input class="updateBtn" type="button" onclick="openBtn('update')" /></label>
+                </li>
+            </ul>
+        </section>
+    </main>
+    
+    <!-- modalコンテンツ -->
+    <div id="filter"></div>
+    
+	<div id="modal_upload">
+		<input type="button" class="close" onclick="closeBtn('upload')" value="×">
+    	<p id="h1">学年、組を選択してアップロードボタンを押してください。</p>
+	    <script th:inline="javascript">
+	      function test1(a,b){
+				console.log(a);
+				console.log(b);
+		  }
+	    </script>
+    	<div class="cp_ipselect cp_sl01">
+	    <select name = "school_year">
+	      <option th:value = "01" th:text="1年"></option>
+	      <option th:value = "02" th:text="2年"></option>
+	      <option th:value = "03" th:text="3年"></option>
+	      <option th:value = "04" th:text="4年"></option>
+	      <option th:value = "05" th:text="5年"></option>
+	      <option th:value = "06" th:text="6年"></option>
+	    </select>
+	    <select name = "school_class">
+	      <option th:value = "01" th:text="1組"></option>
+	      <option th:value = "02" th:text="2組"></option>
+	      <option th:value = "03" th:text="3組"></option>
+	      <option th:value = "04" th:text="4組"></option>
+	      <option th:value = "05" th:text="5組"></option>
+	      <option th:value = "06" th:text="6組"></option>
+	    </select>
+    	</div>
+    	<input type="submit" id="upload" value="アップロード" />
+	</div>
+	
+	
+	<div id="modal_update">
+		<input type="button" class="close" onclick="closeBtn('update')" value="×">
+		<ul>
+			<li><label>ファイル選択<input type="file" /></label></li>
+		</ul>
+		<ul>
+			<li>
+				<p>解答の数を選択</p>
+				<input type="text" />
+			</li>
+            <li>
+                <p>科目を選択</p>
+                <input type="text" />
+            </li>
+        </ul>
+        <ul>
+            <li><input type="button" value="アップデート" /></li>
+        </ul>
+	</div>
+	
+	<div id="modal_delete">
+		<input type="button" class="close" onclick="closeBtn('delete')" value="×">
+		<p id="div1"></p>
+		<input id="delete" type="submit" value="削除" />
+	</div>
+	
+    <script th:inline="javascript">
+      function test1(a,b){
+			const div1 = document.getElementById("div1");
+			if (div1.hasChildNodes()) {
+		      div1.removeChild(div1.firstChild);
+		    }
+			console.log(a);
+			console.log(b);
+		    const p1 = document.createElement("p");
+		    const text1 = document.createTextNode("課題:" + a + "を削除しますか？");
+		    p1.appendChild(text1);
+		    div1.appendChild(p1);
+	  }
+    </script>
+	
+		           </form>
+	
+	
+    <script src="/js/issue.js"></script>
+
+</body>
+</html>

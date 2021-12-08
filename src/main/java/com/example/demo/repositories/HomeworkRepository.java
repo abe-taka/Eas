@@ -106,6 +106,180 @@ public class HomeworkRepository<Homework> {
 	}
 	
 	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllJapanese (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = '国語'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllMath (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = '算数'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllSocialstudies (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = '社会'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllScience (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = '理科'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllEnglish (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = '英語'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
+	 * homeworkdetails(宿題提出生徒個別提出状況確認画面)で生徒個別の提出状況確認
+	 * @param schoolCode
+	 * @param classNo
+	 * @return
+	 */
+	public List homeworkListfindAllOthers (Integer schoolCode,Integer classNo){
+		String sql ="SELECT \r\n"
+				+ "	homeworkmanage_table.homework_filename,\r\n"
+				+ "	homeworkmanage_table.homework_subject,\r\n"
+				+ "	homeworkmanage_table.homework_id,\r\n"
+				+ "	submission_flg_table.submission_flg,\r\n"
+				+ "	submission_flg_table.submission_id,\r\n"
+				+ "	homeworkmanage_table.answercolumn_num\r\n"
+				+ "FROM \r\n"
+				+ "	homeworkmanage_table\r\n"
+				+ "	JOIN \r\n"
+				+ "	submission_flg_table\r\n"
+				+ "	ON homeworkmanage_table.homework_id = submission_flg_table.homework_id\r\n"
+				+ "WHERE \r\n"
+				+ "	submission_flg_table.class_id = ?\r\n"
+				+ "AND \r\n"
+				+ "	submission_flg_table.class_no = ?\r\n"
+				+ "AND \r\n"
+				+ "	homeworkmanage_table.homework_subject = 'その他'\r\n"
+				+ ";";
+		return jdbctemplate.queryForList(sql,schoolCode,classNo);
+	}
+	
+	/**
 	 * homeworksubmi(生徒側の宿題提出確認)とhomeworkstudent(生徒宿題)で宿題の名前、宿題の科目、提出したかの有無、宿題ID、解答欄の数の取得
 	 * @param schoolCode
 	 * @param classNo
@@ -178,15 +352,22 @@ public class HomeworkRepository<Homework> {
 	
 	public List enterexitListfindAll(Integer schoolCode,Integer classNo){
 		String sql ="SELECT\r\n"
-					+ "DISTINCT enterexit_table.timetable_id,\r\n"
-					+ "enterexit_table.enter_time,\r\n"
-					+ "enterexit_table.exit_time\r\n,"
-					+ "(SELECT timetabletime_table.time_period FROM timetabletime_table WHERE timetabletime_table.timetable_id = enterexit_table.timetable_id) AS atime_period,\r\n"
-					+ "SUBSTRING(enterexit_table.enter_time, 1, 10) AS date\r\n"
-					+ "FROM\r\n"
-					+ "enterexit_table,student_table,timetabletime_table\r\n"
-					+ "WHERE student_table.class_no = ?\r\n"
-					+ "AND student_table.class_id = ?;";
+				+ "DISTINCT enterexit_table.timetable_id,\r\n"
+				+ "enterexit_table.enter_time,\r\n"
+				+ "enterexit_table.exit_time,\r\n"
+				+ "(SELECT\r\n"
+				+ "timetabletime_table.time_period\r\n"
+				+ "FROM timetabletime_table\r\n"
+				+ "WHERE timetabletime_table.timetable_id = enterexit_table.timetable_id)\r\n"
+				+ "AS atime_period,\r\n"
+				+ "SUBSTRING(enterexit_table.enter_time, 1, 10) AS date\r\n"
+				+ "FROM\r\n"
+				+ "enterexit_table,student_table,timetabletime_table\r\n"
+				+ "WHERE enterexit_table.student_address =\r\n"
+				+ "(SELECT student_table.student_address\r\n"
+				+ "FROM student_table\r\n"
+				+ "WHERE student_table.class_no = ?\r\n"
+				+ "AND student_table.class_id = ?)";
 		return jdbctemplate.queryForList(sql,classNo,schoolCode);
 	}
 

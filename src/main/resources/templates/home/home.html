@@ -53,8 +53,7 @@
 </head>
 
 <body>
-	
-	<!-- ユーザー名、ログアウト -->
+
     <header>
         <h2 th:text="${session_name} + さん"></h2>
 		<form th:action="@{/logout}" method="post">
@@ -62,7 +61,6 @@
 		</form>
     </header>
 	
-	<!-- ナビゲーション -->
 	<div class="navigation">
         <div><img src="/images/eas_logo.svg" alt="Eas"></div>
         <nav>
@@ -77,13 +75,12 @@
         </nav>
     </div>
     
-    <!-- スケジュール -->
     <main>
         <ul class="title">
             <li>Day</li>
             <li>Time</li>
             <li>Class</li>
-            <li>Class</li>
+            <li>Subject</li>
         </ul>
         <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
             <li class="main-date" th:text="${date}"></li>
