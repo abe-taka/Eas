@@ -87,14 +87,4 @@ main .class-button button:hover {
   background-color: #faa2c1;
   color: #fff;
 }
-
-.gradel_btn{
-	border: none;
-  background-color: #FCC2D7;
-  padding: 16px 48px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  border-radius: 100vh;
-  cursor: pointer;
-}
 /*# sourceMappingURL=roomselect.css.map */
