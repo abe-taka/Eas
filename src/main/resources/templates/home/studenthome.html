@@ -1,98 +1,150 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+
+<html lang="ja">
+
 <head>
-	<meta charset="UTF-8">
-	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
-	<title>学生ホーム | Eas</title>
-	<!-- websocket -->
-	<script src="/webjars/jquery/jquery.min.js"></script>
-    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<!-- ajax -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- 学生ホーム画面js -->
-	<script src="/js/home_student.js"></script>
-	
-	<!-- CSS -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/home/home.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>名称未設定</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/home/studenthome.css">
+    <script type="text/javascript" src="js/common.js"></script>
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fcl7ixt',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) { }
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
 </head>
+
 <body>
 
-	<!-- 学生セッションid -->
-	<input type="hidden" th:value="${student_sessionid}" id="student_sessionid">
-	
-	<header>
+    <!-- 学生セッションid -->
+    <input type="hidden" th:value="${student_sessionid}" id="student_sessionid">
+
+    <header>
         <h2 th:text="${session_name} + さん"></h2>
-		<form th:action="@{/logout}" method="post">
-			<button type="submit">ログアウト</button>
-		</form>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
     </header>
-	
-	<div class="navigation">
-        <div><img src="/images/eas_logo.svg" alt="Eas"></div>
+
+    <div class="navigation">
+        <div class="logo"><img src="/images/eas_logo.svg" alt="Eas"></div>
         <nav>
             <ul>
                 <li class="active"><a th:href="@{/home/teacherhome}">ホーム</a></li>
-                <li><a th:data-parameter1="${classid}" th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</a></li>
+                <li><a th:data-parameter1="${classid}"
+                        th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</a></li>
                 <li><a th:href="@{/homeworksubmi}">提出状況</a></li>
             </ul>
         </nav>
     </div>
-	
-	<!-- スケジュール -->
-	<main>
-        <ul class="title">
+
+    <!-- スケジュール -->
+    <main>
+        <!-- <ul class="title">
             <li>Day</li>
             <li>Time</li>
             <li>Subject</li>
+        </ul> -->
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
         </ul>
         <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}"></li>
-            <li th:text="*{timetabletime.timeperiod} + 限目"></li>
-            <li th:text="*{subjectname}"></li>
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
+        </ul>
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
+        </ul>
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
+        </ul>
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
+        </ul>
+        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
+            <li class="main-date" th:text="${date}">10/11</li>
+            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
+            <li th:text="*{subjectname}">国語</li>
         </ul>
     </main>
-	
-	<!-- modal(授業参加) -->
-	<div id="myModal" class="modal fade bd-example-modal-xl" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-xl" role="document">
-			<div class="modal-content">
 
-				<!-- ページ1 -->
+    <!-- modal(授業参加) -->
+    <div id="myModal" class="modal fade bd-example-modal-xl" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
 
-				<div id="modal-page1">
-					<div class="modal-header" id="header"></div>
+                <!-- ページ1 -->
 
-					<div class="modal-body">
-							<div>
-								<div id="subject"></div>
-							</div>
-					</div>
+                <div id="modal-page1">
+                    <div class="modal-header" id="header"></div>
 
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-						<form th:action="@{/class/enterprocess}" method="post">
-							<button id="send" class="btn btn-default" type="submit">参加する</button>
-							<input type="hidden" th:value="${classid}" name="classid">
-							<input type="hidden" name="time_period" id="time_period">
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <div class="modal-body">
+                        <div>
+                            <div id="subject"></div>
+                        </div>
+                    </div>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-		crossorigin="anonymous"></script>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        <form th:action="@{/class/enterprocess}" method="post">
+                            <button id="send" class="btn btn-default" type="submit">参加する</button>
+                            <input type="hidden" th:value="${classid}" name="classid">
+                            <input type="hidden" name="time_period" id="time_period">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+        </script>
+
 </body>
+
 </html>
