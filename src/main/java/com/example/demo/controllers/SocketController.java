@@ -56,7 +56,6 @@ public class SocketController {
 
 			// 自分自身に送信
 			String teachersession_id = voice_Form.getTeacher_sessionid();
-			System.out.println("先生セッションid" + teachersession_id);
 			messagingTemplate.convertAndSendToUser(teachersession_id, "/queue/voice_recog", response_message);
 
 			// 授業中のクラスの学生セッションidを取得
@@ -120,19 +119,26 @@ public class SocketController {
 			messagingTemplate.convertAndSendToUser(session_id, "/queue/get_sessionid", response_message);
 		}
 	}
-
+	
 	// 通知取得、表示クラス
-	@MessageMapping("/send_notice")
-	public void SocketManage_Notice(GetNotice getNotice) throws Exception {
-		// マルチスレッド処理中のCPUの負荷の抑え
-		Thread.sleep(1000);
+		@MessageMapping("/send_notice")
+		public void SocketManage_Notice(GetNotice getNotice) throws Exception {
+			// マルチスレッド処理中のCPUの負荷の抑え
+			Thread.sleep(1000);
 
-		// 送信データをJson形式に変換、SocketNoticeクラスにセット
-		String response_message = json
-				.ObjectToJSON(new SendNotice(getNotice.getStudent_name(), getNotice.getStudent_classno()));
-		// 送信先ユーザーに送信
-		messagingTemplate.convertAndSendToUser(getNotice.getTeacher_sessionid(), "/queue/notice", response_message);
-	}
+			// 送信データをJson形式に変換、SocketNoticeクラスにセット
+			SendNotice sendNotice = new SendNotice();
+			sendNotice.setStudent_name(getNotice.getStudent_name());
+			sendNotice.setStudent_classno(getNotice.getStudent_classno());
+			String student_name = sendNotice.getStudent_name();
+			String student_no = sendNotice.getStudent_classno();
+			sendNotice = new SendNotice();
+			
+			String response_message = json.ObjectToJSON(new SendNotice(student_name,student_no));
+			// 送信先ユーザーに送信
+			messagingTemplate.convertAndSendToUser(getNotice.getTeacher_sessionid(), "/queue/notice", response_message);
+			System.out.println("##response_message##" + response_message);
+		}
 
 	// 一括退出
 	@MessageMapping("/bulkexit")
