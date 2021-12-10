@@ -5,6 +5,7 @@
 <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
 <title>生徒宿題 | Eas</title>
 	<link href="/css/reset.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/common.css">
     <link href="/css/homework/homework.css" rel="stylesheet">
     <!-- フォント -->
     <script>
@@ -43,15 +44,12 @@
 <body>
 
     <header>
-        <button onclick="history.back()">もどる</button>
+        <h2 th:text="${session_name} + さん"></h2>
+		<form th:action="@{/logout}" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+		<button onclick="history.back()">もどる</button>
     </header>
-    
-    
-	<div th:text="${session_name} + さん"></div>
-	
-	<form th:action="@{/logout}" method="post">
-		<button type="submit">ログアウト</button>
-	</form>
 	
     <div class="homework">
 

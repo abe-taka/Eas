@@ -1,3 +1,4 @@
+@charset "UTF-8";
 main {
   padding: 0 80px;
   grid-area: main;
@@ -8,10 +9,10 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-align: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  /* 学年 */
+  /* クラス */
 }
 
 main h2 {
@@ -19,7 +20,7 @@ main h2 {
   margin-right: -0.2em;
 }
 
-main div {
+main .grade {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,63 +29,46 @@ main div {
           justify-content: space-between;
 }
 
-main div .radiobutton {
-  display: none;
-  cursor: pointer;
-}
-
-main div label {
-  padding: 40px 64px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 8px;
-  font-size: 16px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: #fcc2d700 4px solid;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-main div label:hover {
-  border: #FCC2D7 4px solid;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-main div .radiobutton:checked + label {
-  background-color: #FCC2D7;
-  color: #fff;
-  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
-          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
-}
-
-main .class-button {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-main .class-button button {
+main .grade .gradel_btn {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 4px solid rgba(255, 255, 255, 0);
+  padding: 24px;
   font-weight: 700;
-  padding: 16px 80px;
-  border: none;
-  background-color: #fff;
-  color: #FAA2C1;
-  border-radius: 100vh;
-  cursor: pointer;
-  letter-spacing: 0.2em;
-  margin-right: -0.2em;
-  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
-          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+  border-radius: 16px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
 
-main .class-button button:hover {
+main .grade .gradel_btn:hover {
+  background-color: #FCC2D7;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  background-color: #faa2c1;
+  color: #fff;
+}
+
+main .class #small_list_selectclass {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .class #small_list_selectclass button {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 4px solid rgba(255, 255, 255, 0);
+  padding: 24px;
+  font-weight: 700;
+  border-radius: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+main .class #small_list_selectclass button:hover {
+  background-color: #FCC2D7;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   color: #fff;
 }
 /*# sourceMappingURL=roomselect.css.map */

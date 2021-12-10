@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-image: url("../images/gura.jpg");
+    background-image: url("/images/gura.jpg");
     background-size: cover;
     padding: 24px 48px;
     height: 100vh;
@@ -41,7 +41,7 @@ header {
 
 
 /* ナビゲーション */
-.navigation{
+.navigation {
     grid-column: 1/2;
     grid-row: 2/3;
     display: flex;
@@ -54,53 +54,56 @@ header {
     box-shadow: $shadow;
 
     //ロゴ
-    .logo{
+    .logo {
         padding: 24px;
         border-radius: 16px;
-        img{}
+
+        img {}
     }
 
-    nav{
+    nav {
         flex: 1;
-        ul{
+
+        ul {
             display: flex;
             flex-direction: column;
             gap: 48px;
             width: 15em;
             height: 100%;
 
-            li{
+            li {
                 list-style: none;
                 font-size: 16px;
                 box-sizing: border-box;
 
-                a{
+                a {
                     cursor: pointer;
                     display: block;
                     font-weight: 700;
                     padding: 24px 0 24px 24px;
                     border-radius: 100vh;
+                    text-decoration: none;
                 }
             }
 
-            .active{
+            .active {
                 position: relative;
                 z-index: 1;
 
-                a{
+                a {
                     background-color: #FFF0F6;
                     position: relative;
                     color: #FAA2C1;
 
-                    &::before{
+                    &::before {
                         content: "";
                         width: 70%;
                         height: 80%;
-                        position:absolute;
+                        position: absolute;
                         background-color: #ffd7e5;
                         top: 40%;
                         left: 50%;
-                        transform: translate(-50%,0);
+                        transform: translate(-50%, 0);
                         z-index: -1;
                         filter: blur(16px);
                     }
@@ -111,7 +114,7 @@ header {
     }
 }
 
-main{
+main {
     grid-column: 2/3;
     grid-row: 2/3;
 
@@ -121,7 +124,7 @@ main{
     justify-content: center;
     gap: 16px;
 
-    ul{
+    ul {
         background-color: #fff;
         display: flex;
         padding: 16px 48px;
@@ -129,18 +132,19 @@ main{
         box-shadow: $shadow;
         border-radius: 16px;
 
-        li{
+        li {
             list-style: none;
             width: 10em;
             padding: 16px;
         }
-        .main-date{
+
+        .main-date {
             background-color: #FFDEEB;
             border-radius: 16px;
         }
     }
 }
 
-.modal{
+.modal {
     display: none;
 }
