@@ -1,4 +1,4 @@
-main {
+/*main {
   grid-area: main;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,7 +32,7 @@ main ul li {
   padding: 16px 16px;
   text-align: center;
   letter-spacing: 0.1em;
-}
+}*/
 
 main ul .main-date {
   border-radius: 8px;
@@ -57,44 +57,60 @@ main .title {
   width: calc(50% - 10px);
 }
 
+ul.contents {
+   display: flex;
+   justify-content: flex-start;
+   width: 95%;
+   height: auto;
+   margin-left: 5%;
+   border-radius: 10px;
+   background-color: #fff;
+   border-radius: 10px;
+}
+ul.contents li{
+	width: 100px;
+	padding: 15px;
+	list-style: none;
+}
+ul.contents li:last-of-type{
+	margin-left: auto;
+}
+ul.contents li label{
+	display: block;
+	position: relative;
+}
+ul.contents li label i{
+}
+select {
+  -webkit-appearance: none;
+  appearance: none; /* �f�t�H���g�̃X�^�C���𖳌� */
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+  padding-left: 10px;
+  background-color: #F8F9FA;
+  outline: none;
+  border: none;
+}
+select::-ms-expand {
+  display: none; /* �f�t�H���g�̃X�^�C���𖳌�(IE�p) */
+}
 
 .btn-flat-border {
-  background-color: #FCC2D7;
-  display: inline-block;
-  padding: 0.3em 1em;
-  text-decoration: none;
-  border: solid 2px #FCC2D7;
-  border-radius: 50px;
-  transition: .4s;
+	width: 70px;
+	height: 40px;
+	background-color: #FCC2D7;
+	border: none;
+	outline: none;
+	border-radius: 5px;
 }
 
-.contents {
-   overflow: hidden;
-}
-.itemselect {
-   float: left;
-   padding: 20px 30px;
-   text-align: center;
-}
-
-
+/* �Z���N�g�{�b�N�X�̖��f�U�C���ύX */
 .container {
   margin: 50px auto 0;
   position: relative;
   width: 100px;
 }
-select {
-  -webkit-appearance: none;
-  appearance: none; /* �f�t�H���g�̃X�^�C���𖳌� */
-  border-radius: 0;
-  height: 37px;
-  padding-left: 10px;
-  width: 100px;
-}
-select::-ms-expand {
-  display: none; /* �f�t�H���g�̃X�^�C���𖳌�(IE�p) */
-}
-/* �Z���N�g�{�b�N�X�̖��f�U�C���ύX */
 .container::before {
   border-bottom: 4.5px solid red;
   border-left: 4px solid transparent;

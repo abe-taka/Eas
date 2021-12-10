@@ -52,7 +52,7 @@
 <body>
 
     <header>
-     	<button onclick="history.back()">もどる</button>
+     	<!--<button onclick="history.back()">もどる</button>-->
         <h2 th:text="${session_name} + さん"></h2>
         <form th:action="@{/logout}" method="post">
             <button type="submit">ログアウト</button>
@@ -75,31 +75,34 @@
 		<!-- メイン -->
 		    <main>
                 <form th:action="@{/homework_submistatus}" th:object="${ClassForm}" method="post">
-                <div class="contents">
-                <div class="itemselect">
-                    <select name = "school_year">
-                      <option th:value = "01" th:text="1年"></option>
-                      <option th:value = "02" th:text="2年"></option>
-                      <option th:value = "03" th:text="3年"></option>
-                      <option th:value = "04" th:text="4年"></option>
-                      <option th:value = "05" th:text="5年"></option>
-                      <option th:value = "06" th:text="6年"></option>
-                    </select>
-                </div>
-                <div class="itemselect">
-                    <select name = "school_class">
-                      <option th:value = "01" th:text="1組"></option>
-                      <option th:value = "02" th:text="2組"></option>
-                      <option th:value = "03" th:text="3組"></option>
-                      <option th:value = "04" th:text="4組"></option>
-                      <option th:value = "05" th:text="5組"></option>
-                      <option th:value = "06" th:text="6組"></option>
-                    </select>
-                </div>
-                <div class="itemselect">
-                    <input type="submit" value="表示" class="btn-flat-border">
-                </div>
-                </div>
+	                <ul class="contents">
+	                	<li class="itemselect">
+		                    <select name = "school_year">
+		                      <option th:value = "01" th:text="1年"></option>
+		                      <option th:value = "02" th:text="2年"></option>
+		                      <option th:value = "03" th:text="3年"></option>
+		                      <option th:value = "04" th:text="4年"></option>
+		                      <option th:value = "05" th:text="5年"></option>
+		                      <option th:value = "06" th:text="6年"></option>
+		                    </select>
+		                </li>
+		                <li class="itemselect">
+		                	<label>
+		                		<select name = "school_class">
+			                      <option th:value = "01" th:text="1組"></option>
+			                      <option th:value = "02" th:text="2組"></option>
+			                      <option th:value = "03" th:text="3組"></option>
+			                      <option th:value = "04" th:text="4組"></option>
+			                      <option th:value = "05" th:text="5組"></option>
+			                      <option th:value = "06" th:text="6組"></option>
+			                    </select>
+			                    <i class="fas fa-chevron-down"></i>
+		                	</label>
+		                </li>
+		                <li class="itemselect">
+		                    <input type="submit" value="表示" class="btn-flat-border">
+		                </li>
+	                </ul>
                 </form>
 		        <ul class="list">
 			        <li class="item" th:each="studentList:${studentList}">
