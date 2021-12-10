@@ -132,7 +132,7 @@ header button {
   width: 4em;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea {
   width: 100%;
   resize: none;
   border: none;
@@ -144,16 +144,16 @@ header button {
   overflow-y: scroll;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar {
   width: 16px;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar-thumb {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar-thumb {
   background-color: #FCC2D7;
   border-radius: 100vh;
 }
 
-.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea .answer_content::-webkit-scrollbar-track {
+.homework .homeworkAnswer .homeworkAnswerContainer .homeworkAnswerArea textarea::-webkit-scrollbar-track {
   width: 3px;
   background-color: #fce8ef;
   border-radius: 100vh;

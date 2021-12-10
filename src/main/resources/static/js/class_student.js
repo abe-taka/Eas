@@ -1,5 +1,6 @@
 /*　生徒側　*/
 var stompClient = null; // Websocket接続用変数
+var notice_flag = 0; //出席送信カウント
 
 /* ロード処理 */
 $(document).ready(() => {
@@ -78,21 +79,28 @@ function ExitRog(){
 		// 失敗時
 		console.log('[$.ajax]"/rest/exit" Fail');
 	});
+	
+	
 }
 
 // 出席処理
 function SendToNotice(teacher_sessionid){
-	const student_name = document.getElementById('student_name').value;
-	const student_classno = document.getElementById('student_classno').value;
-	
-	// アクセスするエンドポイントを設定
-	var socket = new SockJS('/socket_endpoint');
-	stompClient = null;
-	stompClient = Stomp.over(socket);
-	// エンドポイントに対して接続
-	stompClient.connect({}, function (frame) {
-		stompClient.send("/socket_prefix/send_notice", {}, JSON.stringify({'student_name':student_name,'student_classno':student_classno,'teacher_sessionid':teacher_sessionid}));
-	})
+	//出席処理を行うのを1回だけにする
+		const student_name = document.getElementById('student_name').value;
+		const student_classno = document.getElementById('student_classno').value;
+		
+		// アクセスするエンドポイントを設定
+		var socket = new SockJS('/socket_endpoint');
+		stompClient = null;
+		stompClient = Stomp.over(socket);
+		// エンドポイントに対して接続
+		stompClient.connect({}, function (frame) {
+			//1回のみ送信する
+			if(notice_flag == 0){
+				stompClient.send("/socket_prefix/send_notice", {}, JSON.stringify({'student_name':student_name,'student_classno':student_classno,'teacher_sessionid':teacher_sessionid}));
+				notice_flag += 1;
+			}
+		})
 }
 
 // 音声認識取得処理
@@ -232,51 +240,3 @@ function ShowModal(issue,answer) {
 		}
 	});
 }
-
-//// modal表示
-//function ShowModal(issue,answer) {
-//	console.log("問題" + issue);
-//	console.log("解答" + answer);
-//	//問題と解答を空にする
-//	$("#issue").empty();
-//	var input = document.getElementById("answer");
-//	input.value = '';
-//	
-//	//問題をセット
-//	$("#issue").append(issue);
-//	issue_answer = answer
-//	
-//	// Modalオープンボタン
-//	// 表示中のページと最終ページ番号
-//	var page, max = 2;
-//	
-//	$(function() {
-//		// Modalオープンボタン
-//		page = 1;
-//		drawModal();
-//		$("#test_modal").modal("show");
-//
-//		// 次へボタン
-//		$(".btnNext").click(function() {
-//			page++;
-//			drawModal();
-//		});
-//
-//		// 前へボタン
-//		$(".btnPrev").click(function() {
-//			page--;
-//			drawModal();
-//		});
-//
-//		// Modal内表示
-//		function drawModal() {
-//			for (var i = 1; i <= max; i++) {
-//				if (i == page){
-//					$("#modal-page" + i).show()
-//				}else{
-//					$("#modal-page" + i).hide()
-//				}
-//			}
-//		}
-//	});
-//}

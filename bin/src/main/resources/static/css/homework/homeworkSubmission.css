@@ -129,7 +129,7 @@ header button {
   width: 8em;
 }
 
-.homeworkContainer .tabContainer .homeworkPlay ul .playButton {
+.homeworkContainer .tabContainer .homeworkPlay ul .playButton button {
   cursor: pointer;
   position: relative;
   border: none;
@@ -144,7 +144,7 @@ header button {
           box-shadow: #FFDEEB 0 4px 30px;
 }
 
-.homeworkContainer .tabContainer .homeworkPlay ul .playButton img {
+.homeworkContainer .tabContainer .homeworkPlay ul .playButton button img {
   width: 24px;
   height: auto;
   position: absolute;
