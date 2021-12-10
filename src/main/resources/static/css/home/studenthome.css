@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  background-image: url("../images/gura.jpg");
+  background-image: url("/images/gura.jpg");
   background-size: cover;
   padding: 24px 48px;
   height: 100vh;
@@ -107,6 +107,7 @@ header button {
   font-weight: 700;
   padding: 24px 0 24px 24px;
   border-radius: 100vh;
+  text-decoration: none;
 }
 
 .navigation nav ul .active {

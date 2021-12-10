@@ -15,14 +15,14 @@
 
     <!-- Google Fonts -->
     <script>
-        (function(d) {
+        (function (d) {
             var config = {
-                    kitId: 'fcl7ixt',
-                    scriptTimeout: 3000,
-                    async: true
-                },
+                kitId: 'fcl7ixt',
+                scriptTimeout: 3000,
+                async: true
+            },
                 h = d.documentElement,
-                t = setTimeout(function() {
+                t = setTimeout(function () {
                     h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
                 }, config.scriptTimeout),
                 tk = d.createElement("script"),
@@ -32,14 +32,14 @@
             h.className += " wf-loading";
             tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
             tk.async = true;
-            tk.onload = tk.onreadystatechange = function() {
+            tk.onload = tk.onreadystatechange = function () {
                 a = this.readyState;
                 if (f || a && a != "complete" && a != "loaded") return;
                 f = true;
                 clearTimeout(t);
                 try {
                     Typekit.load(config)
-                } catch (e) {}
+                } catch (e) { }
             };
             s.parentNode.insertBefore(tk, s)
         })(document);
@@ -52,24 +52,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <script src="/js/main.js"></script>
-    
+
     <!-- back_js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
-	<script src="/js/roomselect.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="/js/roomselect.js"></script>
 
 </head>
 
 <body>
-	
-	<!-- ユーザー名、ログアウト -->
+
+    <!-- ユーザー名、ログアウト -->
     <header>
         <h2 th:text="${session_name} + さん"></h2>
         <form th:action="@{/logout}" method="post">
-			<button type="submit" class="btn btn-outline-dark">ログアウト</button>
-		</form>
+            <button type="submit" class="btn btn-outline-dark">ログアウト</button>
+        </form>
     </header>
 
-	<div class="navigation">
+    <div class="navigation">
         <div><img src="/images/eas_logo.svg" alt="Eas"></div>
         <nav>
             <ul>
@@ -82,30 +83,36 @@
             </ul>
         </nav>
     </div>
-    
+
     <main>
         <!-- 学年 -->
         <h2>学年を選択</h2>
-        <div class="grade">
-			<div th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
-				<div>
-					<button type="button" class="gradel_btn" th:text="${list_schoolyear} + 年" th:value="${list_schoolyear}"  th:data-parameter1="${list_schoolyear}" th:onclick="clickGrade(this.getAttribute('data-parameter1'))"></button>
-				</div>
-			</div>
-		</div>
 
-        <div id="big_list_selectclass">
-			<div id="small_list_selectclass">
-				<div th:each="list_classEntity : ${list_classEntity}" th:object="${list_classEntity}" class="bigsmall_list_selectclass">
-					<button type="submit" th:text="*{schoolclass} + 組" class="list_class gradel_btn" th:data-parameter1="*{classid}" th:onclick="GetAction_Class(this.getAttribute('data-parameter1'))"></button>
-				</div>
-			</div>
-		</div>
-        
+        <div class="grade">
+            <div th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
+                <div>
+                    <button type="button" class="gradel_btn" th:text="${list_schoolyear} + 年"
+                        th:value="${list_schoolyear}" th:data-parameter1="${list_schoolyear}"
+                        th:onclick="clickGrade(this.getAttribute('data-parameter1'))"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="big_list_selectclass" class="class">
+            <div id="small_list_selectclass">
+                <div th:each="list_classEntity : ${list_classEntity}" th:object="${list_classEntity}"
+                    class="bigsmall_list_selectclass">
+                    <button type="submit" th:text="*{schoolclass} + 組" class="list_class gradel_btn"
+                        th:data-parameter1="*{classid}"
+                        th:onclick="GetAction_Class(this.getAttribute('data-parameter1'))"></button>
+                </div>
+            </div>
+        </div>
+
     </main>
-    
+
     <!-- radioボタンverデザイン -->
-    <!-- <main>  
+    <!-- <main>
         <h2>学年を選択</h2>
         <div class="grade" th:each="list_schoolyear : ${list_schoolyear}" id="list_schoolyear">
             <input id="grade1" type="radio" name="grade" class="radiobutton">
@@ -122,7 +129,7 @@
         </div>
     </main>-->
 
-   
+
 </body>
 
 </html>
