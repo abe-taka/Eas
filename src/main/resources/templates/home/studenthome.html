@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html lang="ja">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>名称未設定</title>
 
     <link rel="stylesheet" href="/css/reset.css">
@@ -43,6 +43,14 @@
         })(document);
     </script>
 
+	<script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<!-- ajax -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/js/home_student.js"></script>
 </head>
 
 <body>
