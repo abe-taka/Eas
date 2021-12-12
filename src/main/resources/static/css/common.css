@@ -136,4 +136,19 @@ main {
   grid-area: main;
   overflow-y: auto;
 }
+
+main::-webkit-scrollbar {
+  width: 16px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: #FCC2D7;
+  border-radius: 100vh;
+}
+
+main::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: #fce8ef;
+  border-radius: 100vh;
+}
 /*# sourceMappingURL=common.css.map */

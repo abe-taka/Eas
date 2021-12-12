@@ -108,23 +108,36 @@ $shadow: #e7e2f75d 0 24px 40px;
     }
 }
 
+@mixin scrollbar {
+    width: 16px;
+}
+
+@mixin scrollbar-thumb {
+    background-color: #FCC2D7;
+    border-radius: 100vh;
+}
+
+@mixin scrollbar-track {
+    width: 3px;
+    background-color: #fce8ef;
+    border-radius: 100vh;
+}
+
 //コンテンツエリア
 main {
     grid-area: main;
     overflow-y: auto;
 
-    @mixin scrollbar {
-        width: 16px;
+
+    &::-webkit-scrollbar {
+        @include scrollbar;
     }
 
-    @mixin scrollbar-thumb {
-        background-color: #FCC2D7;
-        border-radius: 100vh;
+    &::-webkit-scrollbar-thumb {
+        @include scrollbar-thumb;
     }
 
-    @mixin scrollbar-track {
-        width: 3px;
-        background-color: #fce8ef;
-        border-radius: 100vh;
+    &::-webkit-scrollbar-track {
+        @include scrollbar-track;
     }
 }
