@@ -137,4 +137,22 @@ public class RestHomeController {
 			return "error";
 		}
 	}
+	
+	@PostMapping(value="/rest/delete_sessionid")
+	public String RestDeleteSessionid() {
+		try {
+			//メールアドレスを取得
+			String session_mail = session_manage.getSession_mail();
+			//学生の情報を取得
+			StudentEntity studentEntity = new StudentEntity();
+			studentEntity = studentRepository.SearchStudent(session_mail);
+			//セッションidの削除
+			sessionRepository.deleteByStudent(studentEntity);
+			
+			return "0";
+		}catch(Exception e) {
+			System.out.println("[Rest]RestDeleteSessionid　：　" + e);
+			return "error";
+		}	
+	}
 }
