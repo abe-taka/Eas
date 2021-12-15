@@ -137,7 +137,6 @@ public class SocketController {
 			String response_message = json.ObjectToJSON(new SendNotice(student_name,student_no));
 			// 送信先ユーザーに送信
 			messagingTemplate.convertAndSendToUser(getNotice.getTeacher_sessionid(), "/queue/notice", response_message);
-			System.out.println("##response_message##" + response_message);
 		}
 
 	// 一括退出
