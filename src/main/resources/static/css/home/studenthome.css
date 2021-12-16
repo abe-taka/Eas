@@ -27,16 +27,32 @@ header {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1/2;
-  text-align: end;
+}
+
+header form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 24px;
   /* ログアウトボタン */
 }
 
-header button {
+header form h2 {
+  font-size: 14px;
+}
+
+header form button {
   cursor: pointer;
   padding: 10px 24px;
   border-radius: 100vh;
   border: none;
-  background-color: #FFDEEB;
+  background-color: #ffdeeb;
   color: #3d3d3d;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -102,12 +118,20 @@ header button {
 }
 
 .navigation nav ul li a {
-  cursor: pointer;
   display: block;
+  cursor: pointer;
   font-weight: 700;
   padding: 24px 0 24px 24px;
   border-radius: 100vh;
   text-decoration: none;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.navigation nav ul li:hover {
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  color: #faa2c1;
 }
 
 .navigation nav ul .active {
@@ -116,13 +140,13 @@ header button {
 }
 
 .navigation nav ul .active a {
-  background-color: #FFF0F6;
+  background-color: #fff0f6;
   position: relative;
-  color: #FAA2C1;
+  color: #faa2c1;
 }
 
 .navigation nav ul .active a::before {
-  content: "";
+  content: '';
   width: 70%;
   height: 80%;
   position: absolute;
@@ -160,7 +184,7 @@ main {
 }
 
 main ul {
-  background-color: #fff;
+  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -178,7 +202,7 @@ main ul li {
 }
 
 main ul .main-date {
-  background-color: #FFDEEB;
+  background-color: #ffdeeb;
   border-radius: 16px;
 }
 
