@@ -5,24 +5,30 @@
     <title>問題作成</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/issue/issue.css">
 
+    <link rel="stylesheet" href="../../static/css/reset.css"><!-- 後で消す -->
+    <link rel="stylesheet" href="../../static/css/common.css"><!-- 後で消す -->
+    <link rel="stylesheet" href="../../static/css/issue/issue.css"><!-- 後で消す -->
+
     <!-- Google Fonts -->
-    <script>
-        (function (d) {
+    <script>(function (d) {
             var config = {
                 kitId: 'fcl7ixt',
                 scriptTimeout: 3000,
                 async: true
-            },
+            }
+
+                ,
                 h = d.documentElement,
                 t = setTimeout(function () {
                     h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-                }, config.scriptTimeout),
+                }
+
+                    , config.scriptTimeout),
                 tk = d.createElement("script"),
                 f = false,
                 s = d.getElementsByTagName("script")[0],
@@ -30,17 +36,26 @@
             h.className += " wf-loading";
             tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
             tk.async = true;
+
             tk.onload = tk.onreadystatechange = function () {
                 a = this.readyState;
                 if (f || a && a != "complete" && a != "loaded") return;
                 f = true;
                 clearTimeout(t);
+
                 try {
                     Typekit.load(config)
-                } catch (e) { }
-            };
+                }
+
+                catch (e) { }
+            }
+
+                ;
             s.parentNode.insertBefore(tk, s)
-        })(document);
+        }
+
+        )(document);
+
     </script>
 
     <!-- Font Awesome -->
@@ -48,20 +63,14 @@
 
     <!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
     <script src="/js/main.js"></script>
-
 </head>
 
 <body>
-
     <header>
         <h2 th:text="${session_name} + さん"></h2>
-        <form th:action="@{/logout}" method="post">
-            <button type="submit">ログアウト</button>
-        </form>
+        <form th:action="@{/logout}" method="post"><button type="submit">ログアウト</button></form>
     </header>
-
     <div class="navigation">
         <div><img src="/images/eas_logo.svg" alt="Eas"></div>
         <nav>
@@ -80,51 +89,41 @@
         <section id="issue_upload">
             <form th:action="@{/homework}" th:object="${HomeworkForm}" method="post" enctype="multipart/form-data">
                 <ul>
+                    <li><label><input name="files" type="file" multiple="multiple" />ファイルを選択</label></li>
                     <li>
-                        <input name="files" type="file" multiple="multiple" />
-                    </li>
-                    <li>
-                        <p>解答の数を選択</p>
-                        <input name="text" type="text" th:field="*{answercolumn_num}" />
+                        <p>解答の数を選択</p><input name="text" type="text" th:field="*{answercolumn_num}" />
                     </li>
                 </ul>
-
                 <!-- 科目選択 -->
                 <ul>
                     <li>
                         <p>科目を選択</p>
-                        <div class="cp_ipselect cp_sl01">
-                            <select name="homework_subject">
+                        <div class="cp_ipselect cp_sl01"><select name="homework_subject">
                                 <option th:value="国語" th:text="国語"></option>
                                 <option th:value="算数" th:text="算数"></option>
                                 <option th:value="理科" th:text="理科"></option>
                                 <option th:value="社会" th:text="社会"></option>
                                 <option th:value="英語" th:text="英語"></option>
                                 <option th:value="その他" th:text="その他"></option>
-                            </select>
-                        </div>
+                            </select></div>
                     </li>
                 </ul>
-
                 <!-- アップロードボタン -->
                 <ul>
                     <li><input type="submit" value="アップロード" /></li>
                 </ul>
             </form>
-            <div th:if="${msg}">
-                <span th:text="${msg}"></span>
-            </div>
+            <div th:if="${msg}"><span th:text="${msg}"></span></div>
         </section>
-        <div><a th:href="@{/homeworklist}">問題管理へ　></a></div>
+        <div><a th:href="@{/homeworklist}">問題管理へ></a></div>
     </main>
-
-    <script>
-        $('input').on('change', function () {
+    <script>$('input').on('change', function () {
             var file = $(this).prop('files')[0];
             $('p.fileselect').text(file.name);
-        });
-    </script>
+        }
 
+        );
+    </script>
 </body>
 
 </html>

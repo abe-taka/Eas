@@ -1,7 +1,16 @@
-form {
-    background-color: #fff;
+form{
+    display:flex;
+    flex-direction:column;
+    background-color:#ffffff;
+    gap:24px;
 
-    input[type=file] {
-        border: none;
+    label{
+        padding:16px;
+        background-color:#faa2c1;
+        color:#ffffff;
+
+        input[type=file]{
+            display:none;
+        }
     }
 }

@@ -1,34 +1,28 @@
 @charset "UTF-8";
 /* 共通のスタイル */
 body {
-  background-image: url("/images/gura.jpg");
-  background-size: cover;
   display: -ms-grid;
   display: grid;
+  height: 100vh;
+  padding: 40px;
+  background-image: url("/images/gura.jpg");
+  background-size: cover;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: source-han-sans-japanese, sans-serif;
+      grid-template-areas: "navi header" "navi main";
   -ms-grid-columns: 30vh 1fr;
       grid-template-columns: 30vh 1fr;
   -ms-grid-rows: 8vh 1fr;
       grid-template-rows: 8vh 1fr;
-      grid-template-areas: "navi header" "navi main";
-  height: 100vh;
-  padding: 40px;
-  font-family: source-han-sans-japanese, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
+button, input, select, textarea {
   font-size: 100%;
+  font-family: inherit;
 }
 
 header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: header;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,23 +33,21 @@ header {
       -ms-flex-align: center;
           align-items: center;
   gap: 16px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
 }
 
 header button {
-  border: none;
   padding: 8px 24px;
-  background-color: #FAA2C1;
-  color: #fff;
-  font-weight: 700;
+  border: none;
   border-radius: 100vh;
+  background-color: #faa2c1;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .navigation {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  grid-area: navi;
-  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,11 +59,16 @@ header button {
   border-radius: 40px;
   -webkit-box-shadow: #e7e2f75d 0 24px 40px;
           box-shadow: #e7e2f75d 0 24px 40px;
+  background-color: #ffffff;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: navi;
 }
 
 .navigation div {
-  text-align: center;
   margin-bottom: 48px;
+  text-align: center;
 }
 
 .navigation nav {
@@ -81,7 +78,6 @@ header button {
 }
 
 .navigation nav ul {
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,49 +88,59 @@ header button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 100%;
 }
 
 .navigation nav ul li {
-  border-radius: 100vh;
   position: relative;
   z-index: 1;
+  border-radius: 100vh;
 }
 
 .navigation nav ul li a {
   display: block;
-  text-decoration: none;
-  color: #000;
-  font-size: 14px;
   padding: 20px 24px;
+  color: #000000;
+  font-size: 14px;
   letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navigation nav ul li a:hover {
+  color: #faa2c1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .navigation nav ul .active a {
-  color: #FAA2C1;
-  background-color: #FFF0F6;
   border-radius: 100vh;
+  background-color: #fff0f6;
+  color: #faa2c1;
 }
 
 .navigation nav ul .active a::before {
-  content: "";
-  width: 70%;
-  height: 80%;
   position: absolute;
-  background-color: #ffd7e5;
   top: 40%;
   left: 50%;
+  z-index: -1;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
-  z-index: -1;
+  width: 70%;
+  height: 80%;
+  background-color: #ffd7e5;
+  content: '';
   -webkit-filter: blur(16px);
           filter: blur(16px);
 }
 
 main {
+  overflow-y: auto;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: main;
-  overflow-y: auto;
 }
 
 main::-webkit-scrollbar {
@@ -142,13 +148,13 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-thumb {
-  background-color: #FCC2D7;
   border-radius: 100vh;
+  background-color: #fcc2d7;
 }
 
 main::-webkit-scrollbar-track {
   width: 3px;
-  background-color: #fce8ef;
   border-radius: 100vh;
+  background-color: #fce8ef;
 }
 /*# sourceMappingURL=common.css.map */

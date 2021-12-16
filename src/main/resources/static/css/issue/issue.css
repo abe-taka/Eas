@@ -1,8 +1,22 @@
 form {
-  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  gap: 24px;
 }
 
-form input[type=file] {
-  border: none;
+form label {
+  padding: 16px;
+  background-color: #faa2c1;
+  color: #ffffff;
+}
+
+form label input[type=file] {
+  display: none;
 }
 /*# sourceMappingURL=issue.css.map */
