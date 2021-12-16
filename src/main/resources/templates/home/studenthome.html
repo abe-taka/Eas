@@ -69,10 +69,9 @@
         <div class="logo"><img src="/images/eas_logo.svg" alt="Eas"></div>
         <nav>
             <ul>
-                <li class="active"><a th:href="@{/home/teacherhome}">ホーム</a></li>
-                <li><a th:data-parameter1="${classid}"
-                        th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</a></li>
-                <li><a th:href="@{/homeworksubmi}">提出状況</a></li>
+                <li class="active"><a th:href="@{/home/studenthome}">ホーム</a></li>
+                <li><a th:data-parameter1="${classid}" th:onclick="ConfirmEnterTime(this.getAttribute('data-parameter1'));">授業画面</a></li>
+                <li><a th:onclick="Homeworksubmi();">提出状況</a></li>
             </ul>
         </nav>
     </div>
@@ -85,34 +84,9 @@
             <li>Subject</li>
         </ul> -->
         <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
-        </ul>
-        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
-        </ul>
-        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
-        </ul>
-        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
-        </ul>
-        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
-        </ul>
-        <ul th:each="TimetableList : ${TimetableList}" th:object="${TimetableList}">
-            <li class="main-date" th:text="${date}">10/11</li>
-            <li th:text="*{timetabletime.timeperiod} + 限目">1限目</li>
-            <li th:text="*{subjectname}">国語</li>
+            <li class="main-date" th:text="${date}"></li>
+            <li th:text="*{timetabletime.timeperiod} + 限目"></li>
+            <li th:text="*{subjectname}"></li>
         </ul>
     </main>
 
@@ -134,7 +108,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" th:onclick="Delete_session();">閉じる</button>
                         <form th:action="@{/class/enterprocess}" method="post">
                             <button id="send" class="btn btn-default" type="submit">参加する</button>
                             <input type="hidden" th:value="${classid}" name="classid">

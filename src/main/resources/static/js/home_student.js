@@ -222,3 +222,21 @@ function ConfirmEnterTime(classid){
 		console.log('[$.ajax]"/rest/confirm_entertime" Fail');
 	});
 }
+
+//提出状況に遷移
+function Homeworksubmi(){
+	window.location.href = '/homeworksubmi';
+}
+
+function Delete_session(){
+	//トークンの取得
+	const token = $("meta[name='_csrf']").attr("content");
+	
+	$.ajax({
+		type : "POST",
+		url : "/rest/delete_sessionid",
+		headers : {
+			"X-CSRF-TOKEN" : token
+		}
+	})
+}
