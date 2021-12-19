@@ -77,24 +77,28 @@
 
     <main>
         <section id="issue_manager">
-            <p id="title">問題管理</p>
             <ul>
                 <li th:each="book:${bookAll}">
                     <form th:action="@{/homeworkmovesubmission}" th:object="${HomeworkSubmiForm}" method="POST">
                         <a th:text="${book.homework_filename}" th:href="@{'pdf/' + ${book.homework_filename}}"
                             th:id="${book.homework_filename}" name="homework_id" th:value="${book.homework_filename}"
                             target="_blank" rel="noopener noreferrer"></a>
+
                         <input type="hidden" name="homework_id" th:value="${book.homework_id}">
+
                         <input type="button" class="deleteBtn" value="×"
                             th:onclick="openBtn('delete'),test1(this.id,this.homeworkid)"
                             th:id="${book.homework_filename}" th:homeworkid="${book.homework_id}" />
-                        <label class="upload">アップロード<span>⬆</span>
+
+                        <label class="upload">
                             <input class="uploadBtn" type="button"
                                 th:onclick="test1(this.id,this.value),openBtn('upload')"
-                                th:id="${book.homework_filename}" th:value="${book.homework_id}" value="アップロード" />
+                                th:id="${book.homework_filename}" th:value="アップロード" />
+                            <!-- th:value="${book.homework_id}"  -->
                         </label>
-                        <label class="edit">編集<i class="fas fa-pen"></i><input class="updateBtn" type="button"
-                                onclick="openBtn('update')" /></label>
+
+                        <label class="edit"><input class="updateBtn" type="button" onclick="openBtn('update')"
+                                value="編集" /></label>
                     </form>
                 </li>
             </ul>

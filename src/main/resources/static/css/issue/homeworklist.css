@@ -1,14 +1,19 @@
 #issue_manager ul {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
+  -ms-grid-columns: auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto;
   justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   list-style: none;
+  gap: 16px;
 }
 
 #issue_manager ul li {
   background-color: #ffffff;
+  border-radius: 8px;
 }
 
 #issue_manager ul li form {
@@ -18,7 +23,8 @@
       grid-template-areas: 'a delete' 'upload edit';
   -ms-grid-columns: auto auto;
       grid-template-columns: auto auto;
-  padding: 8px;
+  gap: 16px;
+  padding: 16px;
 }
 
 #issue_manager ul li form a {
@@ -27,14 +33,25 @@
   grid-area: a;
   -ms-grid-column-align: start;
       justify-self: start;
+  text-decoration: none;
+  color: #000000;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 #issue_manager ul li form .deleteBtn {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: delete;
-  -ms-grid-column-align: start;
-      justify-self: start;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  border: none;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 #issue_manager ul li form .upload {
@@ -45,12 +62,28 @@
       justify-self: start;
 }
 
+#issue_manager ul li form .upload input[type=button] {
+  border: none;
+  background-color: #ffdeeb;
+  padding: 8px 16px;
+  border-radius: 100vh;
+  cursor: pointer;
+}
+
 #issue_manager ul li form .edit {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: edit;
   -ms-grid-column-align: start;
       justify-self: start;
+}
+
+#issue_manager ul li form .edit input[type=button] {
+  border: none;
+  background-color: #ffdeeb;
+  padding: 8px 16px;
+  border-radius: 100vh;
+  cursor: pointer;
 }
 
 #modal_upload {
@@ -63,5 +96,29 @@
 
 #modal_delete {
   display: none;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+}
+
+#modal_delete input[type=button] {
+  margin-bottom: 16px;
+  border: none;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  color: #000000;
+  cursor: pointer;
+}
+
+#modal_delete p {
+  margin-bottom: 16px;
 }
 /*# sourceMappingURL=homeworklist.css.map */
