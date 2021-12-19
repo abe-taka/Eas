@@ -91,10 +91,11 @@
                         <label class="upload">アップロード<span>⬆</span>
                             <input class="uploadBtn" type="button"
                                 th:onclick="test1(this.id,this.value),openBtn('upload')"
-                                th:id="${book.homework_filename}" th:value="${book.homework_id}" />
+                                th:id="${book.homework_filename}" th:value="${book.homework_id}" value="アップロード" />
                         </label>
                         <label class="edit">編集<i class="fas fa-pen"></i><input class="updateBtn" type="button"
                                 onclick="openBtn('update')" /></label>
+                    </form>
                 </li>
             </ul>
         </section>

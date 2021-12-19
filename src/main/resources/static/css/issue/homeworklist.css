@@ -1,0 +1,67 @@
+#issue_manager ul {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  justify-items: center;
+  list-style: none;
+}
+
+#issue_manager ul li {
+  background-color: #ffffff;
+}
+
+#issue_manager ul li form {
+  display: -ms-grid;
+  display: grid;
+  width: auto;
+      grid-template-areas: 'a delete' 'upload edit';
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  padding: 8px;
+}
+
+#issue_manager ul li form a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#issue_manager ul li form .deleteBtn {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: delete;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#issue_manager ul li form .upload {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: upload;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#issue_manager ul li form .edit {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: edit;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#modal_upload {
+  display: none;
+}
+
+#modal_update {
+  display: none;
+}
+
+#modal_delete {
+  display: none;
+}
+/*# sourceMappingURL=homeworklist.css.map */

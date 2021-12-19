@@ -1,0 +1,49 @@
+#issue_manager{
+    p{
+    }
+    ul{
+        display:grid;
+        grid-template-columns:auto auto auto;
+        justify-items:center;
+        list-style:none;
+        li{
+            background-color:#ffffff;
+            form{
+                display:grid;
+                width:auto;
+                grid-template-areas:'a delete'
+                'upload edit';
+                grid-template-columns:auto auto;
+                padding:8px;
+                a{
+                    grid-area:a;
+                    justify-self:start;
+                }
+                .deleteBtn{
+                    grid-area:delete;
+                    justify-self:start;
+                }
+                .upload{
+                    grid-area:upload;
+                    justify-self:start;
+                }
+                .edit{
+                    grid-area:edit;
+                    justify-self:start;
+                }
+            }
+        }
+    }
+}
+
+
+
+#modal_upload{
+    display:none;
+}
+#modal_update{
+    display:none;
+}
+#modal_delete{
+    display:none;
+}
