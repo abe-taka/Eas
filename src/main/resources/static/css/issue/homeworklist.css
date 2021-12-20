@@ -86,16 +86,70 @@
   cursor: pointer;
 }
 
+.close {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  background: none;
+  font-size: 18px;
+}
+
 #modal_upload {
   display: none;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  bottom: 24px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 16px;
+}
+
+#modal_upload div {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+#modal_upload div select {
+  border: none;
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+#modal_upload #upload {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 100vh;
+  background-color: #ffdeeb;
 }
 
 #modal_update {
   display: none;
-}
-
-#modal_delete {
-  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: absolute;
   bottom: 24px;
   left: 50%;
@@ -107,18 +161,101 @@
           box-shadow: #c4c4c45d 0 24px 40px;
   border-radius: 16px;
   border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 16px;
+}
+
+#modal_update ul {
+  list-style: none;
+}
+
+#modal_update .update_select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+
+#modal_update .update_select li {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#modal_update .update_select li p {
+  margin-bottom: 8px;
+}
+
+#modal_update .update_select li input {
+  text-align: center;
+  width: 6em;
+  border: none;
+  padding: 1em;
+  background-color: #f8f9fa;
+}
+
+#modal_update .update_button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 100vh;
+}
+
+#modal_delete {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 16px;
 }
 
 #modal_delete input[type=button] {
-  margin-bottom: 16px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   border: none;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
   color: #000000;
   cursor: pointer;
+  background: none;
+  font-size: 18px;
 }
 
 #modal_delete p {
-  margin-bottom: 16px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#modal_delete input[type=submit] {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 100vh;
 }
 /*# sourceMappingURL=homeworklist.css.map */

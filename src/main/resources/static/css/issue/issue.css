@@ -10,13 +10,13 @@ form {
   gap: 24px;
 }
 
-form label {
+form .issue_upload_file li label {
   padding: 16px;
   background-color: #faa2c1;
   color: #ffffff;
 }
 
-form label input[type=file] {
+form .issue_upload_file li label input[type=file] {
   display: none;
 }
 /*# sourceMappingURL=issue.css.map */

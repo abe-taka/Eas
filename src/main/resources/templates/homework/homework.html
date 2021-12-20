@@ -84,7 +84,7 @@
     <main>
         <section id="issue_upload">
             <form th:action="@{/homework}" th:object="${HomeworkForm}" method="post" enctype="multipart/form-data">
-                <ul>
+                <ul class="issue_upload_file">
                     <li><label><input name="files" type="file" multiple="multiple" />ファイルを選択</label></li>
                     <li>
                         <p>解答の数を選択</p><input name="text" type="text" th:field="*{answercolumn_num}" />

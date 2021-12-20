@@ -4,13 +4,17 @@ form{
     background-color:#ffffff;
     gap:24px;
 
-    label{
-        padding:16px;
-        background-color:#faa2c1;
-        color:#ffffff;
+    .issue_upload_file{
+        li{
+            label{
+                padding:16px;
+                background-color:#faa2c1;
+                color:#ffffff;
 
-        input[type=file]{
-            display:none;
+                input[type=file]{
+                    display:none;
+                }
+            }
         }
     }
 }

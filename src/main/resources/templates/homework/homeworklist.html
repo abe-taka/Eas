@@ -141,10 +141,11 @@
 
     <div id="modal_update">
         <input type="button" class="close" onclick="closeBtn('update')" value="×">
-        <ul>
-            <li><label>ファイル選択<input type="file" /></label></li>
+        <ul class="update_file">
+            <li><input type="file" /></li>
         </ul>
-        <ul>
+
+        <ul class="update_select">
             <li>
                 <p>解答の数を選択</p>
                 <input type="text" />
@@ -154,8 +155,9 @@
                 <input type="text" />
             </li>
         </ul>
+
         <ul>
-            <li><input type="button" value="アップデート" /></li>
+            <li><input type="button" class="update_button" value="アップデート" /></li>
         </ul>
     </div>
 
