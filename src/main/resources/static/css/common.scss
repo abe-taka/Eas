@@ -86,7 +86,6 @@ $shadow:#e7e2f75d 0 24px 40px;
                     cursor:pointer;
                     border-radius:100vh;
                     position:relative;
-                    font-weight:700;
                 }
             }
 
@@ -95,6 +94,7 @@ $shadow:#e7e2f75d 0 24px 40px;
                     background-color:#495057;
                     background-image:-webkit-linear-gradient(left,#faa2c1 0,#faa2c1 50%,transparent 50%);
                     background-position:100% 0;
+                    font-weight:700;
                     background-size:200% 200%;
                     color:transparent;
                     -webkit-transition:0.1s 0.2s;

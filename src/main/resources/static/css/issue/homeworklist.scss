@@ -7,8 +7,12 @@
         list-style:none;
         gap:16px;
         li{
-            background-color:#ffffff;
-            border-radius:8px;
+            background:rgba( 255, 255, 255, 0.8 );
+            box-shadow:0 8px 32px 0 rgba( 31, 38, 135, 0.1 );
+                    backdrop-filter:blur( 4.5px );
+            -webkit-backdrop-filter:blur( 4.5px );
+            border-radius:10px;
+            border:1px solid rgba( 255, 255, 255, 0.18 );
             form{
                 display:grid;
                 width:auto;
@@ -24,6 +28,9 @@
                     text-decoration:none;
                     color:#000000;
                     align-self:center;
+                    overflow:hidden;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
                 }
 
                 .deleteBtn{
@@ -43,10 +50,15 @@
 
                     input[type=button]{
                         border:none;
-                        background-color:#ffdeeb;
+                        background-color:#fcc2d7;
+                        color:#ffffff;
                         padding:8px 16px;
                         border-radius:100vh;
                         cursor:pointer;
+                        transition:0.3s;
+
+                        &:hover{
+                        }
                     }
                 }
 

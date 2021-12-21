@@ -12,8 +12,13 @@
 }
 
 #issue_manager ul li {
-  background-color: #ffffff;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 #issue_manager ul li form {
@@ -38,6 +43,9 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 #issue_manager ul li form .deleteBtn {
@@ -64,10 +72,13 @@
 
 #issue_manager ul li form .upload input[type=button] {
   border: none;
-  background-color: #ffdeeb;
+  background-color: #fcc2d7;
+  color: #ffffff;
   padding: 8px 16px;
   border-radius: 100vh;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 #issue_manager ul li form .edit {
