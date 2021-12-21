@@ -126,5 +126,6 @@ form .issue_upload_btn li input[type=submit] {
   padding: 10px 24px;
   background-color: #faa2c1;
   color: #ffffff;
+  cursor: pointer;
 }
 /*# sourceMappingURL=issue.css.map */

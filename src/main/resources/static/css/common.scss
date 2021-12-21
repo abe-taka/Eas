@@ -36,6 +36,12 @@ header{
         background-color:#faa2c1;
         color:#ffffff;
         font-weight:700;
+        cursor:pointer;
+        transition:0.3s;
+        &:hover{
+            background-color:#fcc2d7;
+            transition:0.3s;
+        }
     }
 }
 
@@ -45,7 +51,7 @@ $shadow:#e7e2f75d 0 24px 40px;
 .navigation{
     display:flex;
     flex-direction:column;
-    padding:24px;
+    padding:24px 24px 40px 24px;
     border-radius:40px;
     box-shadow:$shadow;
     background-color:#ffffff;
@@ -74,16 +80,33 @@ $shadow:#e7e2f75d 0 24px 40px;
                 a{
                     display:block;
                     padding:20px 24px;
-                    color:#000000;
                     font-size:14px;
                     letter-spacing:0.05em;
                     text-decoration:none;
                     cursor:pointer;
-                    transition:0.3s;
+                    border-radius:100vh;
+                    position:relative;
+                    font-weight:700;
+                }
+            }
 
+            :not(.active){
+                a{
+                    background-color:#495057;
+                    background-image:-webkit-linear-gradient(left,#faa2c1 0,#faa2c1 50%,transparent 50%);
+                    background-position:100% 0;
+                    background-size:200% 200%;
+                    color:transparent;
+                    -webkit-transition:0.1s 0.2s;
+                            transition:0.1s 0.2s;
+                    -webkit-background-clip:text;
+                            background-clip:text;
+                    cursor:pointer;
+                            transition:1s;
                     &:hover{
-                        color:#faa2c1;
-                        transition:0.3s;
+                        background-position:0 0;
+                        color:transparent;
+                        transition:1s;
                     }
                 }
             }

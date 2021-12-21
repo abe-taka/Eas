@@ -128,7 +128,7 @@
   border: 1px solid #f1f3f5;
   width: 30%;
   text-align: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 #modal_upload div {
@@ -232,7 +232,7 @@
   border: 1px solid #f1f3f5;
   width: 30%;
   text-align: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 #modal_delete input[type=button] {
