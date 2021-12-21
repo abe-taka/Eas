@@ -1,3 +1,7 @@
+#issue_upload {
+  height: 100%;
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,17 +10,121 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #ffffff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+  height: 100%;
+}
+
+form ul {
+  list-style: none;
+}
+
+form ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form .issue_upload_file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 24px;
 }
 
+form .issue_upload_file li {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .issue_upload_file li p {
+  margin-bottom: 8px;
+}
+
+form .issue_upload_file li input[type=text] {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
 form .issue_upload_file li label {
-  padding: 16px;
-  background-color: #faa2c1;
-  color: #ffffff;
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 100vh;
 }
 
 form .issue_upload_file li label input[type=file] {
   display: none;
+}
+
+form .issue_upload_subject li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .issue_upload_subject li p {
+  margin-bottom: 8px;
+}
+
+form .issue_upload_subject li div select {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+form .issue_upload_subject li div select option {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+form .issue_upload_btn li input[type=submit] {
+  border: none;
+  border-radius: 100vh;
+  padding: 10px 24px;
+  background-color: #faa2c1;
+  color: #ffffff;
 }
 /*# sourceMappingURL=issue.css.map */

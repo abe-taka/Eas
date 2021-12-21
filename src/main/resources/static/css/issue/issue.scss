@@ -1,19 +1,97 @@
+#issue_upload{
+    height:100%;
+}
+
 form{
     display:flex;
     flex-direction:column;
-    background-color:#ffffff;
+    justify-content:center;
+    align-items:center;
     gap:24px;
+    height:100%;
+
+    ul{
+        list-style:none;
+
+        li{
+            display:flex;
+        }
+    }
 
     .issue_upload_file{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:24px;
         li{
+            justify-content:center;
+            flex-direction:column;
+            align-items:center;
+
+            p{
+                margin-bottom:8px;
+            }
+
+            input[type=text]{
+                border:none;
+                box-sizing:content-box;
+                padding:1em;
+                width:5em;
+                text-align:center;
+                border-radius:4px;
+            }
+
             label{
-                padding:16px;
-                background-color:#faa2c1;
-                color:#ffffff;
+                display:inline-block;
+                padding:10px 24px;
+                background-color:#ffffff;
+                cursor:pointer;
+                border-radius:100vh;
 
                 input[type=file]{
                     display:none;
                 }
+            }
+        }
+    }
+
+    .issue_upload_subject{
+        li{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            p{
+                margin-bottom:8px;
+            }
+            div{
+                select{
+                    border:none;
+                    box-sizing:content-box;
+                    padding:1em;
+                    width:5em;
+                    text-align:center;
+                    border-radius:4px;
+                    option{
+                        border:none;
+                        box-sizing:content-box;
+                        padding:1em;
+                        width:5em;
+                        text-align:center;
+                        border-radius:4px;
+                    }
+                }
+            }
+        }
+    }
+
+    .issue_upload_btn{
+        li{
+            input[type=submit]{
+                border:none;
+                border-radius:100vh;
+                padding:10px 24px;
+                background-color:#faa2c1;
+                color:#ffffff;
             }
         }
     }

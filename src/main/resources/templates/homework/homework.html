@@ -84,34 +84,45 @@
     <main>
         <section id="issue_upload">
             <form th:action="@{/homework}" th:object="${HomeworkForm}" method="post" enctype="multipart/form-data">
+
                 <ul class="issue_upload_file">
-                    <li><label><input name="files" type="file" multiple="multiple" />ファイルを選択</label></li>
+                    <li>
+                        <label for="file">
+                            <input name="files" type="file" multiple="multiple" id="file" />
+                            ファイルを選択
+                        </label>
+                    </li>
                     <li>
                         <p>解答の数を選択</p><input name="text" type="text" th:field="*{answercolumn_num}" />
                     </li>
                 </ul>
+
                 <!-- 科目選択 -->
-                <ul>
+                <ul class="issue_upload_subject">
                     <li>
                         <p>科目を選択</p>
-                        <div class="cp_ipselect cp_sl01"><select name="homework_subject">
+                        <div class="cp_ipselect cp_sl01">
+                            <select name="homework_subject">
                                 <option th:value="国語" th:text="国語"></option>
                                 <option th:value="算数" th:text="算数"></option>
                                 <option th:value="理科" th:text="理科"></option>
                                 <option th:value="社会" th:text="社会"></option>
                                 <option th:value="英語" th:text="英語"></option>
                                 <option th:value="その他" th:text="その他"></option>
-                            </select></div>
+                            </select>
+                        </div>
                     </li>
                 </ul>
+
                 <!-- アップロードボタン -->
-                <ul>
+                <ul class="issue_upload_btn">
                     <li><input type="submit" value="アップロード" /></li>
                 </ul>
+
             </form>
             <div th:if="${msg}"><span th:text="${msg}"></span></div>
         </section>
-        <div><a th:href="@{/homeworklist}">問題管理へ></a></div>
+        <!-- <div><a th:href="@{/homeworklist}">問題管理へ></a></div> -->
     </main>
     <script>$('input').on('change', function () {
             var file = $(this).prop('files')[0];

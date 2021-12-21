@@ -3,7 +3,7 @@ function openBtn(event) {
     const modalFilter = document.getElementById("filter");
 
     modalWindow.style.display = "flex";
-    modalFilter.style.display = "block";
+    modalFilter.style.display = "flex";
 }
 
 function closeBtn(event) {

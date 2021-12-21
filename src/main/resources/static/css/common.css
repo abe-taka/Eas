@@ -4,7 +4,7 @@ body {
   display: -ms-grid;
   display: grid;
   height: 100vh;
-  padding: 40px;
+  padding: 24px;
   background-image: url("/images/gura.jpg");
   background-size: cover;
   font-weight: 700;
