@@ -37,9 +37,11 @@ header{
         color:#ffffff;
         font-weight:700;
         cursor:pointer;
-        transition:0.3s;
+        transition:all 0.3s ease 0s;
+
         &:hover{
             background-color:#fcc2d7;
+            transform:translateY(-2px);
             transition:0.3s;
         }
     }
@@ -116,6 +118,7 @@ $shadow:#e7e2f75d 0 24px 40px;
                     border-radius:100vh;
                     background-color:#fff0f6;
                     color:#faa2c1;
+                    transition:all 0.3s ease 0;
 
                     &::before{
                         position:absolute;

@@ -73,10 +73,24 @@ form .issue_upload_file li input[type=text] {
 
 form .issue_upload_file li label {
   display: inline-block;
-  padding: 10px 24px;
+  padding: 1em 2em;
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 100vh;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+form .issue_upload_file li label:hover {
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+}
+
+form .issue_upload_file li label:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
 }
 
 form .issue_upload_file li label input[type=file] {
@@ -123,9 +137,23 @@ form .issue_upload_subject li div select option {
 form .issue_upload_btn li input[type=submit] {
   border: none;
   border-radius: 100vh;
-  padding: 10px 24px;
+  padding: 1em 2em;
   background-color: #faa2c1;
   color: #ffffff;
   cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+form .issue_upload_btn li input[type=submit]:hover {
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+}
+
+form .issue_upload_btn li input[type=submit]:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
 }
 /*# sourceMappingURL=issue.css.map */
