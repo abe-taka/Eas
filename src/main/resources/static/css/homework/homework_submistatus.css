@@ -1,1 +1,42 @@
-/* No CSS *//*# sourceMappingURL=homework_submistatus.css.map */
+select{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+ul.contents{
+	width: 80%;
+	height: 60px;
+	margin-left: 30px;
+	background-color: #fff;
+	border-radius: 20px;
+	
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+	li.itemselect{
+		margin-left: 30px;
+		list-style: none;
+	}
+		li.itemselect select{
+			box-sizing: border-box;
+			width: 80px;
+			height: 40px;
+			padding: 5px 15px;
+			letter-spacing: 4px;
+    		background-color: #F8F9FA;
+    		border-radius: 5px;
+		}
+		li.itemselect input{
+			display: block;
+			box-sizing: border-box;
+			width: 80px;
+			height: 40px;
+			padding: 5px 15px;
+			outline: none;
+			border: 1px solid#FFDEEB;
+			background: transparent;
+			border-radius: 5px;
+			cursor: pointer;
+		}

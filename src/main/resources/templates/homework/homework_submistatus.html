@@ -77,17 +77,19 @@
                 <form th:action="@{/homework_submistatus}" th:object="${ClassForm}" method="post">
 	                <ul class="contents">
 	                	<li class="itemselect">
-		                    <select name = "school_year">
-		                      <option th:value = "01" th:text="1年"></option>
-		                      <option th:value = "02" th:text="2年"></option>
-		                      <option th:value = "03" th:text="3年"></option>
-		                      <option th:value = "04" th:text="4年"></option>
-		                      <option th:value = "05" th:text="5年"></option>
-		                      <option th:value = "06" th:text="6年"></option>
-		                    </select>
+		                    <div>
+		                    	<select name = "school_year">
+			                      <option th:value = "01" th:text="1年"></option>
+			                      <option th:value = "02" th:text="2年"></option>
+			                      <option th:value = "03" th:text="3年"></option>
+			                      <option th:value = "04" th:text="4年"></option>
+			                      <option th:value = "05" th:text="5年"></option>
+			                      <option th:value = "06" th:text="6年"></option>
+			                    </select>
+		                    </div>
 		                </li>
 		                <li class="itemselect">
-		                	<label>
+	                		<div>
 		                		<select name = "school_class">
 			                      <option th:value = "01" th:text="1組"></option>
 			                      <option th:value = "02" th:text="2組"></option>
@@ -96,8 +98,7 @@
 			                      <option th:value = "05" th:text="5組"></option>
 			                      <option th:value = "06" th:text="6組"></option>
 			                    </select>
-			                    <i class="fas fa-chevron-down"></i>
-		                	</label>
+		                    </div>
 		                </li>
 		                <li class="itemselect">
 		                    <input type="submit" value="表示" class="btn-flat-border">
