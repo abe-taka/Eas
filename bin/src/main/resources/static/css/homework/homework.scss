@@ -32,6 +32,7 @@ body {
 header {
     padding: 16px;
     text-align: end;
+
     button {
         cursor: pointer;
         padding: 10px 24px;
@@ -50,6 +51,7 @@ header {
     grid-template-columns: 60% 38%;
     gap: 2%;
     height: 100%;
+
     //PDF
     .homeworkPdf {
         display: flex;
@@ -57,16 +59,20 @@ header {
         align-items: center;
         height: 100%;
         overflow-y: scroll;
+
         &::-webkit-scrollbar {
             @include scrollbar;
         }
+
         &::-webkit-scrollbar-thumb {
             @include scrollbar-thumb;
         }
+
         &::-webkit-scrollbar-track {
             @include scrollbar-track;
         }
     }
+
     //解答
     .homeworkAnswer {
         height: 100%;
@@ -74,29 +80,36 @@ header {
         grid-template-columns: 100%;
         grid-template-rows: 85% 13%;
         gap: 2%;
+
         .homeworkAnswerContainer {
             overflow-y: scroll;
             padding: 24px;
             display: flex;
             flex-direction: column;
             gap: 32px;
+
             &::-webkit-scrollbar {
                 @include scrollbar;
             }
+
             &::-webkit-scrollbar-thumb {
                 @include scrollbar-thumb;
             }
+
             &::-webkit-scrollbar-track {
                 @include scrollbar-track;
             }
+
             .homeworkAnswerArea {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
+
                 label {
                     width: 4em;
                 }
+
                 textarea {
                     width: 100%;
                     resize: none;
@@ -107,23 +120,28 @@ header {
                     background-color: #ffffff;
                     border-radius: 8px;
                     overflow-y: scroll;
+
                     &::-webkit-scrollbar {
                         @include scrollbar;
                     }
+
                     &::-webkit-scrollbar-thumb {
                         @include scrollbar-thumb;
                     }
+
                     &::-webkit-scrollbar-track {
                         @include scrollbar-track;
                     }
                 }
             }
         }
+
         .homeworkSubmit {
             padding: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
+
             input {
                 border: none;
                 background-color: #FCC2D7;

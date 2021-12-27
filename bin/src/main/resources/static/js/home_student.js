@@ -197,7 +197,7 @@ function ConfirmEnterTime(classid){
 		function() {
 			// 失敗時(時間割時間idの取得、処理エラー)
 			$("#header").empty();
-			$("#header").append("入室は授業開始10分前から入室してください");
+			$("#header").append("【入室は授業開始10分前から入室してください】");
 			//id「subject」に追加
 			$("#subject").empty();
 			$("#subject").append("入室する時間が早い、または本日は授業がありません");
@@ -221,4 +221,22 @@ function ConfirmEnterTime(classid){
 		$("#myModal").modal("show");
 		console.log('[$.ajax]"/rest/confirm_entertime" Fail');
 	});
+}
+
+//提出状況に遷移
+function Homeworksubmi(){
+	window.location.href = '/homeworksubmi';
+}
+
+function Delete_session(){
+	//トークンの取得
+	const token = $("meta[name='_csrf']").attr("content");
+	
+	$.ajax({
+		type : "POST",
+		url : "/rest/delete_sessionid",
+		headers : {
+			"X-CSRF-TOKEN" : token
+		}
+	})
 }

@@ -1,48 +1,65 @@
 @charset "UTF-8";
 /* 共通のスタイル */
 body {
-  background-image: url("/images/gura.jpg");
-  background-size: cover;
   display: -ms-grid;
   display: grid;
+  height: 100vh;
+  padding: 24px;
+  background-image: url("/images/gura.jpg");
+  background-size: cover;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: source-han-sans-japanese, sans-serif;
+      grid-template-areas: "navi header" "navi main";
   -ms-grid-columns: 30vh 1fr;
       grid-template-columns: 30vh 1fr;
   -ms-grid-rows: 8vh 1fr;
       grid-template-rows: 8vh 1fr;
-      grid-template-areas: "navi header" "navi main";
-  height: 100vh;
-  padding: 40px;
-  font-family: source-han-sans-japanese, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
+button, input, select, textarea {
   font-size: 100%;
+  font-family: inherit;
+  font-weight: 700;
 }
 
 header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: header;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: header;
+}
+
+header button {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 100vh;
+  background-color: #faa2c1;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+header button:hover {
+  background-color: #fcc2d7;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .navigation {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  grid-area: navi;
-  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,15 +67,20 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 24px;
+  padding: 24px 24px 40px 24px;
   border-radius: 40px;
   -webkit-box-shadow: #e7e2f75d 0 24px 40px;
           box-shadow: #e7e2f75d 0 24px 40px;
+  background-color: #ffffff;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: navi;
 }
 
 .navigation div {
-  text-align: center;
   margin-bottom: 48px;
+  text-align: center;
 }
 
 .navigation nav {
@@ -68,7 +90,6 @@ header {
 }
 
 .navigation nav ul {
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,33 +100,91 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 100%;
 }
 
 .navigation nav ul li {
+  position: relative;
+  z-index: 1;
   border-radius: 100vh;
 }
 
 .navigation nav ul li a {
   display: block;
-  text-decoration: none;
-  color: #000;
-  font-size: 14px;
   padding: 20px 24px;
+  font-size: 14px;
   letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 100vh;
+  position: relative;
 }
 
-.navigation nav ul .active {
-  background-color: #FFF0F6;
-  border-radius: 100vh;
+.navigation nav ul :not(.active) a {
+  background-color: #495057;
+  background-image: -webkit-linear-gradient(left, #faa2c1 0, #faa2c1 50%, transparent 50%);
+  background-position: 100% 0;
+  font-weight: 700;
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-transition: 0.1s 0.2s;
+  transition: 0.1s 0.2s;
+  -webkit-background-clip: text;
+  background-clip: text;
+  cursor: pointer;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.navigation nav ul :not(.active) a:hover {
+  background-position: 0 0;
+  color: transparent;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 .navigation nav ul .active a {
-  color: #FAA2C1;
+  border-radius: 100vh;
+  background-color: #fff0f6;
+  color: #faa2c1;
+  -webkit-transition: all 0.3s ease 0;
+  transition: all 0.3s ease 0;
+}
+
+.navigation nav ul .active a::before {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: -1;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  width: 70%;
+  height: 80%;
+  background-color: #ffd7e5;
+  content: '';
+  -webkit-filter: blur(16px);
+          filter: blur(16px);
 }
 
 main {
+  overflow-y: auto;
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: main;
+}
+
+main::-webkit-scrollbar {
+  width: 16px;
+}
+
+main::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background-color: #fcc2d7;
+}
+
+main::-webkit-scrollbar-track {
+  width: 3px;
+  border-radius: 100vh;
+  background-color: #fce8ef;
 }
 /*# sourceMappingURL=common.css.map */

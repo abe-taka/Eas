@@ -1,5 +1,6 @@
 /*　生徒側　*/
 var stompClient = null; // Websocket接続用変数
+var notice_flag = 0; //出席送信カウント
 
 /* ロード処理 */
 $(document).ready(() => {
@@ -78,35 +79,51 @@ function ExitRog(){
 		// 失敗時
 		console.log('[$.ajax]"/rest/exit" Fail');
 	});
+	
+	
 }
 
 // 出席処理
 function SendToNotice(teacher_sessionid){
-	const student_name = document.getElementById('student_name').value;
-	const student_classno = document.getElementById('student_classno').value;
-	
-	// アクセスするエンドポイントを設定
-	var socket = new SockJS('/socket_endpoint');
-	stompClient = null;
-	stompClient = Stomp.over(socket);
-	// エンドポイントに対して接続
-	stompClient.connect({}, function (frame) {
-		stompClient.send("/socket_prefix/send_notice", {}, JSON.stringify({'student_name':student_name,'student_classno':student_classno,'teacher_sessionid':teacher_sessionid}));
-	})
+	//出席処理を行うのを1回だけにする
+		const student_name = document.getElementById('student_name').value;
+		const student_classno = document.getElementById('student_classno').value;
+		
+		// アクセスするエンドポイントを設定
+		var socket = new SockJS('/socket_endpoint');
+		stompClient = null;
+		stompClient = Stomp.over(socket);
+		// エンドポイントに対して接続
+		stompClient.connect({}, function (frame) {
+			//1回のみ送信する
+			if(notice_flag == 0){
+				stompClient.send("/socket_prefix/send_notice", {}, JSON.stringify({'student_name':student_name,'student_classno':student_classno,'teacher_sessionid':teacher_sessionid}));
+				notice_flag += 1;
+			}
+		})
 }
 
 // 音声認識取得処理
-function GetVoiceRecog(){
-	var socket = new SockJS('/socket_endpoint');
-	stompClient = Stomp.over(socket);
-	// エンドポイントに対して接続
-	stompClient.connect({}, function (frame) {
-	    // 受信
-	    stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
-	    	// 表示
-	    	ShowVoiceRecognition(JSON.parse(response_data.body).voicetext);
-	    });
-	});
+function GetVoiceRecog(flag){
+	
+	//接続処理
+	if(flag == 1){
+		var socket = new SockJS('/socket_endpoint');
+		stompClient = Stomp.over(socket);
+		
+		// エンドポイントに対して接続
+		stompClient.connect({}, function (frame) {
+			// 受信
+			stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
+				// 表示
+				ShowVoiceRecognition(JSON.parse(response_data.body).voicetext);
+			});
+		});
+	}
+	//切断処理
+	else if(flag == 0){
+		stompClient.disconnect();
+	}
 }
 
 // 問題の解答送信処理
@@ -176,10 +193,10 @@ function SendAnswer() {
 
 // 字幕表示
 function ShowVoiceRecognition(message) {
-	$("#subtitle").append(message);
+	$("#subtitle").append("<p>" + message + "</p>");
 }
 
-// modal表示
+//modal表示
 function ShowModal(issue,answer) {
 	//問題と解答を空にする
 	$("#show").empty();
@@ -187,7 +204,7 @@ function ShowModal(issue,answer) {
 	input.value = '';
 	
 	//問題をセット
-	$("#show").append("<tr><td>" + issue + "</td></tr>");
+	$("#show").append(issue);
 	issue_answer = answer
 	// Modalオープンボタン
 	// 表示中のページと最終ページ番号

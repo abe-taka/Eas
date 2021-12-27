@@ -1,80 +1,174 @@
-@charset "utf-8";
+@charset 'utf-8';
 
 /* 共通のスタイル */
 
-body {
-    background-image: url('/images/gura.jpg');
-    background-size: cover;
-    display: grid;
-    grid-template-columns: 30vh 1fr;
-    grid-template-rows: 8vh 1fr;
-    grid-template-areas: "navi header""navi main";
-    height: 100vh;
-    padding: 40px;
-    font-family: source-han-sans-japanese, sans-serif;
-    font-weight: 700;
-    font-size: 14px;
+body{
+    display:grid;
+    height:100vh;
+    padding:24px;
+    background-image:url('/images/gura.jpg');
+    background-size:cover;
+    font-weight:700;
+    font-size:14px;
+    font-family:source-han-sans-japanese, sans-serif;
+    grid-template-areas:'navi header''navi main';
+    grid-template-columns:30vh 1fr;
+    grid-template-rows:8vh 1fr;
 }
 
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-    font-size: 100%;
+button, input, select, textarea{
+    font-size:100%;
+    font-family:inherit;
+    font-weight:700;
 }
 
-header {
-    grid-area: header;
-    display: flex;
-    justify-content: end;
-}
+header{
+    display:flex;
+    justify-content:end;
+    align-items:center;
+    gap:16px;
+    grid-area:header;
 
-$shadow: #e7e2f75d 0 24px 40px;
-//ナビ
-.navigation {
-    grid-area: navi;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    border-radius: 40px;
-    box-shadow: $shadow;
-    //ロゴ画像
-    div {
-        text-align: center;
-        margin-bottom: 48px;
+    button{
+        padding:8px 24px;
+        border:none;
+        border-radius:100vh;
+        background-color:#faa2c1;
+        color:#ffffff;
+        font-weight:700;
+        cursor:pointer;
+        transition:all 0.3s ease 0s;
+
+        &:hover{
+            background-color:#fcc2d7;
+            transform:translateY(-2px);
+            transition:0.3s;
+        }
     }
-    nav {
-        flex: 1;
-        ul {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            li {
-                border-radius: 100vh;
-                a {
-                    display: block;
-                    text-decoration: none;
-                    color: #000;
-                    font-size: 14px;
-                    padding: 20px 24px;
-                    letter-spacing: 0.05em;
+}
+
+$shadow:#e7e2f75d 0 24px 40px;
+
+//ナビ
+.navigation{
+    display:flex;
+    flex-direction:column;
+    padding:24px 24px 40px 24px;
+    border-radius:40px;
+    box-shadow:$shadow;
+    background-color:#ffffff;
+    grid-area:navi;
+
+    //ロゴ画像
+    div{
+        margin-bottom:48px;
+        text-align:center;
+    }
+
+    nav{
+        flex:1;
+
+        ul{
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            height:100%;
+
+            li{
+                position:relative;
+                z-index:1;
+                border-radius:100vh;
+
+                a{
+                    display:block;
+                    padding:20px 24px;
+                    font-size:14px;
+                    letter-spacing:0.05em;
+                    text-decoration:none;
+                    cursor:pointer;
+                    border-radius:100vh;
+                    position:relative;
                 }
             }
-            .active {
-                background-color: #FFF0F6;
-                border-radius: 100vh;
-                a {
-                    color: #FAA2C1;
+
+            :not(.active){
+                a{
+                    background-color:#495057;
+                    background-image:-webkit-linear-gradient(left,#faa2c1 0,#faa2c1 50%,transparent 50%);
+                    background-position:100% 0;
+                    font-weight:700;
+                    background-size:200% 200%;
+                    color:transparent;
+                    -webkit-transition:0.1s 0.2s;
+                            transition:0.1s 0.2s;
+                    -webkit-background-clip:text;
+                            background-clip:text;
+                    cursor:pointer;
+                            transition:1s;
+
+                    &:hover{
+                        background-position:0 0;
+                        color:transparent;
+                        transition:1s;
+                    }
+                }
+            }
+
+            .active{
+                a{
+                    border-radius:100vh;
+                    background-color:#fff0f6;
+                    color:#faa2c1;
+                    transition:all 0.3s ease 0;
+
+                    &::before{
+                        position:absolute;
+                        top:40%;
+                        left:50%;
+                        z-index:-1;
+                        transform:translate(-50%, 0);
+                        width:70%;
+                        height:80%;
+                        background-color:#ffd7e5;
+                        content:'';
+                        filter:blur(16px);
+                    }
                 }
             }
         }
     }
 }
 
+@mixin scrollbar{
+    width:16px;
+}
+
+@mixin scrollbar-thumb{
+    border-radius:100vh;
+    background-color:#fcc2d7;
+}
+
+@mixin scrollbar-track{
+    width:3px;
+    border-radius:100vh;
+    background-color:#fce8ef;
+}
+
 //コンテンツエリア
-main {
-    grid-area: main;
+main{
+    overflow-y:auto;
+    grid-area:main;
+
+
+    &::-webkit-scrollbar{
+        @include scrollbar;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        @include scrollbar-thumb;
+    }
+
+    &::-webkit-scrollbar-track{
+        @include scrollbar-track;
+    }
 }

@@ -52,11 +52,11 @@ $(document).ready(() => {
     	// 音声認識、送信
     	VoiceRecognition();
         // 音声認識受信
-        stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
-        	i++;
-        	console.log(i + "回目データ受け取り",JSON.parse(response_data.body).voicetext);	
-        	ShowSubtitles(JSON.parse(response_data.body).voicetext);
-        });
+//        stompClient.subscribe('/user/queue/voice_recog', function (response_data) {
+//        	i++;
+//        	console.log(i + "回目データ受け取り",JSON.parse(response_data.body).voicetext);	
+//        	ShowSubtitles(JSON.parse(response_data.body).voicetext);
+//        });
         
         // 出席学生の情報の受信
 		stompClient.subscribe('/user/queue/notice', function(response_data) {
@@ -134,6 +134,8 @@ function SendIssue() {
 
 // 音声認識処理
 function VoiceRecognition(){
+	const resultDiv = document.querySelector('#subtitles_result');
+	
 	// Chromeの音声認識の対応付け、オブジェクト生成
 	SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
 	recognition = new SpeechRecognition();
@@ -183,6 +185,7 @@ function VoiceRecognition(){
             	interimTranscript = transcript;
                 flag_speech = 1;
             }
+      		resultDiv.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
     	}
   		
   		// 送信(送信先のパス、データの設定)
@@ -205,7 +208,7 @@ function Bulkexit(class_id){
 	stompClient.connect({}, function (frame) {
 		stompClient.send("/socket_prefix/bulkexit", {}, JSON.stringify({'class_id':class_id}));
 	})
-	$("#myModal2").modal("show");
+	$("#exit_modal").modal("show");
 }
 
 /* 表示 */
@@ -245,20 +248,24 @@ function ShowModal(){
 
 // 解答状況表示
 function ShowSituationAnswer() {
-	$("#myModal3").modal("show");
+	$("#answer-modal").modal("show");
 }
 
 // 授業出席学生の表示
 function ShowStudent(student_name,student_classno){
-	$("#student_list").append(student_classno + student_name);
+	$("#list-number").append("<br>" + student_classno);
+	$("#list-name").append("<br>" + student_name);
 }
 
 // 字幕表示
-function ShowSubtitles(message) {
-	$("#subtitles_result").append(message);
-}
+//function ShowSubtitles(message) {
+//	$("#subtitles_result").append("<p>" + message + "<p>");
+//}
 
 //生徒の問題解答の表示
 function ShowStudentAnswer(student_name,student_classno,student_answer){
-	$("#answer_situation").append(student_classno + "番     " + student_name + "  " + student_answer + "<br>");
+	$("#answer_number").append(student_classno + "番" + "<br>");
+	$("#answer_student").append(student_name + "<br>");
+	$("#answer_value").append(student_answer + "<br>");
+
 }

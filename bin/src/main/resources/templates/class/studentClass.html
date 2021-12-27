@@ -45,8 +45,13 @@
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    
     <!-- 学生授業画面js -->
     <script src="/js/class_student.js"></script>
+    
+    <!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    
     <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
@@ -70,10 +75,10 @@
     <div class="studentContainer">
         <!-- 字幕 -->
         <div class="classSubtitle">
-            <button th:onclick="GetVoiceRecog();" class="btn btn-outline-dark" type="button">字幕を表示する</button>
-            <div name="subtitle">
-            </div>
-            <button id="recog_disconnect" class="btn btn-outline-dark" type="button">字幕停止</button>
+            <button th:data-parameter1="1" th:onclick="GetVoiceRecog(this.getAttribute('data-parameter1'));" class="btn btn-outline-dark" type="button">字幕を表示する</button>
+            <!-- 字幕表示 -->
+            <div id="subtitle"></div>
+            <button  th:data-parameter1="0" th:onclick="GetVoiceRecog(this.getAttribute('data-parameter1'));" class="btn btn-outline-dark" type="button">字幕停止</button>
         </div>
         <!-- 退出ボタン -->
 	    <form th:action="@{/home/studenthome}" method="get">
@@ -83,48 +88,60 @@
 		</form>        
     </div>
 
-    <!-- 問題モーダル -->
-    <div class="classTestModal">
+    <!-- modal(授業内問題) -->
+	<div id="myModal" class="modal">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+	
+				<!-- ページ1 -->
+				<div id="modal-page1">
+					<div class="modal-header">授業内問題</div>
+	
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="col-form-label">問題</label>
+								<div id="show"></div>
+							</div>
+	
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">解答</label>
+								<input type="text" id="answer" class="form-control">
+							</div>
+						</form>
+					</div>
+	
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+						<a href="#" id="send_answer" class="btn btn-default btnNext" th:onclick="SendAnswer();">送信</a>
+					</div>
+				</div>
+	
+				<!-- ページ2 -->
+				<div id="modal-page2">
+					<div class="modal-header">送信完了</div>
+	
+					<div class="modal-body">
+						<div id="answer_result"></div>
+						<div id="result_value"></div>
+					</div>
+	
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        <!-- テスト -->
-        <div class="test">
-            <!-- 問題文 -->
-            <div class="testSentence">
-                <label for="recipient-name" class="col-form-label">問題</label>
-				<div id="show"></div>
-            </div>
-            <!-- 解答 -->
-            <textarea placeholder="解答を入力" id="answer"></textarea>
-            <div class="testSubmit">
-            	<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <input type="submit" value="送信する" id="send_answer" class="testSubmitButton" th:onclick="SendAnswer();">
-            </div>
-        </div>
-
-        <!-- 解答 -->
-        <div class="answer">
-            <div class="answerResult">
-                <div class="yes">
-                    <h2>正解</h2>
-                </div>
-                <div class="no">
-                    <h2>不正解</h2>
-                </div>
-
-            </div>
-            <!-- 問題の解答 -->
-            <div class="answerTeacher">
-                <h2 id="result_value"></h2>
-            </div>
-            <!-- 学生の解答 -->
-            <div class="answerStudent">
-                <h2 id="answer_result"></h2>
-            </div>
-        </div>
-		
-		<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-    </div>
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+		integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+		integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,181 +1,159 @@
-/* 問題作成 */
-section#issue_upload ul{
-	width: 500px;
-	margin: 30px 0;
-	display: flex;
-	justify-content: space-around;
-}
-	section#issue_upload ul li{
-		text-align: center;
-		list-style: none;
-	}
-
-input{
-	background: none;
-	outline: none;
-	border: none;
+#issue_upload {
+  height: 100%;
 }
 
-main section#issue_upload{
-	width: 500px;
-	margin: 0 auto;
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+  height: 100%;
 }
-	section#issue_upload ul li p{
-		font-size: 0.8rem;
-	}
-	section#issue_upload ul li label{
-		display: block;
-		width:250px;
-		height: 60px;
-		line-height: 60px;
-		font-size: 0.8rem;
-		border-radius: 30px;
-		background-color: #fff;
-		cursor: pointer;
-	}
-		section#issue_upload ul li label input[type="file"]{
-			display: none;
-		}
-		section#issue_upload ul li input[type="text"]{
-			width: 150px;
-			padding: 5px;
-			margin-top: 10px;
-			letter-spacing: 3px;
-			text-align: center;
-			border-bottom: 0.5px solid #000;
-		}
-		section#issue_upload ul li input[type="button"]{
-			width: 400px;
-			height: 60px;
-			color: #fff;
-			font-size: 0.8rem;
-			border-radius: 30px;
-			background-color: #FCC2D7;
-			cursor: pointer;
-		}
-main div{
-	margin-top: 100px;
-	text-align: center;
+
+form ul {
+  list-style: none;
 }
-	main div a{
-		display: inline-block;
-		width: 250px;
-		height: 50px;
-		line-height: 50px;
-		font-size: 0.8rem;
-		text-decoration: none;
-		color: #9775FA;
-		border-radius: 25px;
-		background-color: #fff;
-	}
-	
-/* 問題管理 */
-section#issue_manager{
-	margin-left: 50px;
+
+form ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-	section#issue_manager p#title{
-		font-size: 1.3rem;
-		letter-spacing: 2px;
-		margin-bottom: 30px;
-	}
-	section#issue_manager ul{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
-		section#issue_manager ul li{
-			box-sizing: border-box;
-			width: 320px;
-			height: 130px;
-			padding: 20px;
-			margin-bottom: 30px;
-			border-radius: 10px;
-			background-color: #fff;
-			text-align: center;
-			list-style: none;
-			
-			position: relative;
-		}
-			section#issue_manager ul li p{
-				width: 220px;
-				height: 30px;
-				margin-bottom: 30px;
-				padding-left: 5px;
-				line-height: 30px;
-				text-align: left;
-				
-				position: absolute;
-				top: 20px;
-				left: 20px;
-			}
-			section#issue_manager ul li button{
-				width: 30px;
-				height: 30px;
-				color: #fff;
-				font-weight: bold;
-				border-radius: 15px;
-				background: #FFA8A8;
-				border: none;
-				outline: none;
-				cursor: pointer;
-				
-				position: absolute;
-				top: 20px;
-				right: 20px;
-			}
-			section#issue_manager ul li label.upload{
-				display: inline-block;
-				height: 40px;
-				padding: 0 25px;
-				text-align: center;
-				line-height: 39px;
-				border-radius: 20px;
-				background-color: #FFDEEB;
-				cursor: pointer;
-				
-				position: absolute;
-				bottom: 20px;
-				left: 20px;
-			}
-			section#issue_manager ul li label.edit{
-				display: inline-block;
-				height: 40px;
-				padding: 0 25px;
-				text-align: center;
-				line-height: 39px;
-				border-radius: 20px;
-				border: 1px solid #FFDEEB;
-				cursor: pointer;
-				
-				position: absolute;
-				bottom: 20px;
-				right: 20px;
-			}
-				section#issue_manager ul li label span{
-					width: 16px;
-					height: 40px;
-					line-height: 36px;
-					margin-left: 10px;
-					
-					position: relative;
-				}
-				section#issue_manager ul li label span::after{
-					content: '';
-					width: 15px;
-					height: 2px;
-					border-radius: 1px;
-					background-color: #000;
-					
-					position: absolute;
-					bottom: 0;
-					left: -1px;
-				}
-				section#issue_manager ul li label i{
-					margin-left: 10px;
-				}
-				section#issue_manager ul li label input{
-					display: none;
-				}
 
+form .issue_upload_file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 24px;
+}
 
+form .issue_upload_file li {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 
+form .issue_upload_file li p {
+  margin-bottom: 8px;
+}
+
+form .issue_upload_file li input[type=text] {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+form .issue_upload_file li label {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 100vh;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+form .issue_upload_file li label:hover {
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+}
+
+form .issue_upload_file li label:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+
+form .issue_upload_file li label input[type=file] {
+  display: none;
+}
+
+form .issue_upload_subject li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .issue_upload_subject li p {
+  margin-bottom: 8px;
+}
+
+form .issue_upload_subject li div select {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+form .issue_upload_subject li div select option {
+  border: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 1em;
+  width: 5em;
+  text-align: center;
+  border-radius: 4px;
+}
+
+form .issue_upload_btn li input[type=submit] {
+  border: none;
+  border-radius: 100vh;
+  padding: 1em 2em;
+  background-color: #faa2c1;
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+form .issue_upload_btn li input[type=submit]:hover {
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px);
+  -webkit-box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+          box-shadow: 24px 24px 40px rgba(231, 226, 247, 0.5);
+}
+
+form .issue_upload_btn li input[type=submit]:active {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+/*# sourceMappingURL=issue.css.map */

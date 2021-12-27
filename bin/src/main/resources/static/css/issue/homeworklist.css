@@ -1,0 +1,348 @@
+#issue_manager ul {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto;
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  gap: 16px;
+}
+
+#issue_manager ul li {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#issue_manager ul li form {
+  display: -ms-grid;
+  display: grid;
+  width: auto;
+      grid-template-areas: 'a delete' 'upload edit';
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  gap: 16px;
+  padding: 16px;
+}
+
+#issue_manager ul li form a {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: a;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  text-decoration: none;
+  color: #000000;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  position: relative;
+  background: transparent;
+  padding: 0 0 4px 0;
+}
+
+#issue_manager ul li form a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #000000;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  z-index: -1;
+}
+
+#issue_manager ul li form a:hover::before {
+  width: 100%;
+}
+
+#issue_manager ul li form .deleteBtn {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: delete;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  border: none;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  cursor: pointer;
+  -webkit-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
+}
+
+#issue_manager ul li form .deleteBtn:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+#issue_manager ul li form .upload {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: upload;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#issue_manager ul li form .upload input[type=button] {
+  border: none;
+  background-color: #fcc2d7;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 100vh;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+#issue_manager ul li form .upload input[type=button]:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+#issue_manager ul li form .edit {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: edit;
+  -ms-grid-column-align: start;
+      justify-self: start;
+}
+
+#issue_manager ul li form .edit input[type=button] {
+  border: none;
+  background-color: #ffdeeb;
+  padding: 8px 16px;
+  border-radius: 100vh;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+#issue_manager ul li form .edit input[type=button]:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+.close {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  background: none;
+  font-size: 18px;
+  -webkit-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
+}
+
+.close:hover {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  color: #ff6b6b;
+}
+
+#filter {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #00000015;
+}
+
+#modal_upload, #modal_update, #modal_delete {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#modal_upload {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 24px;
+}
+
+#modal_upload div {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+#modal_upload div select {
+  border: none;
+  background-color: #f8f9fa;
+  padding: 1em;
+  border-radius: 4px;
+}
+
+#modal_upload #upload {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 100vh;
+  background-color: #ffdeeb;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+#modal_upload #upload:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+#modal_update {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 16px;
+}
+
+#modal_update ul {
+  list-style: none;
+}
+
+#modal_update .update_select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+
+#modal_update .update_select li {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#modal_update .update_select li p {
+  margin-bottom: 8px;
+}
+
+#modal_update .update_select li input {
+  text-align: center;
+  width: 6em;
+  border: none;
+  padding: 1em;
+  background-color: #f8f9fa;
+}
+
+#modal_update .update_button {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 100vh;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+#modal_update .update_button:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+#modal_delete {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  padding: 24px;
+  -webkit-box-shadow: #c4c4c45d 0 24px 40px;
+          box-shadow: #c4c4c45d 0 24px 40px;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  width: 30%;
+  text-align: center;
+  gap: 24px;
+}
+
+#modal_delete input[type=button] {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  background: none;
+  font-size: 18px;
+}
+
+#modal_delete p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#modal_delete input[type=submit] {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border: none;
+  background-color: #ff6b6b;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 100vh;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+#modal_delete input[type=submit]:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+/*# sourceMappingURL=homeworklist.css.map */

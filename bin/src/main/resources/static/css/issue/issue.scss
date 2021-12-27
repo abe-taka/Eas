@@ -1,0 +1,120 @@
+#issue_upload{
+    height:100%;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:24px;
+    height:100%;
+
+    ul{
+        list-style:none;
+
+        li{
+            display:flex;
+        }
+    }
+
+    //ファイルを選択
+    .issue_upload_file{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap:24px;
+        li{
+            justify-content:center;
+            flex-direction:column;
+            align-items:center;
+
+            p{
+                margin-bottom:8px;
+            }
+
+            input[type=text]{
+                border:none;
+                box-sizing:content-box;
+                padding:1em;
+                width:5em;
+                text-align:center;
+                border-radius:4px;
+            }
+
+            label{
+                display:inline-block;
+                padding:1em 2em;
+                background-color:#ffffff;
+                cursor:pointer;
+                border-radius:100vh;
+                transition:all 0.3s ease 0s;
+
+                &:hover{
+                    transform:translateY(-7px);
+                    box-shadow:24px 24px 40px rgba(231, 226, 247, 0.5);;
+                }
+
+                &:active{
+                    transform:translateY(-1px);
+                }
+
+                input[type=file]{
+                    display:none;
+                }
+            }
+        }
+    }
+
+    .issue_upload_subject{
+        li{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            p{
+                margin-bottom:8px;
+            }
+            div{
+                select{
+                    border:none;
+                    box-sizing:content-box;
+                    padding:1em;
+                    width:5em;
+                    text-align:center;
+                    border-radius:4px;
+                    option{
+                        border:none;
+                        box-sizing:content-box;
+                        padding:1em;
+                        width:5em;
+                        text-align:center;
+                        border-radius:4px;
+                    }
+                }
+            }
+        }
+    }
+
+    .issue_upload_btn{
+        li{
+            input[type=submit]{
+                border:none;
+                border-radius:100vh;
+                padding:1em 2em;
+                background-color:#faa2c1;
+                color:#ffffff;
+                cursor:pointer;
+                transition:all 0.3s ease 0s;
+
+                &:hover{
+                    transform:translateY(-7px);
+                    box-shadow:24px 24px 40px rgba(231, 226, 247, 0.5);
+                }
+
+                &:active{
+                    transform:translateY(-1px);
+                }
+            }
+        }
+    }
+}

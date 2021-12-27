@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
-
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>宿題提出 | Eas</title>
-
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/homework/homeworkSubmission.css">
-
-    <!-- フォント -->
+<meta charset="UTF-8">
+<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
+<title>宿題提出確認 | Eas</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="css/homework/homeworkSubmission.css">
+	<!-- フォント -->
     <script>
         (function(d) {
             var config = {
@@ -54,17 +53,16 @@
         });
     </script>
 </head>
-
 <body>
-
     <header>
-        <div>
-            <h2>田中 先生</h2>
-            <button>ログアウト</button>
-        </div>
-        <button class="homeback">もどる</button>
+        <h2 th:text="${session_name} + さん"></h2>
+		<form th:action="@{/logout}" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+		<button onclick="history.back()">もどる</button>
     </header>
-
+    
+    
     <div class="homeworkContainer">
         <!-- tabメニュー -->
         <div class="tabWrapper">
@@ -79,31 +77,13 @@
 
             <!-- 課題提出 -->
             <div class="homeworkPlay tabContent active">
-                <ul>
-                    <li class="playSubject">算数</li>
-                    <li class="playTitle">課題1</li>
+                <ul th:if="${homeworkDetailsList.submission_flg == 0}"  th:each="homeworkDetailsList:${homeworkDetailsList}">
+                    <li class="hisSubject" th:text="${homeworkDetailsList.homework_subject}"></li>
+                    <li class="hisTitle" th:text="${homeworkDetailsList.homework_filename}"></li>
                     <li class="playButton">
-                        <button onClick="location.href='/homework'">
+                        <a th:href="@{'/homeworkstudent/' + ${homeworkDetailsList.homework_id} + '/' + ${homeworkDetailsList.submission_id}}">
                             <img src="/images/playButton.svg" alt="play">
-                        </button>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="playSubject">算数</li>
-                    <li class="playTitle">課題1</li>
-                    <li class="playButton">
-                        <button onClick="location.href='/homework'">
-                            <img src="/images/playButton.svg" alt="play">
-                        </button>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="playSubject">算数</li>
-                    <li class="playTitle">課題1</li>
-                    <li class="playButton">
-                        <button onClick="location.href='/homework'">
-                            <img src="/images/playButton.svg" alt="play">
-                        </button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -111,35 +91,14 @@
             <!-- 提出履歴 -->
             <div class="homeworkHistory tabContent">
                 <div>
-                    <ul>
+                    <ul th:if="${homeworkDetailsList.submission_flg == 1}" th:each="homeworkDetailsList:${homeworkDetailsList}">
                         <li class="status">12/01</li>
-                        <li class="hisSubject">算数</li>
-                        <li class="hisTitle">課題1</li>
-                    </ul>
-                    <ul>
-                        <li class="status">12/01</li>
-                        <li class="hisSubject">算数</li>
-                        <li class="hisTitle">課題1</li>
-                    </ul>
-                    <ul>
-                        <li class="status">12/01</li>
-                        <li class="hisSubject">算数</li>
-                        <li class="hisTitle">課題1</li>
-                    </ul>
-                    <ul>
-                        <li class="status">12/01</li>
-                        <li class="hisSubject">算数</li>
-                        <li class="hisTitle">課題1</li>
-                    </ul>
-                    <ul>
-                        <li class="status">12/01</li>
-                        <li class="hisSubject">算数</li>
-                        <li class="hisTitle">課題1</li>
+                        <li class="hisSubject" th:text="${homeworkDetailsList.homework_subject}"></li>
+                        <li class="hisTitle" th:text="${homeworkDetailsList.homework_filename}"></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
 </html>
