@@ -58,6 +58,13 @@ header form button {
   letter-spacing: 0.1em;
   -webkit-box-shadow: #ffdeeb 0 0 14px;
           box-shadow: #ffdeeb 0 0 14px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+header form button:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
 }
 
 /* ナビゲーション */
