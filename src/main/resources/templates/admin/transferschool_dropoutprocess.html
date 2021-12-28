@@ -92,16 +92,50 @@
         </div>
 
         <div class="schooladmin">
+
+            <!-- 転校処理のモーダルを出す -->
             <button class="Transfer button">
                 <p>上記生徒の</p>
                 <h2>転校の申請</h2>
             </button>
 
+            <!-- 退学処理のモーダルを出す -->
             <button class="Withdrawal button">
                 <p>上記生徒の</p>
                 <h2>退学の申請</h2>
             </button>
         </div>
+
+        <!-- 転校モーダル -->
+        <div class="modal">
+            <div class="modal_content">
+                <input type="button" class="close" onclick="closeBtn('delete')" value="×">
+                <div class="modal_student">
+                    <p>1年</p>
+                    <p>1組</p>
+                    <p>1番</p>
+                    <p>田中太郎</p>
+                </div>
+                <h2>上記生徒の転校を申請しますか？</h2>
+                <input type="submit" value="申請">
+            </div>
+        </div>
+
+        <!-- 退学モーダル -->
+        <div class="modal">
+            <div class="modal_content">
+                <input type="button" class="close" onclick="closeBtn('delete')" value="×">
+                <div class="modal_student">
+                    <p>1年</p>
+                    <p>1組</p>
+                    <p>1番</p>
+                    <p>田中太郎</p>
+                </div>
+                <h2>上記生徒の退学を申請しますか？</h2>
+                <input type="submit" value="申請">
+            </div>
+        </div>
+
     </main>
 
 </body>
