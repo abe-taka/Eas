@@ -1,0 +1,42 @@
+main {
+  padding: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4em;
+}
+
+main a {
+  width: 320px;
+  letter-spacing: 0.1em;
+  background-color: #ffffff;
+  padding: 4em 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  text-decoration: none;
+  color: #fcc2d7;
+  border-radius: 16px;
+  -webkit-transition: -webkit-transform 0.2s ease 0s;
+  transition: -webkit-transform 0.2s ease 0s;
+  transition: transform 0.2s ease 0s;
+  transition: transform 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+main a:hover {
+  -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+  -webkit-box-shadow: #fcc2d76c 0 24px 24px;
+          box-shadow: #fcc2d76c 0 24px 24px;
+  background-color: #fcc2d7;
+  color: #ffffff;
+}
+/*# sourceMappingURL=admin_home.css.map */

@@ -3,14 +3,455 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>時間割| Eas</title>
 
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/timetable.css">
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fcl7ixt',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) { }
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+
 <body>
 
-	<h2>時間割</h2>
+    <header>
+        <h2 th:text="${session_name} + さん"></h2>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </header>
 
+    <main>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="bgNone">
+                        <!-- 空白 -->
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">月</h2>
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">火</h2>
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">水</h2>
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">木</h2>
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">金</h2>
+                    </td>
+                    <td class="bgNone">
+                        <h2 class="week">土</h2>
+                    </td>
+                </tr>
+
+                <!-- 1 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>1時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 2 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>2時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 3 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>3時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 4 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>4時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 5 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>5時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- 6 -->
+                <tr>
+                    <td>
+                        <div class="period">
+                            <h2>6時間目</h2>
+                            <input type="time" class="strat">
+                            <span>&#65374;</span>
+                            <input type="time" class="end">
+                        </div>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <label for="subject">科目</label>
+                            <input type="text" id="subject">
+                            <label for="class">クラス</label>
+                            <input type="text" id="class">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="null"></div>
+
+        <div class="Button">
+            <input type="button" value="キャンセル">
+            <input type="submit" value="保存">
+        </div>
+
+    </main>
 </body>
 
 </html>

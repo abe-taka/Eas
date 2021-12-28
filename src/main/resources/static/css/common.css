@@ -55,8 +55,8 @@ header button:hover {
   background-color: #fcc2d7;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-box-shadow: #fcc2d76c 0 24px 24px;
+          box-shadow: #fcc2d76c 0 24px 24px;
 }
 
 .navigation {

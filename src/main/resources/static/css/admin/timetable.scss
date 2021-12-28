@@ -1,0 +1,199 @@
+body{
+    height:100vh;
+    padding:24px;
+    background-image:url('/images/gura.jpg');
+    background-size:cover;
+    font-weight:700;
+    font-size:14px;
+    font-family:source-han-sans-japanese, sans-serif;
+    display:flex;
+    flex-direction:column;
+}
+
+button, input, select, textarea{
+    font-size:100%;
+    font-family:inherit;
+    font-weight:700;
+}
+
+input{
+    box-sizing:content-box;
+    border:none;
+    text-align:center;
+}
+
+header{
+    display:flex;
+    justify-content:end;
+    align-items:center;
+    gap:16px;
+    grid-area:header;
+    margin-bottom:16px;
+
+    button{
+        padding:8px 24px;
+        border:none;
+        border-radius:100vh;
+        background-color:#faa2c1;
+        color:#ffffff;
+        font-weight:700;
+        cursor:pointer;
+        transition:all 0.3s ease 0s;
+
+        &:hover{
+            background-color:#fcc2d7;
+            transform:translateY(-2px);
+            box-shadow:#fcc2d76c 0 24px 24px;
+        }
+    }
+}
+
+main{
+    overflow-y:auto;
+    @mixin scrollbar{
+        width:16px;
+    }
+
+    @mixin scrollbar-thumb{
+        border-radius:100vh;
+        background-color:#fcc2d7;
+    }
+
+    @mixin scrollbar-track{
+        width:3px;
+        border-radius:100vh;
+        background-color:#fce8ef;
+    }
+
+    &::-webkit-scrollbar{
+        @include scrollbar;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        @include scrollbar-thumb;
+    }
+
+    &::-webkit-scrollbar-track{
+        @include scrollbar-track;
+    }
+
+    table{
+        width:100%;
+        border-collapse:separate;
+        border-spacing:8px;
+        tr{
+            td{
+                // border:1px solid #000000;
+                vertical-align:middle;
+                background-color:rgba(255, 255, 255, 0.4);
+                padding:16px 0;
+
+                input{
+                    width:4em;
+                    padding:0.5em;
+                    border-radius:4px;
+                    border:1px solid #fff0f6;
+                }
+
+                .week{
+                    text-align:center;
+                }
+
+                .subject{
+                    display:grid;
+                    grid-template-areas:'label input';
+                    gap:8px;
+
+                    label{
+                        align-self:center;
+                        text-align:end;
+                    }
+                }
+
+                .period{
+                    height:100%;
+                    display:grid;
+                    text-align:center;
+                    align-content:center;
+                    justify-content:center;
+                    gap:8px;
+
+                    input{
+                        width:auto;
+                        padding:0.5em;
+                        border-radius:4px;
+                    }
+
+                    h2{
+                        grid-column:1/4;
+                        grid-row:1/2;
+                    }
+
+                    .start{
+                        grid-column:1/2;
+                        grid-row:2/3;
+                    }
+
+                    span{
+                        grid-column:2/3;
+                        grid-row:2/3;
+                        align-self:center;
+                    }
+
+                    .end{
+                        grid-column:3/4;
+                        grid-row:2/3;
+                    }
+                }
+            }
+
+            .bgNone{
+                background-color:transparent;
+            }
+        }
+    }
+
+    .null{
+        width:100%;
+        height:3em;
+        padding:24px 0;
+        box-sizing:content-box;
+    }
+
+    .Button{
+        width:50%;
+        display:flex;
+        justify-content:center;
+        padding:24px 0;
+        gap:24px;
+        position:fixed;
+        bottom:0;
+        left:50%;
+        transform:translateX(-50%);
+        background:rgba( 255, 255, 255, 0.3 );
+        border-radius:100vh;
+        backdrop-filter:blur( 20px );
+
+        input{
+            width:7em;
+            padding:1em 2em;
+            cursor:pointer;
+            transition:all 0.3s ease 0s;
+            border-radius:100vh;
+
+            &:hover{
+                transform:translateY(-3px);
+            }
+
+            &[type=button]{
+                background-color:#ffffff;
+                color:#faa2c1;
+            }
+
+            &[type=submit]{
+                background-color:#faa2c1;
+                color:#ffffff;
+            }
+        }
+    }
+}

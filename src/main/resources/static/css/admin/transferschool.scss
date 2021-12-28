@@ -1,0 +1,102 @@
+body{
+    height:100vh;
+    padding:24px;
+    background-image:url('/images/gura.jpg');
+    background-size:cover;
+    font-weight:700;
+    font-size:14px;
+    font-family:source-han-sans-japanese, sans-serif;
+    display:flex;
+    flex-direction:column;
+}
+
+button, input, select, textarea{
+    font-size:100%;
+    font-family:inherit;
+    font-weight:700;
+}
+
+button, input, select{
+    box-sizing:content-box;
+    border:none;
+}
+
+header{
+    display:flex;
+    justify-content:end;
+    align-items:center;
+    gap:16px;
+    grid-area:header;
+
+    button{
+        padding:8px 24px;
+        border:none;
+        border-radius:100vh;
+        background-color:#faa2c1;
+        color:#ffffff;
+        font-weight:700;
+        cursor:pointer;
+        transition:all 0.3s ease 0s;
+
+        &:hover{
+            background-color:#fcc2d7;
+            transform:translateY(-2px);
+            box-shadow:#fcc2d76c 0 24px 24px;
+        }
+    }
+}
+
+main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:4em;
+
+    .studentSelect{
+        display:flex;
+        justify-content:center;
+        gap:2em;
+
+        select{
+            width:3em;
+            padding:1em;
+            border-radius:4px;
+        }
+    }
+
+    .schooladmin{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:4em;
+
+        .button{
+            letter-spacing:0.1em;
+            background-color:#ffffff;
+            padding:4em 8em;
+            text-align:center;
+            font-size:14px;
+            text-decoration:none;
+            color:#fcc2d7;
+            border-radius:16px;
+            border:none;
+            transition:transform 0.2s ease 0s;
+            transition:all 0.5s ease 0s;
+            cursor:pointer;
+
+            h2{
+                font-size:18px;
+                margin-top:8px;
+            }
+
+            &:hover{
+                transform:translateY(-8px);
+                box-shadow:#fcc2d76c 0 24px 24px;
+                background-color:#fcc2d7;
+                color:#ffffff;
+            }
+        }
+    }
+}

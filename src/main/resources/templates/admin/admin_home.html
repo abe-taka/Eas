@@ -3,17 +3,81 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>管理者画面（home）| Eas</title>
 
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/admin/admin_home.css">
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fcl7ixt',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) { }
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+
 <body>
 
-	<h2>管理者(HOME)</h2>
-	
-	<a href="/admin/timetable" class="btn btn-secondary">時間割</a>
-    <a href="/admin/transferschool_dropoutprocess" class="btn btn-secondary">転校・退学処理</a>
+    <header>
+        <h2 th:text="${session_name} + さん"></h2>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </header>
 
+    <div class="navigation">
+        <div><img src="/images/eas_logo.svg" alt="Eas"></div>
+        <nav>
+            <ul>
+                <li><a th:href="@{/home/teacherhome}">ホーム</a></li>
+                <li><a th:href="@{/homework}">問題作成</a></li>
+                <li><a th:href="@{/homeworklist}">問題管理</a></li>
+                <li><a th:href="@{/homework_submistatus}">提出状況確認</a></li>
+                <li><a th:href="@{/class/roomselect}">授業選択</a></li>
+                <li><a th:href="@{/logmanagement}">生徒入室管理</a></li>
+                <li class="active"><a th:href="@{/admin/admin_home}">管理画面</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <a href="/admin/timetable" class="btn btn-secondary">時間割の確認・変更</a>
+        <a href="/admin/transferschool_dropoutprocess" class="btn btn-secondary">転校・退学処理</a>
+    </main>
 </body>
 
 </html>

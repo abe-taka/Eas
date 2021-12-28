@@ -1,0 +1,236 @@
+body {
+  height: 100vh;
+  padding: 24px;
+  background-image: url("/images/gura.jpg");
+  background-size: cover;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: source-han-sans-japanese, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+button, input, select, textarea {
+  font-size: 100%;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+input {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border: none;
+  text-align: center;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  grid-area: header;
+  margin-bottom: 16px;
+}
+
+header button {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 100vh;
+  background-color: #faa2c1;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+header button:hover {
+  background-color: #fcc2d7;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: #fcc2d76c 0 24px 24px;
+          box-shadow: #fcc2d76c 0 24px 24px;
+}
+
+main {
+  overflow-y: auto;
+}
+
+main::-webkit-scrollbar {
+  width: 16px;
+}
+
+main::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background-color: #fcc2d7;
+}
+
+main::-webkit-scrollbar-track {
+  width: 3px;
+  border-radius: 100vh;
+  background-color: #fce8ef;
+}
+
+main table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
+main table tr td {
+  vertical-align: middle;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 16px 0;
+}
+
+main table tr td input {
+  width: 4em;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #fff0f6;
+}
+
+main table tr td .week {
+  text-align: center;
+}
+
+main table tr td .subject {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'label input';
+  gap: 8px;
+}
+
+main table tr td .subject label {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: end;
+}
+
+main table tr td .period {
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+}
+
+main table tr td .period input {
+  width: auto;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+main table tr td .period h2 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+main table tr td .period .start {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+main table tr td .period span {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+main table tr td .period .end {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+}
+
+main table tr .bgNone {
+  background-color: transparent;
+}
+
+main .null {
+  width: 100%;
+  height: 3em;
+  padding: 24px 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+main .Button {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 24px 0;
+  gap: 24px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100vh;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+
+main .Button input {
+  width: 7em;
+  padding: 1em 2em;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border-radius: 100vh;
+}
+
+main .Button input:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+main .Button input[type=button] {
+  background-color: #ffffff;
+  color: #faa2c1;
+}
+
+main .Button input[type=submit] {
+  background-color: #faa2c1;
+  color: #ffffff;
+}
+/*# sourceMappingURL=timetable.css.map */

@@ -42,7 +42,7 @@ header{
         &:hover{
             background-color:#fcc2d7;
             transform:translateY(-2px);
-            transition:0.3s;
+            box-shadow:#fcc2d76c 0 24px 24px;
         }
     }
 }

@@ -3,13 +3,106 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>転校・退学処理| Eas</title>
 
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin/transferschool.css">
+
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'fcl7ixt',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) { }
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e169475605.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+
 <body>
 
-	<h2>転校・退学処理</h2>
+    <header>
+        <h2 th:text="${session_name} + さん"></h2>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </header>
+
+    <main>
+
+        <div class="studentSelect">
+            <select name="school_year">
+                <option th:value="01" th:text="1年"></option>
+                <option th:value="02" th:text="2年"></option>
+                <option th:value="03" th:text="3年"></option>
+                <option th:value="04" th:text="4年"></option>
+                <option th:value="05" th:text="5年"></option>
+                <option th:value="06" th:text="6年"></option>
+            </select>
+            <select name="school_class">
+                <option th:value="01" th:text="1組"></option>
+                <option th:value="02" th:text="2組"></option>
+                <option th:value="03" th:text="3組"></option>
+                <option th:value="04" th:text="4組"></option>
+                <option th:value="05" th:text="5組"></option>
+                <option th:value="06" th:text="6組"></option>
+            </select>
+            <select name="school_number">
+                <option th:value="01" th:text="1番"></option>
+                <option th:value="02" th:text="2番"></option>
+                <option th:value="03" th:text="3番"></option>
+                <option th:value="04" th:text="4番"></option>
+                <option th:value="05" th:text="5番"></option>
+                <option th:value="06" th:text="6番"></option>
+                <option th:value="07" th:text="7番"></option>
+                <option th:value="08" th:text="8番"></option>
+                <option th:value="09" th:text="9番"></option>
+                <option th:value="10" th:text="10番"></option>
+            </select>
+        </div>
+
+        <div class="schooladmin">
+            <button class="Transfer button">
+                <p>上記生徒の</p>
+                <h2>転校の申請</h2>
+            </button>
+
+            <button class="Withdrawal button">
+                <p>上記生徒の</p>
+                <h2>退学の申請</h2>
+            </button>
+        </div>
+    </main>
 
 </body>
 
