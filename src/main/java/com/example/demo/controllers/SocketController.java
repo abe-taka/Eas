@@ -170,8 +170,7 @@ public class SocketController {
 			Thread.sleep(1000);
 
 			// 送信データをJson形式に変換
-			String response_message = json.ObjectToJSON(
-					new SendAnswer(getAnswer.getStudentname(), getAnswer.getClass_no(), getAnswer.getAnswer()));
+			String response_message = json.ObjectToJSON(new SendAnswer(getAnswer.getStudentname(), getAnswer.getClass_no(), getAnswer.getAnswer(), getAnswer.getIssue_num()));
 			// 先生のセッションidの取得
 			String teacher_sessionid = getAnswer.getTeacher_sessionid();
 			// 送信

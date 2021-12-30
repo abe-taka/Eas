@@ -14,16 +14,20 @@ public class GetAnswer {
     
     //先生のセッションid
     private String teacher_sessionid;
+    
+    //問題番号
+    private String issue_num;
 
     //コンストラクタとオーバーロード
     public GetAnswer() {
     }
 
-    public GetAnswer(String studentname,String class_no,String answer,String teacher_sessionid) {
+    public GetAnswer(String studentname,String class_no,String answer,String teacher_sessionid, String issue_num) {
         this.studentname = studentname;
         this.class_no = class_no;
         this.answer = answer;
         this.teacher_sessionid = teacher_sessionid;
+        this.issue_num = issue_num;
     }
 
     //ゲッター、セッター
@@ -58,4 +62,13 @@ public class GetAnswer {
 	public void setTeacher_sessionid(String teacher_sessionid) {
 		this.teacher_sessionid = teacher_sessionid;
 	}
+
+	public String getIssue_num() {
+		return issue_num;
+	}
+
+	public void setIssue_num(String issue_num) {
+		this.issue_num = issue_num;
+	}
+
 }

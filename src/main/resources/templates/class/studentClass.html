@@ -89,7 +89,7 @@
     </div>
 
     <!-- modal(授業内問題) -->
-	<div id="myModal" class="modal">
+	<div id="myModal" class="modal" data-backdrop="static">
 		<div class="modal-dialog modal-xl" role="document">
 			<div class="modal-content">
 	
@@ -112,7 +112,6 @@
 					</div>
 	
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
 						<a href="#" id="send_answer" class="btn btn-default btnNext" th:onclick="SendAnswer();">送信</a>
 					</div>
 				</div>

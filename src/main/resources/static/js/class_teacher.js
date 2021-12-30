@@ -4,7 +4,8 @@ let recognition = ''; // 音声認識クラス変数
 let finalTranscript = ''; // 確定した認識結果
 var flag_speech = ''; // 音声認識最中かを判断するフラグ
 var i = 0; // 認識数
-var flag = 0; //解答状況閲覧ボタンtext
+var text_num = 0; //解答状況閲覧ボタンtext
+var view_num = 0; //解答状況閲覧中番号
 
 /* ロード処理 */
 $(document).ready(() => {
@@ -66,7 +67,7 @@ $(document).ready(() => {
 		// 生徒の問題解答の受信
 		stompClient.subscribe('/user/queue/student_answer', function(response_data) {
 			// 表示メソッドにデータを渡す
-		    ShowStudentAnswer(JSON.parse(response_data.body).studentname,JSON.parse(response_data.body).class_no,JSON.parse(response_data.body).answer);
+		    ShowStudentAnswer(JSON.parse(response_data.body).studentname, JSON.parse(response_data.body).class_no, JSON.parse(response_data.body).answer, JSON.parse(response_data.body).issue_num);
 		});
 
 	    //入室許可の通知
@@ -122,12 +123,13 @@ function SendIssue() {
 	}));
 	
 	//解答状況閲覧用ボタン生成
-	flag += 1;
+	text_num += 1;
 	var btn = document.createElement('button');
-	btn.textContent = '問題' + flag;
+	btn.textContent = '問題' + text_num;
 	btn.setAttribute("type", "button");
 	btn.setAttribute("id", 'situation_button');
-	btn.setAttribute('onclick', 'ShowSituationAnswer()');
+	btn.setAttribute("data-parameter1", text_num);
+	btn.setAttribute('onclick', "ShowSituationAnswer(this.getAttribute('data-parameter1'))");
 	var addPlace = document.getElementById("situation_buttonlist");
 	addPlace.appendChild(btn);
 }
@@ -247,8 +249,11 @@ function ShowModal(){
 }
 
 // 解答状況表示
-function ShowSituationAnswer() {
+function ShowSituationAnswer(text_num) {
+	//modalオープン
 	$("#answer-modal").modal("show");
+	// 閲覧する問題番号の取得
+	view_num = text_num;
 }
 
 // 授業出席学生の表示
@@ -257,15 +262,16 @@ function ShowStudent(student_name,student_classno){
 	$("#list-name").append("<br>" + student_name);
 }
 
-// 字幕表示
-//function ShowSubtitles(message) {
-//	$("#subtitles_result").append("<p>" + message + "<p>");
-//}
-
 //生徒の問題解答の表示
-function ShowStudentAnswer(student_name,student_classno,student_answer){
-	$("#answer_number").append(student_classno + "番" + "<br>");
-	$("#answer_student").append(student_name + "<br>");
-	$("#answer_value").append(student_answer + "<br>");
-
+function ShowStudentAnswer(student_name,student_classno,student_answer,issue_num){
+	//閲覧中の問題の解答が送信された場合は、非同期表示
+	if(view_num == issue_num){
+		$("#answer_number").append(student_classno + "番" + "<br>");
+		$("#answer_student").append(student_name + "<br>");
+		$("#answer_value").append(student_answer + "<br>");
+	}
+	else{
+		console.log("else:view_num : ",view_num);
+		console.log("else:issue_num : ",issue_num);
+	}
 }

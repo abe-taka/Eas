@@ -1,6 +1,7 @@
 /*　生徒側　*/
 var stompClient = null; // Websocket接続用変数
 var notice_flag = 0; //出席送信カウント
+var issue_count = 0; //問題解答カウント
 
 /* ロード処理 */
 $(document).ready(() => {
@@ -128,6 +129,8 @@ function GetVoiceRecog(flag){
 
 // 問題の解答送信処理
 function SendAnswer() {
+	//問題解答カウント
+	issue_count += 1;
 	//生徒名の取得
 	const studentname = document.getElementById('student_name').value;
 	//出席番号の取得
@@ -142,7 +145,7 @@ function SendAnswer() {
 	stompClient = Stomp.over(socket);
 	// エンドポイントに対して接続
 	stompClient.connect({}, function (frame) {
-		stompClient.send("/socket_prefix/send_student_answer", {}, JSON.stringify({'studentname':studentname,'class_no':class_no,'answer':answer_value,'teacher_sessionid':teacher_sessionid}));
+		stompClient.send("/socket_prefix/send_student_answer", {}, JSON.stringify({'studentname':studentname, 'class_no':class_no, 'answer':answer_value, 'teacher_sessionid':teacher_sessionid, 'issue_num':issue_count}));
 	});
 	
 	// CSRFトークンの取得
