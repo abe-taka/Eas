@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/homework/homework_submistatus.css">
+    <link rel="stylesheet" href="/css/logmanage/logdetails.css">
 
 
     <!-- Google Fonts -->
@@ -54,7 +54,6 @@
 <body>
 
     <header>
-        <button onclick="history.back()">もどる</button>
         <h2 th:text="${session_name} + さん"></h2>
         <form th:action="@{/logout}" method="post">
             <button type="submit">ログアウト</button>
@@ -77,20 +76,24 @@
     </div>
     <!-- メイン -->
     <main>
-        <ul class="list">
+        <ul class="list h2">
             <li>日付</li>
             <li>時間</li>
             <li>入室</li>
             <li>退室</li>
         </ul>
-        <ul class="list" th:each="enterexitDetailsList:${enterexitDetailsList}">
-            <li th:text="${enterexitDetailsList.date}"></li>
-            <li th:text="${enterexitDetailsList.atime_period}"></li>
-            <li th:if="${enterexitDetailsList.enter_time == null}" th:text="未入室"></li>
-            <li th:if="${(enterexitDetailsList.enter_time != null)}" th:text="${enterexitDetailsList.enter_time}"></li>
-            <li th:if="${enterexitDetailsList.exit_time == null}" th:text="未退室"></li>
-            <li th:if="${(enterexitDetailsList.exit_time != null)}" th:text="${enterexitDetailsList.exit_time}"></li>
-        </ul>
+        <div class="scroll">
+            <ul class="list" th:each="enterexitDetailsList:${enterexitDetailsList}">
+                <li th:text="${enterexitDetailsList.date}"></li>
+                <li th:text="${enterexitDetailsList.atime_period}"></li>
+                <li th:if="${enterexitDetailsList.enter_time == null}" th:text="未入室"></li>
+                <li th:if="${(enterexitDetailsList.enter_time != null)}" th:text="${enterexitDetailsList.enter_time}">
+                </li>
+                <li th:if="${enterexitDetailsList.exit_time == null}" th:text="未退室"></li>
+                <li th:if="${(enterexitDetailsList.exit_time != null)}" th:text="${enterexitDetailsList.exit_time}">
+                </li>
+            </ul>
+        </div>
 
     </main>
 </body>

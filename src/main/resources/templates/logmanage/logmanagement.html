@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/homework/homework_submistatus.css">
+    <link rel="stylesheet" href="/css/logmanage/logmanagement.css">
 
 
     <!-- Google Fonts -->
@@ -78,40 +78,42 @@
     <!-- メイン -->
     <main>
         <form th:action="@{/logmanagement}" th:object="${ClassForm}" method="post">
-            <div class="contents">
-                <div class="itemselect">
-                    <select name="school_year">
-                        <option th:value="01" th:text="1年"></option>
-                        <option th:value="02" th:text="2年"></option>
-                        <option th:value="03" th:text="3年"></option>
-                        <option th:value="04" th:text="4年"></option>
-                        <option th:value="05" th:text="5年"></option>
-                        <option th:value="06" th:text="6年"></option>
-                    </select>
-                </div>
-                <div class="itemselect">
-                    <select name="school_class">
-                        <option th:value="01" th:text="1組"></option>
-                        <option th:value="02" th:text="2組"></option>
-                        <option th:value="03" th:text="3組"></option>
-                        <option th:value="04" th:text="4組"></option>
-                        <option th:value="05" th:text="5組"></option>
-                        <option th:value="06" th:text="6組"></option>
-                    </select>
-                </div>
-                <div class="itemselect">
+            <ul class="contents">
+                <li class="itemselect">
+                    <div>
+                        <select name="school_year">
+                            <option th:value="01" th:text="1年"></option>
+                            <option th:value="02" th:text="2年"></option>
+                            <option th:value="03" th:text="3年"></option>
+                            <option th:value="04" th:text="4年"></option>
+                            <option th:value="05" th:text="5年"></option>
+                            <option th:value="06" th:text="6年"></option>
+                        </select>
+                    </div>
+                </li>
+                <li class="itemselect">
+                    <div>
+                        <select name="school_class">
+                            <option th:value="01" th:text="1組"></option>
+                            <option th:value="02" th:text="2組"></option>
+                            <option th:value="03" th:text="3組"></option>
+                            <option th:value="04" th:text="4組"></option>
+                            <option th:value="05" th:text="5組"></option>
+                            <option th:value="06" th:text="6組"></option>
+                        </select>
+                    </div>
+                </li>
+                <li class="itemselect">
                     <input type="submit" value="表示" class="btn-flat-border">
-                </div>
-            </div>
+                </li>
+            </ul>
         </form>
         <ul class="list">
             <li class="item" th:each="studentList:${studentList}">
-                <ul>
-                    <li th:text="${studentList.class_no}"></li>
-                    <li><a th:text="${studentList.student_name}"
-                            th:href="@{'logdetails/' + ${studentList.student_name} + '/' + ${studentList.class_no}}"></a>
-                    </li>
-                </ul>
+                <a th:href="@{'logdetails/' + ${studentList.student_name} + '/' + ${studentList.class_no}}">
+                    <div th:text="${studentList.class_no}" class="class-no"></div>
+                    <div class="student-name" th:text="${studentList.student_name}"></div>
+                </a>
             </li>
         </ul>
     </main>

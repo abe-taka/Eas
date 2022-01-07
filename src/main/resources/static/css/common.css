@@ -52,7 +52,6 @@ header button {
 }
 
 header button:hover {
-  background-color: #fcc2d7;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: #fcc2d76c 0 24px 24px;

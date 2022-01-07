@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/homework/homework_submistatus.css">
+    <link rel="stylesheet" href="/css/homework/homeworkdetails.css">
 
 
     <!-- Google Fonts -->
@@ -77,8 +77,8 @@
 
     <!-- メイン -->
     <main>
-        <div><a th:href="@{/homework_submistatus}">提出状況確認　></a></div>
-        <div th:if="${student_name}">
+        <div class="return"><a th:href="@{/homework_submistatus}">提出状況確認へ</a></div>
+        <div th:if="${student_name}" class="student_name">
             <span th:text="${student_name} + 'さんの提出状況'"></span>
         </div>
         <div class="wrap">

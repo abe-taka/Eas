@@ -1,0 +1,77 @@
+main {
+  padding: 0 0 0 2em;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.return {
+  margin-bottom: 2em;
+}
+
+.return a {
+  display: inline-block;
+  padding: 1em 2em;
+  background-color: #ffffff;
+  border-radius: 100vh;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.return a:hover {
+  color: #faa2c1;
+}
+
+.student_name {
+  margin-bottom: 2em;
+}
+
+.student_name span {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.wrap {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.wrap .itemee {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1em;
+}
+
+.wrap .itemee h2 {
+  width: 100%;
+  display: block;
+  background-color: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 1em 0;
+}
+
+.wrap .itemee ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+}
+/*# sourceMappingURL=homeworkdetails.css.map */
