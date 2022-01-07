@@ -185,7 +185,7 @@ public class AdministratorController {
 			// 更新
 			timetabletimerepository.save(timetabletimeEntity);
 		}
-		return "redirect:/admin/transferschool_dropoutprocess";
+		return "redirect:/admin/timetable";
 	}
 
 	// 転校・退学処理画面に遷移

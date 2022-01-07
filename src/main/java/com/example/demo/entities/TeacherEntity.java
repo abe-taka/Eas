@@ -46,6 +46,9 @@ public class TeacherEntity {
 	@OneToMany(mappedBy="teacher")
 	@JsonBackReference("json_teacher_teacherIssue")
 	private List<TeacherIssueEntity> teacherIssue;
+	
+	@OneToMany(mappedBy="teacher")
+	private List<TransferwithdrawalEntity> transferwithdrawal;
 
 	
 	// ゲッター、セッター
@@ -95,6 +98,14 @@ public class TeacherEntity {
 
 	public void setTeacherIssue(List<TeacherIssueEntity> teacherIssue) {
 		this.teacherIssue = teacherIssue;
+	}
+
+	public List<TransferwithdrawalEntity> getTransferwithdrawal() {
+		return transferwithdrawal;
+	}
+
+	public void setTransferwithdrawal(List<TransferwithdrawalEntity> transferwithdrawal) {
+		this.transferwithdrawal = transferwithdrawal;
 	}
 	
 }

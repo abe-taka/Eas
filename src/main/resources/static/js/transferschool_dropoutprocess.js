@@ -141,23 +141,33 @@ function AjaxJson(year_student,class_student){
 		//ループカウント変数
 		var count = 0;
 		// 動的表示
-		for(i = response_data.length; i > 0; i--) {
-			count += 1;
-			var js_classno = null;
-			var js_studentname = null;
-			js_classno = response_data[response_data.length-count]["classno"];
-			js_studentname  = response_data[response_data.length-count]["studentname"];
-			console.log("js_response_data",js_classno + js_studentname);
-			
-			// optionタグを作成する
-			var option = document.createElement("option");
-			// optionタグのテキストを4に設定する
-			option.text = js_classno + js_studentname;
-			// optionタグのvalueを4に設定する
-			option.value = js_studentname;
-			// selectタグの子要素にoptionタグを追加する
-			select.appendChild(option);
-		}
+		// 動的表示
+	  if(response_data.length != 0){
+	  for(i = response_data.length; i > 0; i--) {
+	    count += 1;
+	    var js_classno = null;
+	    var js_studentname = null;
+	    js_classno = response_data[response_data.length-count]["classno"] + "番";
+	    js_studentname  = response_data[response_data.length-count]["studentname"];
+	    console.log("js_response_data",js_classno + js_studentname);
+	    
+	    // optionタグを作成する
+	    var option = document.createElement("option");
+	    // optionタグのテキストを4に設定する
+	    option.text = js_classno + js_studentname;
+	    // optionタグのvalueを4に設定する
+	    option.value = js_studentname;
+	    // selectタグの子要素にoptionタグを追加する
+	    select.appendChild(option);
+	   }
+	  }else{
+	   // optionタグを作成する
+	   var option = document.createElement("option");
+	   // optionタグのテキストを4に設定する
+	   option.text = "学生不在";
+	   // selectタグの子要素にoptionタグを追加する
+	   select.appendChild(option);
+	  }
 	}
 	,function(e){
 		//失敗
