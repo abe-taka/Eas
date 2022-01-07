@@ -59,6 +59,7 @@
     </header>
 
     <main>
+    	<form th:action="@{/post}" method="POST" th:object="${timetableform}">
         <table>
             <tbody>
                 <tr>
@@ -88,358 +89,683 @@
                 <!-- 1 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 1">
                         <div class="period">
                             <h2>1時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[0]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[0]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[0]">
                         </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[0]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[0]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[0]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[1]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[1]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[1]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[2]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[2]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[2]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[3]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[3]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[3]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[4]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[4]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[4]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 1">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[5]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[5]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[5]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
                 </tr>
 
                 <!-- 2 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 2">
                         <div class="period">
                             <h2>2時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[1]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[1]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[1]">
                         </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[6]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[6]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[6]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[7]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[7]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[7]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[8]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[8]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[8]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[9]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[9]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[9]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[10]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[10]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[10]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 2">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[11]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[11]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[11]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
                 </tr>
 
                 <!-- 3 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 3">
                         <div class="period">
                             <h2>3時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[2]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[2]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[2]">
                         </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[12]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[12]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[12]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[13]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[13]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[13]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[14]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[14]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[14]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[15]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[15]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[15]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[16]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[16]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[16]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 3">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[17]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[17]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[17]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                 </tr>
 
                 <!-- 4 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 4">
                         <div class="period">
                             <h2>4時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[3]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[3]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[3]">
                         </div>
-                    <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
-                        </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[18]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[18]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[18]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[19]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[19]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[19]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[20]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[20]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[20]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[21]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[21]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[21]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[22]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[22]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[22]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
+                    <td>
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 4">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[23]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[23]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[23]">
+	                       	</div>
+                    	</div>
+                        </div>
+                    </div>
+                    </td>
+                    
                 </tr>
 
                 <!-- 5 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 5">
                         <div class="period">
                             <h2>5時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[4]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[4]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[4]">
                         </div>
-                    <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
-                        </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[24]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[24]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[24]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[25]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[25]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[25]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[26]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[26]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[26]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[27]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[27]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[27]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[28]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[28]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[28]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
+                    <td>
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 5">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[29]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[29]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[29]">
+	                       	</div>
+                    	</div>
+                        </div>
+                    </div>
+                    </td>
+                    
                 </tr>
 
                 <!-- 6 -->
                 <tr>
                     <td>
+                    <div th:each="school_time : ${school_time}" th:object="${school_time}">
+                    <div th:if= "*{timeperiod} == 6">
                         <div class="period">
                             <h2>6時間目</h2>
-                            <input type="time" class="strat">
+                            <input type="hidden" name="list_periodtime[5]" th:value="*{timetable_id}">
+                            <input type="time" class="strat" th:value="*{starttime}" name="list_periodtime[5]">
                             <span>&#65374;</span>
-                            <input type="time" class="end">
+                            <input type="time" class="end" th:value="*{endtime}" name="list_periodtime[5]">
                         </div>
-                    <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
-                        </div>
+                    </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '月'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[30]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[30]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[30]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '火'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[31]" th:value="*{timeid}" >
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[31]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[31]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '水'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[32]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[32]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[32]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '木'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[33]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[33]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[33]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
                     <td>
-                        <div class="subject">
-                            <label for="subject">科目</label>
-                            <input type="text" id="subject">
-                            <label for="class">クラス</label>
-                            <input type="text" id="class">
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '金'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[34]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[34]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[34]">
+	                       	</div>
+                    	</div>
                         </div>
+                    </div>
                     </td>
+                    
+                    <td>
+                    <div th:each="teacher_timetable : ${teacher_timetable}" th:object="${teacher_timetable}">
+                    	<div th:if="*{dayofweek} == '土'">
+                    	<div th:if= "*{timetabletime.timeperiod} == 6">
+	                        <div class="subject" >
+	                        		<input type="hidden" name="list_timetable[35]" th:value="*{timeid}">
+	                                <label for="subject">科目</label>
+		                            <input type="text" id="subject" th:value="*{subjectname}" name="list_timetable[35]">
+		                            <label for="class">クラス</label>
+		                            <input type="text" id="class" th:value="*{classentity.schoolyear}+'年'+*{classentity.schoolclass}+'組'" name="list_timetable[35]">
+	                       	</div>
+                    	</div>
+                        </div>
+                    </div>
+                    </td>
+                    
                 </tr>
             </tbody>
         </table>
@@ -450,7 +776,7 @@
             <input type="button" value="キャンセル">
             <input type="submit" value="保存">
         </div>
-
+    	</form>
     </main>
 </body>
 

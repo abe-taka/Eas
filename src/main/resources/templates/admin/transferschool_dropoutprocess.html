@@ -7,9 +7,15 @@
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>転校・退学処理| Eas</title>
 
+	<!-- bootstrap -->
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/admin/transferschool.css">
-
+    
+   <!--js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/js/transferschool_dropoutprocess.js"></script>
+  
     <script>
         (function (d) {
             var config = {
@@ -46,7 +52,8 @@
 
     <!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+    
+    
 </head>
 
 <body>
@@ -61,83 +68,126 @@
     <main>
 
         <div class="studentSelect">
-            <select name="school_year">
-                <option th:value="01" th:text="1年"></option>
-                <option th:value="02" th:text="2年"></option>
-                <option th:value="03" th:text="3年"></option>
-                <option th:value="04" th:text="4年"></option>
-                <option th:value="05" th:text="5年"></option>
-                <option th:value="06" th:text="6年"></option>
+            <select name="school_year" id="studen_year">
+                <option th:value="1年" th:text="1年"></option>
+                <option th:value="2年" th:text="2年"></option>
+                <option th:value="3年" th:text="3年"></option>
+                <option th:value="4年" th:text="4年"></option>
+                <option th:value="5年" th:text="5年"></option>
+                <option th:value="6年" th:text="6年"></option>
             </select>
-            <select name="school_class">
-                <option th:value="01" th:text="1組"></option>
-                <option th:value="02" th:text="2組"></option>
-                <option th:value="03" th:text="3組"></option>
-                <option th:value="04" th:text="4組"></option>
-                <option th:value="05" th:text="5組"></option>
-                <option th:value="06" th:text="6組"></option>
+            <select name="school_class" id="student_class">
+                <option th:value="1組" th:text="1組"></option>
+                <option th:value="2組" th:text="2組"></option>
+                <option th:value="3組" th:text="3組"></option>
+                <option th:value="4組" th:text="4組"></option>
+                <option th:value="5組" th:text="5組"></option>
+                <option th:value="6組" th:text="6組"></option>
             </select>
-            <select name="school_number">
-                <option th:value="01" th:text="1番"></option>
-                <option th:value="02" th:text="2番"></option>
-                <option th:value="03" th:text="3番"></option>
-                <option th:value="04" th:text="4番"></option>
-                <option th:value="05" th:text="5番"></option>
-                <option th:value="06" th:text="6番"></option>
-                <option th:value="07" th:text="7番"></option>
-                <option th:value="08" th:text="8番"></option>
-                <option th:value="09" th:text="9番"></option>
-                <option th:value="10" th:text="10番"></option>
+            <select name="school_number" id="student_information">
+                <option value="00"></option>
+	            <option
+	                th:each="student_table : ${student_pull}"
+	                th:value="${student_table.studentname}"
+	                th:text="${student_table.classno}+ 番+${student_table.studentname}"
+	                th:selected="${student_table.classno} == *{classno}">
+	            </option>
             </select>
         </div>
+        
+        
 
         <div class="schooladmin">
 
-            <!-- 転校処理のモーダルを出す -->
-            <button class="Transfer button">
+            <!--<!-- 転校処理のモーダルを出す -->
+            <button class="Transfer button" id="transfer_school" th:onclick="ShowModal();">
                 <p>上記生徒の</p>
                 <h2>転校の申請</h2>
             </button>
 
             <!-- 退学処理のモーダルを出す -->
-            <button class="Withdrawal button">
+            <button class="Withdrawal button" id="Withdrawal_school" th:onclick="ShowModal2();">
                 <p>上記生徒の</p>
                 <h2>退学の申請</h2>
             </button>
         </div>
 
-        <!-- 転校モーダル -->
-        <div class="modal">
+        <!-- 転校モーダル -->			
+		 <div class="modal" id="modal">
             <div class="modal_content">
-                <input type="button" class="close" onclick="closeBtn('delete')" value="×">
+                <input type="button" class="close" data-dismiss="modal" value="×">
                 <div class="modal_student">
-                    <p>1年</p>
-                    <p>1組</p>
-                    <p>1番</p>
-                    <p>田中太郎</p>
+                    <p id="school_year"></p>
+                    <p id="school_class"></p>
+                    <p id="name"></p>
                 </div>
                 <h2>上記生徒の転校を申請しますか？</h2>
-                <input type="submit" value="申請">
+                <input type="submit" value="申請" th:data-parameter1="0" th:onclick="Category(this.getAttribute('data-parameter1'));" data-dismiss="modal">
             </div>
         </div>
-
+		    
         <!-- 退学モーダル -->
-        <div class="modal">
+        <div class="modal" id="modal2">
             <div class="modal_content">
-                <input type="button" class="close" onclick="closeBtn('delete')" value="×">
+                <input type="button" class="close" data-dismiss="modal" value="×">
                 <div class="modal_student">
-                    <p>1年</p>
-                    <p>1組</p>
-                    <p>1番</p>
-                    <p>田中太郎</p>
+                    <p id="school_year1">1年</p>
+                    <p id="school_class1"></p>
+                    <p id="name1"></p>
                 </div>
                 <h2>上記生徒の退学を申請しますか？</h2>
-                <input type="submit" value="申請">
+                <input type="submit" value="申請" th:data-parameter2="1" th:onclick="Category1(this.getAttribute('data-parameter2'));" data-dismiss="modal">
             </div>
         </div>
 
     </main>
 
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+  crossorigin="anonymous"></script>
+ <script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+  crossorigin="anonymous"></script>
+  
+  <script>
+  
+  var year_student ="";
+  var class_student ="";
+  
+  function inputChange(event){
+      console.log(event.currentTarget.value);
+      
+      if(event.currentTarget.value.endsWith("年") ){
+		
+		class_student = $('#student_class option:selected').text();
+		year_student = event.currentTarget.value;
+		
+		console.log(class_student);
+		console.log(year_student);
+			
+		}else{
+		
+		year_student = $('#studen_year option:selected').text();
+		class_student = event.currentTarget.value;
+		
+		console.log(class_student);
+		console.log(year_student);
+		
+		}
+	      AjaxJson(year_student,class_student);
+	 }
+ 
+  	year_student = document.getElementById('studen_year');
+  	year_student.addEventListener('change', inputChange);
+  	
+  	class_student = document.getElementById('student_class');
+  	class_student.addEventListener('change', inputChange);
+  	
+  	
+ </script>
+  
 </body>
 
 </html>

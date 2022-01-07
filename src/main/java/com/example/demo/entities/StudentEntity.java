@@ -34,6 +34,10 @@ public class StudentEntity {
 	@JsonBackReference("json_student_enterexit")
 	private List<EnterExitEntity> enterexit;
 	
+	//転校・退学ログテーブル
+	@OneToMany(mappedBy = "student")
+	private List<TransferwithdrawalEntity> transferwithdrawal;
+	
 	// ゲッター、セッター
 	public String getStudentaddress() {
 		return studentaddress;
@@ -64,5 +68,11 @@ public class StudentEntity {
 	}
 	public void setEnterexit(List<EnterExitEntity> enterexit) {
 		this.enterexit = enterexit;
+	}
+	public List<TransferwithdrawalEntity> getTransferwithdrawal() {
+		return transferwithdrawal;
+	}
+	public void setTransferwithdrawal(List<TransferwithdrawalEntity> transferwithdrawal) {
+		this.transferwithdrawal = transferwithdrawal;
 	}
 }
