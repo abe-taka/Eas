@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.components.SessionManage;
@@ -263,6 +264,55 @@ public class HomeWorkController<SelectYearCode> {
 			return "homework/homeworklist";
 		}
 	}
+	
+	//問題アップロード
+	@GetMapping(value = "/homeworkupload")
+	public String Get_HomeworkUpload() {
+		// セッションがあるかをチェック
+		if (session_manage.getSession_mail() == null) {
+			return "redirect:/";
+		} else {
+			return "redirect:/homeworklist";
+		}
+	}
+	
+	@PostMapping(value = "/homeworkupload")
+	public String Post_HomeworkUpload(Model model,Integer str,Integer str2,Integer homework_id) {
+		// セッションがあるかをチェック
+		if (session_manage.getSession_mail() == null) {
+			return "redirect:/";
+		} else {
+			System.out.println("str:::" + str);
+			System.out.println("str2:::" + str2);
+			System.out.println("homework_id:::" + homework_id);
+			
+			int session_schoolCode = session_manage.getSession_schoolcode();
+			
+			String classno =  String.valueOf(session_schoolCode) + String.format("%02d", str) + String.format("%02d", str2);
+						
+			//insert
+			jdbcTestRepository.insertHomework(classno, homework_id);
+
+			jdbcTestRepository.insertHomeworkFlg1(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg2(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg3(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg4(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg5(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg6(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg7(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg8(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg9(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg10(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg11(classno, homework_id);
+			jdbcTestRepository.insertHomeworkFlg12(classno, homework_id);
+			
+			List bookAll = jdbcTestRepository.findAll();
+			model.addAttribute("bookAll",bookAll);
+			model.addAttribute("HomeworkForm", new HomeworkForm());
+
+			return "redirect:/homeworklist";
+		}
+	}
 
 	/**
 	　* 問題情報削除
@@ -270,28 +320,28 @@ public class HomeWorkController<SelectYearCode> {
 	　*　@param model Model
 	　*　@return 問題管理画面
 	 */
-	// 問題削除
-	@PostMapping(value = "/homeworkdelete")
-	public String Get_HomeworkDelete(Model model,Integer homework_id) {
+	
+	@GetMapping(value = "/homeworkdelete")
+	public String Post_HomeworkDelet() {
 		// セッションがあるかをチェック
 		if (session_manage.getSession_mail() == null) {
 			return "redirect:/";
 		} else {
-			// メールドレスを取得
-			String mailaddress = null;
-			mailaddress = session_manage.getSession_mail();
-			model.addAttribute("session_mail", mailaddress);
-			//名前を取得
-			String session_name = session_manage.getSession_name();
-			model.addAttribute("session_name", session_name);
-			//学校コードを取得
-			int session_schoolCode = session_manage.getSession_schoolcode();
-			model.addAttribute("session_schoolcode",session_schoolCode);
+			return "redirect:/homeworklist";
+		}
+	}
+	// 問題削除
+	@PostMapping(value = "/homeworkdelete")
+	public String Post_HomeworkDelete(Model model,String filename,Integer homework_id) {
+		// セッションがあるかをチェック
+		if (session_manage.getSession_mail() == null) {
+			return "redirect:/";
+		} else {
+			System.out.println("filename:::" + filename);
+			System.out.println("homework_id:::" + homework_id);
 			
-			//homework_idからhomework_filenameを取得
-			HomeworkForm homeworkForm = jdbcTestRepository.selectFileName(homework_id);
 			//指定したローカルファイルの削除
-			File file = new File(uploadDirectory + "/" + homeworkForm.getHomework_filename());
+			File file = new File(uploadDirectory + "/" + filename);
 			file.delete();
 			
 			//一覧を取得
@@ -299,10 +349,8 @@ public class HomeWorkController<SelectYearCode> {
 			List bookAll = jdbcTestRepository.findAll();
 			model.addAttribute("bookAll",bookAll);
 			model.addAttribute("HomeworkForm", new HomeworkForm());
-			
-			model.addAttribute("msg", homeworkForm.getHomework_filename() + "の削除完了しました");
 
-			return "homework/homeworklist";
+			return "redirect:/homeworklist";
 		}
 	}
 	
@@ -487,7 +535,7 @@ public class HomeWorkController<SelectYearCode> {
 			HomeWorkSubmissionEntity homeWorkSubmissionEntity = new HomeWorkSubmissionEntity();
 			homeWorkSubmissionEntity.setHomeworksubmissionid(submission_id);
 			
-			jdbcTestRepository.insertHomework(session_classno, session_classid,submission_id);
+			jdbcTestRepository.insertHomeworkAnswer(session_classno, session_classid,submission_id);
 			
 			HomeWorkAnswerEntity homeWorkAnswerEntity = new HomeWorkAnswerEntity();
 			homeWorkAnswerEntity.setAnswer_content(content);

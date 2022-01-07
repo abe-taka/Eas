@@ -49,8 +49,89 @@ public class HomeworkRepository<Homework> {
 	 * @param homework_id
 	 */
 	public void deleteHomeworkList(Integer homework_id) {
+		System.out.println("homework_id::" + homework_id);
 		jdbctemplate.update("DELETE FROM homeworkmanage_table WHERE homework_id = ?",
 				homework_id);
+	}
+	
+	public void insertHomework(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO homeworksubmission_table \r\n"
+				+ "(class_id,homework_id)\r\n"
+				+ "VALUES(?,?)",
+				classno,homework_id);
+	}
+	
+	public void insertHomeworkFlg1(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(01,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg2(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(02,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg3(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(03,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg4(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(04,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg5(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(05,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg6(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(06,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg7(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(07,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg8(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(08,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg9(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(09,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg10(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(10,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg11(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(11,?,?,0);",
+				classno,homework_id);
+	}
+	public void insertHomeworkFlg12(String classno,Integer homework_id) {
+		jdbctemplate.update("INSERT INTO submission_flg_table \r\n"
+				+ "(class_no,class_id,homework_id,submission_flg)\r\n"
+				+ "VALUES(12,?,?,0);",
+				classno,homework_id);
 	}
 	
 	/**
@@ -318,7 +399,7 @@ public class HomeworkRepository<Homework> {
 	 * @param session_classId
 	 * @param submission_id
 	 */
-	public void insertHomework(Integer session_classno,Integer session_classId,Integer submission_id) {
+	public void insertHomeworkAnswer(Integer session_classno,Integer session_classId,Integer submission_id) {
 		jdbctemplate.update("UPDATE submission_flg_table\r\n"
 							+ "SET submission_flg = 1\r\n"
 							+ "WHERE class_no = ?\r\n"
@@ -333,22 +414,30 @@ public class HomeworkRepository<Homework> {
 	 * @param homeWorkSubmissionEntity
 	 */
 	public void insertAnswerContent(HomeWorkAnswerEntity homeWorkAnswerEntity,Integer homework_id) {
+		
+		System.out.println(homeWorkAnswerEntity.getAnswer_content());
+		System.out.println(homeWorkAnswerEntity.getClassno());
+		System.out.println(homework_id);
 		jdbctemplate.update("INSERT INTO homeworkanswer_table \r\n"
 						  + "(answer_content,homeworksubmission_id,class_no) \r\n"
 						  + "VALUE \r\n"
-						  + "(?,?,?)",
+						  + "(?,"
+						  + "(SELECT homeworksubmission_table.homeworksubmission_id\r\n"
+						  + "FROM homeworksubmission_table\r\n"
+						  + "WHERE homeworksubmission_table.homeworksubmission_id  = ?)"
+						  + ",?)",
 				homeWorkAnswerEntity.getAnswer_content(),homework_id,
 				homeWorkAnswerEntity.getClassno());
 	}
 	
-	public void insertHomeworksubmission(HomeWorkAnswerEntity homeWorkAnswerEntity,HomeWorkSubmissionEntity homeWorkSubmissionEntity) {
-		jdbctemplate.update("INSERT INTO homeworksubmission_table\r\n"
-						  + "(class_id,homework_id) \r\n"
-						  + "VALUE\r\n"
-						  + "(1000200501,3)",
-				homeWorkAnswerEntity.getAnswer_content(),homeWorkSubmissionEntity.getHomeworksubmissionid(),
-				homeWorkAnswerEntity.getClassno());
-	}
+//	public void insertHomeworksubmission(HomeWorkAnswerEntity homeWorkAnswerEntity,HomeWorkSubmissionEntity homeWorkSubmissionEntity) {
+//		jdbctemplate.update("INSERT INTO homeworksubmission_table\r\n"
+//						  + "(class_id,homework_id) \r\n"
+//						  + "VALUE\r\n"
+//						  + "(1000200501,3)",
+//				homeWorkAnswerEntity.getAnswer_content(),homeWorkSubmissionEntity.getHomeworksubmissionid(),
+//				homeWorkAnswerEntity.getClassno());
+//	}
 	
 	public List enterexitListfindAll(Integer schoolCode,Integer classNo){
 		String sql ="SELECT\r\n"

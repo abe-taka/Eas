@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>問題管理</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS -->
@@ -80,21 +81,22 @@
         <section id="issue_manager">
             <ul>
                 <li th:each="book:${bookAll}">
-                    <form th:action="@{/homeworkmovesubmission}" th:object="${HomeworkSubmiForm}" method="POST">
+                    <form th:action="@{/homeworkmovesubmission}" th:object="${HomeworkSubmiForm}">
                         <a th:text="${book.homework_filename}" th:href="@{'pdf/' + ${book.homework_filename}}"
                             th:id="${book.homework_filename}" name="homework_id" th:value="${book.homework_filename}"
                             target="_blank" rel="noopener noreferrer"></a>
 
-                        <input type="hidden" name="homework_id" th:value="${book.homework_id}">
+                        <input type="hidden" name="homework_id" th:id="${book.homework_filename}" th:value="${book.homework_id}"
+                        	   th:onclick="openBtn('delete'),test1(this.id,this.value)">
 
                         <input type="button" class="deleteBtn" value="×"
-                            th:onclick="openBtn('delete'),test1(this.id,this.homeworkid)"
-                            th:id="${book.homework_filename}" th:homeworkid="${book.homework_id}" />
+                        	   th:onclick="openBtn('delete'),test1(this.id,this.value)"
+                               th:id="${book.homework_filename}" th:value="${book.homework_id}" />
 
                         <label class="upload">
                             <input class="uploadBtn" type="button"
-                                th:onclick="test1(this.id,this.value),openBtn('upload')"
-                                th:id="${book.homework_filename}" th:value="アップロード" />
+                                th:onclick="test2(this.id,this.value),openBtn('upload')"
+                                th:id="${book.homework_id}" th:value="アップロード" />
                             <!-- th:value="${book.homework_id}"  -->
                         </label>
 
@@ -112,32 +114,85 @@
     <div id="modal_upload">
         <input type="button" class="close" onclick="closeBtn('upload')" value="×">
         <p id="h1">学年、組を選択してアップロードボタンを押してください。</p>
-        <script th:inline="javascript">
-            function test1(a, b) {
-                console.log(a);
-                console.log(b);
-            }
-        </script>
         <div class="cp_ipselect cp_sl01">
-            <select name="school_year">
-                <option th:value="01" th:text="1年"></option>
-                <option th:value="02" th:text="2年"></option>
-                <option th:value="03" th:text="3年"></option>
-                <option th:value="04" th:text="4年"></option>
-                <option th:value="05" th:text="5年"></option>
-                <option th:value="06" th:text="6年"></option>
-            </select>
-            <select name="school_class">
-                <option th:value="01" th:text="1組"></option>
-                <option th:value="02" th:text="2組"></option>
-                <option th:value="03" th:text="3組"></option>
-                <option th:value="04" th:text="4組"></option>
-                <option th:value="05" th:text="5組"></option>
-                <option th:value="06" th:text="6組"></option>
-            </select>
+        	<form name="form1" th:action="@{/homeworkupload}">
+	            <select name="school_year">
+	                <option th:value="01" th:text="1年"></option>
+	                <option th:value="02" th:text="2年"></option>
+	                <option th:value="03" th:text="3年"></option>
+	                <option th:value="04" th:text="4年"></option>
+	                <option th:value="05" th:text="5年"></option>
+	                <option th:value="06" th:text="6年"></option>
+	            </select>
+	            <select name="school_class">
+	                <option th:value="01" th:text="1組"></option>
+	                <option th:value="02" th:text="2組"></option>
+	                <option th:value="03" th:text="3組"></option>
+	                <option th:value="04" th:text="4組"></option>
+	                <option th:value="05" th:text="5組"></option>
+	                <option th:value="06" th:text="6組"></option>
+	            </select>
+        		<input type="submit" id="upload" value="アップロード"  onclick="clickBtn1()" />
+           </form>
         </div>
-        <input type="submit" id="upload" value="アップロード" />
     </div>
+    
+    <script th:inline="javascript">
+	function test2(homework_id, b) {
+		console.log("homework_id" + homework_id);
+		sessionStorage.setItem('homework_id', homework_id);
+	}
+    
+	function clickBtn1(){
+		
+		console.log(sessionStorage.getItem('homework_id'));
+		
+		homework_id = sessionStorage.getItem('homework_id');
+	
+		const color1 = document.form1.school_year;
+		const color2 = document.form1.school_class;
+	
+		// 値(数値)を取得
+		const num = color1.selectedIndex;
+		//const num = document.form1.color1.selectedIndex;
+	
+		// 値(数値)から値(value値)を取得
+		const str = color1.options[num].value;
+		
+				// 値(数値)を取得
+		const num2 = color2.selectedIndex;
+		//const num = document.form1.color1.selectedIndex;
+	
+		// 値(数値)から値(value値)を取得
+		const str2 = color2.options[num2].value;
+		
+        // CSRFトークンの取得
+		const token = $("meta[name='_csrf']").attr("content");
+		
+		$.ajax({
+			url : "/homeworkupload",
+			headers : {
+				"X-CSRF-TOKEN" : token
+			},
+			type: "POST",
+			data : {
+				str : str,
+				str2 : str2,
+				homework_id : homework_id
+			}
+		})
+		.then(function(response_data){
+			//成功
+			console.log("成功");
+		}
+		,function(){
+			//失敗
+			console.log("失敗");
+		});
+		
+		sessionStorage.removeItem('homework_id')
+	}
+	</script>
 
 
     <div id="modal_update">
@@ -162,11 +217,13 @@
         </ul>
     </div>
 
+<form th:action="@{/homeworkdelete}">
     <div id="modal_delete">
         <input type="button" class="close" onclick="closeBtn('delete')" value="×">
         <p id="div1"></p>
         <input id="delete" type="submit" value="削除" />
     </div>
+</form>
 
     <script th:inline="javascript">
         function test1(a, b) {
@@ -176,12 +233,40 @@
             }
             console.log(a);
             console.log(b);
+            var filename = a;
+            var homework_id = b;
             const p1 = document.createElement("p");
             const text1 = document.createTextNode("課題:" + a + "を削除しますか？");
             p1.appendChild(text1);
             div1.appendChild(p1);
+            
+            // CSRFトークンの取得
+			const token = $("meta[name='_csrf']").attr("content");
+			
+			$.ajax({
+				url : "/homeworkdelete",
+				headers : {
+					"X-CSRF-TOKEN" : token
+				},
+				type: "POST",
+				data : {
+					filename : filename,
+					homework_id : homework_id,
+				}
+			})
+			.then(function(response_data){
+				//成功
+				console.log("成功");
+				console.log("homework_id", homework_id);
+				console.log("filename", filename);
+			}
+			,function(){
+				//失敗
+				console.log("失敗");
+			});
         }
-    </script>
+        
+	</script>
 
     </form>
 
