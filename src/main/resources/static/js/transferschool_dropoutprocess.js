@@ -117,35 +117,51 @@ function Category1(data_parameter2){
 	
 }
 
-
+//　pull選択クラスの学生のデータを取得
 function AjaxJson(year_student,class_student){
-		
-		console.log(year_student);
-		console.log(class_student);
-		
-		//ajax処理
-      // CSRFトークンの取得
-	 const token = $("meta[name='_csrf']").attr("content");
 	
+	// 表示している学生の消去
+	$("#student_information").empty();
+	
+	//ajax処理
 	$.ajax({
-		  type : "POST",
-		  url : "/rest/return_jsonsend",
-		  contentType: 'application/json; charset=utf-8',
-		  headers : {
-		   "X-CSRF-TOKEN" : token
-		  },
-		  data : {
-		   year_student : year_student,
-		   class_student : class_student
-		  }
-		 })
-		 .then(function(response_data){
-		  //成功
-		  console.log("success")
-		 }
-		 ,function(e){
-		  //失敗
-		  console.log("error",e)
-		 });
-		
+		type : "GET",
+		url : "/rest/return_jsonsend",
+		contentType: 'application/json; charset=utf-8',
+		data : {
+			year_student : year_student,
+			class_student : class_student
+		}
+	})
+	.then(function(response_data){
+		//成功
+		console.log("success : ",response_data)
+		// 表示する場所の取得
+		const select = document.getElementById("student_information");
+		//ループカウント変数
+		var count = 0;
+		// 動的表示
+		for(i = response_data.length; i > 0; i--) {
+			count += 1;
+			var js_classno = null;
+			var js_studentname = null;
+			js_classno = response_data[response_data.length-count]["classno"];
+			js_studentname  = response_data[response_data.length-count]["studentname"];
+			console.log("js_response_data",js_classno + js_studentname);
+			
+			// optionタグを作成する
+			var option = document.createElement("option");
+			// optionタグのテキストを4に設定する
+			option.text = js_classno + js_studentname;
+			// optionタグのvalueを4に設定する
+			option.value = js_studentname;
+			// selectタグの子要素にoptionタグを追加する
+			select.appendChild(option);
+		}
 	}
+	,function(e){
+		//失敗
+		console.log("error",e)
+	});
+		
+}
