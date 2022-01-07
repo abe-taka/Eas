@@ -97,7 +97,6 @@
                 <div>
                     <ul th:if="${homeworkDetailsList.submission_flg == 1}"
                         th:each="homeworkDetailsList:${homeworkDetailsList}">
-                        <li class="status">12/01</li>
                         <li class="hisSubject" th:text="${homeworkDetailsList.homework_subject}"></li>
                         <li class="hisTitle" th:text="${homeworkDetailsList.homework_filename}"></li>
                     </ul>
