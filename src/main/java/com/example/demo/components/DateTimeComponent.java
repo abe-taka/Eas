@@ -27,6 +27,7 @@ public class DateTimeComponent {
 		case Calendar.FRIDAY:
 			return "金";
 		case Calendar.SATURDAY:
+			System.out.println("saturday");
 			return "土";
 		}
 		throw new IllegalStateException();

@@ -87,15 +87,20 @@
                             target="_blank" rel="noopener noreferrer"></a>
 
                         <input type="hidden" name="homework_id" th:id="${book.homework_filename}" th:value="${book.homework_id}"
-                        	   th:onclick="openBtn('delete'),test1(this.id,this.value)">
+                        	   th:data-parameter1="${book.homework_filename}"
+                        	   th:data-parameter2="${book.homework_id}"
+                        	   th:onclick="openBtn('delete'),test1(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
 
                         <input type="button" class="deleteBtn" value="×"
-                        	   th:onclick="openBtn('delete'),test1(this.id,this.value)"
-                               th:id="${book.homework_filename}" th:value="${book.homework_id}" />
+                        	   th:data-parameter1="${book.homework_filename}"
+                        	   th:data-parameter2="${book.homework_id}"
+                        	   th:onclick="openBtn('delete'),test1(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
 
                         <label class="upload">
                             <input class="uploadBtn" type="button"
-                                th:onclick="test2(this.id,this.value),openBtn('upload')"
+                                th:onclick="test2(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2')),openBtn('upload')"
+                                th:data-parameter1="${book.homework_id}"
+                        	    th:data-parameter2="${book.homework_filename}"
                                 th:id="${book.homework_id}" th:value="アップロード" />
                             <!-- th:value="${book.homework_id}"  -->
                         </label>
@@ -138,9 +143,9 @@
     </div>
     
     <script th:inline="javascript">
-	function test2(homework_id, b) {
-		console.log("homework_id" + homework_id);
-		sessionStorage.setItem('homework_id', homework_id);
+	function test2(data_parameter1,data_parameter2) {
+		console.log("homework_id" + data_parameter1);
+		sessionStorage.setItem('homework_id', data_parameter1);
 	}
     
 	function clickBtn1(){
@@ -226,17 +231,17 @@
 </form>
 
     <script th:inline="javascript">
-        function test1(a, b) {
+        function test1(data_parameter1,data_parameter2) {
             const div1 = document.getElementById("div1");
             if (div1.hasChildNodes()) {
                 div1.removeChild(div1.firstChild);
             }
-            console.log(a);
-            console.log(b);
-            var filename = a;
-            var homework_id = b;
+            console.log(data_parameter1);
+            console.log(data_parameter2);
+            var filename = data_parameter1;
+            var homework_id = data_parameter2;
             const p1 = document.createElement("p");
-            const text1 = document.createTextNode("課題:" + a + "を削除しますか？");
+            const text1 = document.createTextNode("課題:" + filename + "を削除しますか？");
             p1.appendChild(text1);
             div1.appendChild(p1);
             

@@ -40,6 +40,8 @@ public class HomeController {
 	public String Get_HomeIdentification(Model model, @AuthenticationPrincipal OidcUser user,RedirectAttributes redir) {
 		// メールアドレスを取得
 		String session_mail = user.getEmail();
+		
+		System.out.println("ないよ");
 
 		// 先生か学生かを判別
 		if (teacherRepository.CheckTeacher(session_mail)) {
@@ -74,6 +76,7 @@ public class HomeController {
 	public String Get_TeacherHome(Model model) {
 		// セッションがあるかをチェック
 		if (session_manage.getSession_mail() == null) {
+			System.out.println("ないよ");
 			return "redirect:/";
 		}
 		else {

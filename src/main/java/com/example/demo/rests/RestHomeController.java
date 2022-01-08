@@ -81,6 +81,7 @@ public class RestHomeController {
 		try {
 			// 現在時刻、曜日を取得
 			String dayofweek = date_time.Get_DayOfTheWeekShort();
+			System.out.println(dayofweek);
 			String current_time = date_time.Get_Time();
 			// 10分後のじかんを取得
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -96,9 +97,11 @@ public class RestHomeController {
 			try {
 				TimetableEntity time_table = new TimetableEntity();
 				time_table = timetableRepository.SearchStartClass(dayofweek, classid, current_time, tenafter_time);
+				System.out.println("データベース");
 				return json.ObjectToJSON(time_table);
 			} catch (NullPointerException e) {
 				System.out.println("[Rest]RestConfirmEnterTime[Null]　：　" + e);
+				System.out.println("出来てない");
 				return "0";
 			}
 		} catch (Exception e) {
