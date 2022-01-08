@@ -93,6 +93,7 @@
                             ファイルを選択
                         </label>
                     </li>
+                    <div th:if="${msg}"><span th:text="${msg}"></span></div>
                     <li>
                         <p>解答の数を選択</p><input name="text" type="text" th:field="*{answercolumn_num}" />
                     </li>
@@ -121,7 +122,6 @@
                 </ul>
 
             </form>
-            <div th:if="${msg}"><span th:text="${msg}"></span></div>
         </section>
         <!-- <div><a th:href="@{/homeworklist}">問題管理へ></a></div> -->
     </main>
