@@ -72,13 +72,43 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 4em;
+}
+
+main .return {
+  justify-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+main .return a {
+  display: inline-block;
+  padding: 1em 2em;
+  border-radius: 100vh;
+  background-color: #ffffff;
+  color: #faa2c1;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+
+main .return a:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+main .transferschool {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  gap: 3em;
 }
 
 main .studentSelect {
@@ -92,7 +122,7 @@ main .studentSelect {
 }
 
 main .studentSelect select {
-  width: 10em;
+  width: 4em;
   padding: 1em;
   border-radius: 4px;
 }

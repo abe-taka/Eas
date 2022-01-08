@@ -7,15 +7,16 @@
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}" />
     <title>転校・退学処理| Eas</title>
 
-	<!-- bootstrap -->
- 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/admin/transferschool.css">
-    
-   <!--js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="/js/transferschool_dropoutprocess.js"></script>
-  
+
+    <!--js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/js/transferschool_dropoutprocess.js"></script>
+
     <script>
         (function (d) {
             var config = {
@@ -52,8 +53,8 @@
 
     <!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    
-    
+
+
 </head>
 
 <body>
@@ -66,6 +67,8 @@
     </header>
 
     <main>
+
+        <div class="return"><a th:href="@{/admin/admin_home}">戻る</a></div>
 
         <div class="studentSelect">
             <select name="school_year" id="studen_year">
@@ -86,16 +89,14 @@
             </select>
             <select name="school_number" id="student_information">
                 <option value="00"></option>
-	            <option
-	                th:each="student_table : ${student_pull}"
-	                th:value="${student_table.studentname}"
-	                th:text="${student_table.classno}+ 番+${student_table.studentname}"
-	                th:selected="${student_table.classno} == *{classno}">
-	            </option>
+                <option th:each="student_table : ${student_pull}" th:value="${student_table.studentname}"
+                    th:text="${student_table.classno}+ 番+${student_table.studentname}"
+                    th:selected="${student_table.classno} == *{classno}">
+                </option>
             </select>
         </div>
-        
-        
+
+
 
         <div class="schooladmin">
 
@@ -112,8 +113,8 @@
             </button>
         </div>
 
-        <!-- 転校モーダル -->			
-		 <div class="modal" id="modal">
+        <!-- 転校モーダル -->
+        <div class="modal" id="modal">
             <div class="modal_content">
                 <input type="button" class="close" data-dismiss="modal" value="×">
                 <div class="modal_student">
@@ -122,10 +123,11 @@
                     <p id="name"></p>
                 </div>
                 <h2>上記生徒の転校を申請しますか？</h2>
-                <input type="submit" value="申請" th:data-parameter1="0" th:onclick="Category(this.getAttribute('data-parameter1'));" data-dismiss="modal">
+                <input type="submit" value="申請" th:data-parameter1="0"
+                    th:onclick="Category(this.getAttribute('data-parameter1'));" data-dismiss="modal">
             </div>
         </div>
-		    
+
         <!-- 退学モーダル -->
         <div class="modal" id="modal2">
             <div class="modal_content">
@@ -136,58 +138,57 @@
                     <p id="name1"></p>
                 </div>
                 <h2>上記生徒の退学を申請しますか？</h2>
-                <input type="submit" value="申請" th:data-parameter2="1" th:onclick="Category1(this.getAttribute('data-parameter2'));" data-dismiss="modal">
+                <input type="submit" value="申請" th:data-parameter2="1"
+                    th:onclick="Category1(this.getAttribute('data-parameter2'));" data-dismiss="modal">
             </div>
         </div>
 
     </main>
 
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-  crossorigin="anonymous"></script>
- <script
-  src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-  crossorigin="anonymous"></script>
-  
-  <script>
-  
-  var year_student ="";
-  var class_student ="";
-  
-  function inputChange(event){
-      console.log(event.currentTarget.value);
-      
-      if(event.currentTarget.value.endsWith("年") ){
-		
-		class_student = $('#student_class option:selected').text();
-		year_student = event.currentTarget.value;
-		
-		console.log(class_student);
-		console.log(year_student);
-			
-		}else{
-		
-		year_student = $('#studen_year option:selected').text();
-		class_student = event.currentTarget.value;
-		
-		console.log(class_student);
-		console.log(year_student);
-		
-		}
-	      AjaxJson(year_student,class_student);
-	 }
- 
-  	year_student = document.getElementById('studen_year');
-  	year_student.addEventListener('change', inputChange);
-  	
-  	class_student = document.getElementById('student_class');
-  	class_student.addEventListener('change', inputChange);
-  	
-  	
- </script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        var year_student = "";
+        var class_student = "";
+
+        function inputChange(event) {
+            console.log(event.currentTarget.value);
+
+            if (event.currentTarget.value.endsWith("年")) {
+
+                class_student = $('#student_class option:selected').text();
+                year_student = event.currentTarget.value;
+
+                console.log(class_student);
+                console.log(year_student);
+
+            } else {
+
+                year_student = $('#studen_year option:selected').text();
+                class_student = event.currentTarget.value;
+
+                console.log(class_student);
+                console.log(year_student);
+
+            }
+            AjaxJson(year_student, class_student);
+        }
+
+        year_student = document.getElementById('studen_year');
+        year_student.addEventListener('change', inputChange);
+
+        class_student = document.getElementById('student_class');
+        class_student.addEventListener('change', inputChange);
+
+
+    </script>
+
 </body>
 
 </html>

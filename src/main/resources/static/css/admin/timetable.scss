@@ -49,7 +49,7 @@ header{
 }
 
 main{
-    overflow-y:auto;
+    overflow:auto;
     @mixin scrollbar{
         width:16px;
     }
@@ -174,20 +174,33 @@ main{
         border-radius:100vh;
         backdrop-filter:blur( 20px );
 
-        input{
-            width:7em;
+        a{
+            display:inline-block;
+            width:4em;
             padding:1em 2em;
             cursor:pointer;
             transition:all 0.3s ease 0s;
             border-radius:100vh;
-
+            text-decoration:none;
+            box-sizing:content-box;
+            background-color:#ffffff;
+            text-align:center;
+            color:#faa2c1;
+            transition:all 0.3s ease 0s;
             &:hover{
                 transform:translateY(-3px);
             }
+        }
 
-            &[type=button]{
-                background-color:#ffffff;
-                color:#faa2c1;
+        input{
+            width:4em;
+            padding:1em 2em;
+            cursor:pointer;
+            transition:all 0.3s ease 0s;
+            border-radius:100vh;
+            box-sizing:content-box;
+            &:hover{
+                transform:translateY(-3px);
             }
 
             &[type=submit]{

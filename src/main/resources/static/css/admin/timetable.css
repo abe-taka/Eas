@@ -64,7 +64,7 @@ header button:hover {
 }
 
 main {
-  overflow-y: auto;
+  overflow: auto;
 }
 
 main::-webkit-scrollbar {
@@ -210,23 +210,42 @@ main .Button {
           backdrop-filter: blur(20px);
 }
 
-main .Button input {
-  width: 7em;
+main .Button a {
+  display: inline-block;
+  width: 4em;
   padding: 1em 2em;
   cursor: pointer;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   border-radius: 100vh;
+  text-decoration: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  background-color: #ffffff;
+  text-align: center;
+  color: #faa2c1;
+  transition: all 0.3s ease 0s;
+}
+
+main .Button a:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+
+main .Button input {
+  width: 4em;
+  padding: 1em 2em;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  border-radius: 100vh;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 main .Button input:hover {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
-}
-
-main .Button input[type=button] {
-  background-color: #ffffff;
-  color: #faa2c1;
 }
 
 main .Button input[type=submit] {
